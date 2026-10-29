@@ -29,7 +29,7 @@ window.I18N = {
  "01 · QR Order · ลูกค้าที่โต๊ะ": "01 · QR Order · Customer at the table",
  "สแกนแล้วรู้ว่าสั่งให้โต๊ะไหน จ่ายแล้วมีเลขออเดอร์ไว้อ้างอิง": "Scan and know which table you are ordering for; pay and get an order number",
  "ใต้หัวเมนูแสดงสาขาและโต๊ะที่สแกนมา หน้าชำระแสดงเลขคำสั่งซื้อ QR PromptPay เวลาที่เหลือ และยอดที่ต้องจ่าย": "The branch and table from the scan sit under the menu header. The payment page shows the order number, PromptPay QR, time left and amount due.",
- "แก้ปัญหา": "Solves",
+ "ช่วยแก้": "What it fixes",
  "ลูกค้าไม่ต้องบอกว่านั่งโต๊ะไหน พนักงานไม่ต้องเดินถาม และเสิร์ฟถูกโต๊ะ": "Customers do not have to say where they sit, staff do not walk over to ask, and food reaches the right table.",
  "02 · Kiosk · ลูกค้าหน้าร้าน": "02 · Kiosk · Walk-in customer",
  "รูปเมนูใหญ่ และบอกชัดว่าตัวเลือกไหนต้องเลือก": "Large menu photos and clear required options",
@@ -64,8 +64,8 @@ window.I18N = {
  "ขายหลายร้าน": "Many cafés",
  "ร้านที่ทำงานต่างกันต้องใช้ระบบแบบเดียวกัน": "Cafés that work differently had to use the same setup.",
  "ร้านปิดสั่งล่วงหน้าเองได้โดยลูกค้ายังดูเมนูได้ ขายต่อได้แม้สต็อกยังไม่อัปเดต และเห็นจากแดชบอร์ดว่าต้องปรับรายการไหน": "A café can switch off pre-orders while customers still browse the menu, keep selling before stock is updated, and see on the dashboard which items to adjust.",
- "อยากเห็นรายละเอียดทุกจอ, edge case และเหตุผลเต็ม": "Every screen, edge case and full rationale (in Thai)",
+ "อยากดูครบทุกจอ พร้อมเหตุผลเบื้องหลัง?": "Want every screen and the reasoning behind it?",
  "อ่าน case study แบบเต็ม": "Read the full case study",
- "อ่านต่อ →": "Read →",
+ "อ่านต่อ →": "Read the full story →",
  "หน้าจอวาดใหม่ตาม flow ของระบบจริง ไม่ใช่หน้าจอ production · ชื่อร้าน Mellow Café และข้อมูลทั้งหมดเป็นข้อมูลสมมติ": "Screens redrawn from the real system's flows, not production screenshots · The café name Mellow Café and all data are fictional."
 };

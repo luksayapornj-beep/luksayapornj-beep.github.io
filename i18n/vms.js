@@ -34,7 +34,7 @@ window.I18N = {
  "สถานะ \"รออนุมัติ\" อยู่ที่หัวการ์ด ข้อมูลผู้มาติดต่อและเอกสารอยู่ในหน้าเดียว ปุ่มปฏิเสธกับอนุมัติอยู่ล่างจอตลอด กดได้โดยไม่ต้องเลื่อนลงสุด": "\"Awaiting approval\" sits at the top of the card, visitor details and documents are on one page, and Reject and Approve stay pinned to the bottom, so no scrolling is needed.",
  "ไม่เลือก": "Not chosen",
  "ให้ Security อนุมัติแทนที่ประตู เพราะ Security ไม่รู้ว่าแขกมาทำอะไร": "Letting Security approve at the gate, because Security does not know why the guest is visiting.",
- "แก้ปัญหา": "Solves",
+ "ช่วยแก้": "What it fixes",
  "Security เห็นผลอนุมัติตอนสแกนที่ประตู ปกติไม่ต้องโทรถาม Host": "Security sees the approval when scanning at the gate and normally no longer calls the Host.",
  "02 · Consent → QR · Visitor บน Mobile web": "02 · Consent → QR · Visitor on mobile web",
  "ยืนยันเงื่อนไขก่อน แล้วจึงได้ QR": "Accept the terms first, then get the QR",
@@ -73,8 +73,8 @@ window.I18N = {
  "ไม่รู้ว่าใครยังอยู่ในพื้นที่ หลังการเข้าพบจบแล้ว": "Did not know who was still on site after a meeting ended.",
  "Host ยืนยันจบการพบ Security ยืนยันออกที่ประตู ปกติไม่ต้องไล่ถามกัน": "The Host confirms the meeting ended and Security confirms exit at the gate, so no one has to chase.",
  "รู้ว่าใครยังอยู่ในโรงงาน": "Knows who is still in the plant.",
- "อยากเห็นรายละเอียดทุกจอ, edge case และเหตุผลเต็ม": "Every screen, edge case and full rationale (in Thai)",
+ "อยากดูครบทุกจอ พร้อมเหตุผลเบื้องหลัง?": "Want every screen and the reasoning behind it?",
  "อ่าน case study แบบเต็ม": "Read the full case study",
- "อ่านต่อ →": "Read →",
+ "อ่านต่อ →": "Read the full story →",
  "Enterprise Visitor Management System · ภายใต้ NDA หน้าจอวาดใหม่ ชื่อลูกค้า สี โลโก้ และข้อมูลทั้งหมดเป็นข้อมูลสมมติ": "Enterprise Visitor Management System · Under NDA. Screens redrawn; client name, colours, logo and all data are fictional."
 };

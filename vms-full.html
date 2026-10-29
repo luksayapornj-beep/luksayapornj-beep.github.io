@@ -215,12 +215,12 @@
     <a class="cs-nav__title" href="#overview">VMS</a>
     <div class="cs-nav__links">
       <a href="#problem">ปัญหา</a>
-      <a href="#users">ผู้ใช้</a>
-      <a href="#system">ระบบ</a>
-      <a href="#solution">Solution</a>
-      <a href="#edge">Edge cases</a>
+      <a href="#users">ใครใช้</a>
+      <a href="#system">ภาพรวม</a>
+      <a href="#solution">ออกแบบอะไร</a>
+      <a href="#edge">กรณีพิเศษ</a>
       <a href="#outcome">ผลลัพธ์</a>
-      <a href="#learn">บทเรียน</a>
+      <a href="#learn">สิ่งที่ได้เรียนรู้</a>
     </div>
     <span style="display:inline-flex;gap:6px;align-items:center;flex:none;font-size:13px;color:#2B2B2B" aria-label="Language"><button type="button" data-lang="th" style="all:unset;cursor:pointer">TH</button><span style="opacity:.35">|</span><button type="button" data-lang="en" style="all:unset;cursor:pointer">EN</button></span>
   </div>
@@ -232,8 +232,8 @@
 <header id="overview" class="cs-section" style="padding-bottom:72px">
   <div class="cs-wrap" style="gap:40px">
     <div class="stack" style="gap:24px">
-      <div class="pills"><span class="pill pill--solid">Case study</span><span class="pill">Enterprise · Security &amp; Operations</span></div>
-      <h1>Enterprise Visitor Management System</h1>
+      <div class="pills"><span class="pill pill--solid">Enterprise Visitor Management System</span><span class="pill">Enterprise · Security &amp; Operations</span></div>
+      <h1>รู้ตลอดเวลาว่าใครยังอยู่ในโรงงาน</h1>
       <p class="lead">ระบบจัดการผู้มาติดต่อสำหรับโรงงานผลิต ที่ต้องเชื่อมการทำงานของหลายฝ่าย ตั้งแต่ลงทะเบียน อนุมัติ เข้าพื้นที่ จนออกจากพื้นที่</p>
     </div>
     <div class="stack">
@@ -263,7 +263,7 @@
   <div class="cs-wrap">
     <div class="split split--top">
       <div class="stack stack--sm">
-        <span class="eyebrow">My Role</span>
+        <span class="eyebrow">บทบาทของฉัน</span>
         <p class="h3">รับช่วงต่อจาก Requirement<br>จนเป็น Flow และ UI ที่ทีมพัฒนาใช้ต่อได้</p>
       </div>
       <dl class="deflist">
@@ -316,7 +316,7 @@
   <div class="cs-wrap">
     <div class="split split--top">
       <div class="cs-intro">
-        <span class="eyebrow">02 — ผู้ใช้</span>
+        <span class="eyebrow">02 — ใครใช้</span>
         <h2>ใครใช้ระบบ และต้องการอะไร</h2>
         <p class="body-lg">ผู้ใช้หลักคือ Visitor, Security, Host และ Admin ส่วน Trainer เข้ามาเฉพาะรายที่ต้องอบรม</p>
       </div>
@@ -334,7 +334,7 @@
 <section id="system" class="cs-section cs-section--alt">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">03 — ภาพรวมระบบ</span>
+      <span class="eyebrow">03 — ภาพรวม</span>
       <h2>เข้ามาได้ 4 ทาง แต่ข้อมูลรวมอยู่ที่เดียว</h2>
       <p class="body-lg">นัดล่วงหน้า ลิงก์ลงทะเบียน Walk-in หรือ Temporary Card ทุกทางสร้างรายการไว้ที่เดียวกัน</p>
     </div>
@@ -403,7 +403,7 @@
 <section id="solution" class="cs-section cs-section--alt">
   <div class="cs-wrap" style="gap:64px">
     <div class="cs-intro">
-      <span class="eyebrow">05 — Solution ที่ออกแบบ</span>
+      <span class="eyebrow">05 — ออกแบบอะไร</span>
       <h2>7 หน้าจอ เรียงตามเส้นทางของผู้มาติดต่อ</h2>
       <p class="body-lg">เริ่มจากลงทะเบียน อนุมัติ Consent และอบรม ไปจนถึงติดตามว่าใครยังอยู่ในพื้นที่ แต่ละหน้าจอระบุอุปกรณ์และบทบาทที่ใช้</p>
     </div>
@@ -417,7 +417,7 @@
             <li>เริ่มได้ 2 ทาง: Host "สร้างผู้ติดต่อใหม่" หรือ "คัดลอกลิงก์ลงทะเบียน" ส่งให้ Visitor กรอกเอง</li>
             <li>ทั้ง 2 ทางได้ข้อมูลรูปแบบเดียวกัน</li>
           </ol>
-          <div class="ux-note"><span class="label">UX · ไม่ต้องกรอกแทนทุกราย</span><p>Host ส่งลิงก์ให้ Visitor กรอกข้อมูลเองได้</p></div>
+          <div class="ux-note"><span class="label">ไม่ต้องกรอกแทนทุกราย</span><p>Host ส่งลิงก์ให้ Visitor กรอกข้อมูลเองได้</p></div>
         </div>
       </div>
       <div class="shot shot--pair">
@@ -436,7 +436,7 @@
             <li>Security เห็นผลอนุมัติ แต่แก้ไม่ได้</li>
             <li>ข้อมูลผู้มาติดต่อและเอกสารอยู่ในหน้าเดียว</li>
           </ol>
-          <div class="ux-note"><span class="label">UX · ตัดสินใจจบในหน้าเดียว</span><p>Host ตัดสินใจได้โดยไม่ต้องเปิดหน้าอื่น</p></div>
+          <div class="ux-note"><span class="label">ตัดสินใจจบในหน้าเดียว</span><p>Host ตัดสินใจได้โดยไม่ต้องเปิดหน้าอื่น</p></div>
         </div>
       </div>
       <div class="shot scroller">
@@ -468,7 +468,7 @@
             <li>Visitor ยินยอม PDPA และกฎการเข้าพื้นที่</li>
             <li>หลัง Consent ระบบส่ง QR ทางอีเมล</li>
           </ol>
-          <div class="ux-note"><span class="label">UX · รู้ว่าทำไมยังไม่มี QR</span><p>Visitor เห็นว่าต้องยืนยันเงื่อนไขก่อน จึงไม่ต้องโทรถามว่า QR อยู่ไหน</p></div>
+          <div class="ux-note"><span class="label">รู้ว่าทำไมยังไม่มี QR</span><p>Visitor เห็นว่าต้องยืนยันเงื่อนไขก่อน จึงไม่ต้องโทรถามว่า QR อยู่ไหน</p></div>
         </div>
       </div>
       <div class="shot flow-figs">
@@ -479,7 +479,7 @@
       </div>
       <div class="decisions">
         <div class="decision-card">
-          <span class="label">DECISION</span>
+          <span class="label">ตัดสินใจ</span>
           <span class="decision-card__title">Consent ก่อนออก QR</span>
           <dl class="decision">
             <div><dt>ที่มา</dt><dd>องค์กรกำหนดให้เก็บ Consent ตาม PDPA ก่อนออก QR</dd></div>
@@ -489,7 +489,7 @@
           </dl>
         </div>
         <div class="decision-card">
-          <span class="label">DECISION</span>
+          <span class="label">ตัดสินใจ</span>
           <span class="decision-card__title">QR บนมือถือ คู่กับ QR พิมพ์กระดาษ (QR Carbon)</span>
           <div class="decision-card__media">
             <dl class="decision">
@@ -514,7 +514,7 @@
             <li>Trainer สแกน QR จากบัตรและตรวจสอบตัวตน</li>
             <li>Trainer ยืนยันผลการอบรม ระบบบันทึกผลไว้กับข้อมูลผู้มาติดต่อ</li>
           </ol>
-          <div class="ux-note"><span class="label">UX · ไม่เพิ่มขั้นตอนให้ทุกคน</span><p>อบรมเฉพาะคนที่ต้องอบรม คนอื่นไม่ต้องผ่านขั้นนี้</p></div>
+          <div class="ux-note"><span class="label">ไม่เพิ่มขั้นตอนให้ทุกคน</span><p>อบรมเฉพาะคนที่ต้องอบรม คนอื่นไม่ต้องผ่านขั้นนี้</p></div>
         </div>
       </div>
       <div class="shot"><img src="assets/vms/case-study/m-training.webp" alt="Trainer สแกน QR และยืนยันผ่านการอบรม" width="1640" height="1436" loading="lazy" style="max-width:820px;margin:0 auto;box-shadow:none"></div>
@@ -527,7 +527,7 @@
           <div><span class="label label--muted">S05 · Mobile web · Host + Security</span><p class="h3">จบการพบ ไม่ได้แปลว่าออกจากพื้นที่แล้ว</p></div>
           <p class="why-not"><b>ทางที่ไม่เลือก</b> · ให้ระบบเปลี่ยนเป็น ออกแล้ว ทันทีเมื่อ Host จบการพบ เพราะแขกอาจยังอยู่ในโรงงาน</p>
         </div>
-        <div class="ux-note"><span class="label">UX · ไม่ต้องค้นชื่อ</span><p>Host สแกน QR ที่ Visitor ถืออยู่ เพื่อเปิดหน้ายืนยันของคนนั้นทันที</p></div>
+        <div class="ux-note"><span class="label">ไม่ต้องค้นชื่อ</span><p>Host สแกน QR ที่ Visitor ถืออยู่ เพื่อเปิดหน้ายืนยันของคนนั้นทันที</p></div>
       </div>
       <div class="life" role="list" aria-label="เส้นเวลาสถานะระหว่างอยู่ในพื้นที่">
         <div role="listitem"><small>สถานะ</small><span class="st st--in">เข้าพื้นที่แล้ว</span><p>Security สแกนเข้าที่ประตู</p></div>
@@ -550,7 +550,7 @@
         <div class="stack">
           <div><span class="label label--muted">S06 · Desktop</span><p class="h3">Temporary Card — บัตรเดียวสำหรับการเข้า–ออกหลายครั้ง</p></div>
           <p>ตอนออกบัตรกำหนดวันที่ใช้ได้และพื้นที่ที่เข้าได้ Host อนุมัติแค่ครั้งแรก ครั้งต่อไปสแกนบัตรเข้าได้เลย บัตรหมดอายุเองหรือปิดได้ทันที</p>
-          <div class="ux-note"><span class="label">UX · ไม่ต้องเริ่มใหม่ทุกครั้ง</span><p>ผู้ที่มาหลายครั้งไม่ต้องลงทะเบียนและรออนุมัติซ้ำ</p></div>
+          <div class="ux-note"><span class="label">ไม่ต้องเริ่มใหม่ทุกครั้ง</span><p>ผู้ที่มาหลายครั้งไม่ต้องลงทะเบียนและรออนุมัติซ้ำ</p></div>
         </div>
         <div class="shot"><img src="assets/vms/case-study/vms-temp-card.webp" alt="หน้าออกบัตรชั่วคราว พร้อม preview บัตร" width="2388" height="2804" loading="lazy"></div>
       </div>
@@ -567,7 +567,7 @@
             <li>Handheld แสดงเฉพาะสถานะที่ Security ต้องใช้ที่ประตู</li>
             <li>เปลี่ยนสถานะที่เครื่องไหน อีกเครื่องก็เห็นสถานะเดียวกัน</li>
           </ol>
-          <div class="ux-note"><span class="label">UX · ดูตัวเลขเดียวก็รู้</span><p>Security ดูตัวเลขเดียวก็รู้ว่าตอนนี้มีผู้มาติดต่อในพื้นที่กี่คน</p></div>
+          <div class="ux-note"><span class="label">ดูตัวเลขเดียวก็รู้</span><p>Security ดูตัวเลขเดียวก็รู้ว่าตอนนี้มีผู้มาติดต่อในพื้นที่กี่คน</p></div>
         </div>
       </div>
       <div class="shot shot--pair">
@@ -582,16 +582,16 @@
 <section id="edge" class="cs-section">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">06 — Edge cases</span>
+      <span class="eyebrow">06 — เมื่อไม่เป็นตามแผน</span>
       <h2>เมื่อเรื่องไม่เป็นไปตามแผน</h2>
     </div>
     <div class="edge-table" style="background:var(--color-bg-subtle)">
       <div class="edge-row edge-row--head" aria-hidden="true"><span>กรณี</span><span>สถานการณ์</span><span>ระบบตอบสนอง</span><span></span></div>
-      <div class="edge-row"><h3><span>01</span>การอบรมหมดอายุ</h3><p>นัดใหม่ แต่ผลอบรมเดิมหมดอายุแล้ว</p><div class="resp">ระบบเช็คตอนสร้างนัด แจ้ง Visitor ทางอีเมล แล้วอบรมใหม่ที่หน้างาน<span class="tag">UX · รู้ก่อนเดินทางมา ไม่ถูกกันที่ประตู</span></div></div>
-      <div class="edge-row"><h3><span>02</span>ยังไม่ยืนยัน Consent</h3><p>มาถึงโดยยังไม่ยืนยัน Consent</p><div class="resp">ยังไม่ออก QR แต่ยืนยันที่หน้างานได้ก่อนเข้าพื้นที่<span class="tag">UX · พลาดขั้นตอนก็ยังไปต่อได้</span></div></div>
-      <div class="edge-row"><h3><span>03</span>เวลานัดไม่ตรงแผน</h3><p>นัดเปลี่ยนหลังได้ QR หรือมาก่อนเวลา</p><div class="resp">QR เดิมยังใช้ได้ ระบบส่งอีเมลแจ้งเวลาใหม่ QR ใช้ได้ตั้งแต่ 15 นาทีก่อนนัดถึงสิ้นวัน<span class="tag">UX · ไม่ต้องรอ QR ใหม่</span></div></div>
-      <div class="edge-row"><h3><span>04</span>สแกน QR ไม่ได้</h3><p>แบตหมดหรือ QR Carbon หาย ทั้งที่ประตูและในพื้นที่</p><div class="resp">Security ค้นชื่อและตรวจบัตรประชาชน Host ค้นชื่อเพื่อยืนยันพบได้<span class="tag">UX · QR เร็วที่สุด แต่ไม่ใช่ทางเดียว</span></div><img src="assets/vms/case-study/hh-detail-device.webp" alt="Handheld หน้ายืนยันตัวตนด้วยบัตรประชาชน" width="1006" height="2496" loading="lazy"></div>
-      <div class="edge-row"><h3><span>05</span>Walk-in ถูกปฏิเสธ</h3><p>Host ปฏิเสธ Walk-in ที่ Security ลงทะเบียนไว้</p><div class="resp">เปลี่ยนเป็น ปฏิเสธ ไม่ออก QR Carbon และแจ้งเหตุผลบน Handheld ถ้าจะเข้าอีกต้องลงทะเบียนใหม่<span class="tag">UX · ผลกลับมาที่ประตูทันที</span></div><img src="assets/vms/case-study/hh-home-device.webp" alt="Handheld แจ้งเตือน Walk-in ถูกปฏิเสธ" width="1006" height="2496" loading="lazy"></div>
+      <div class="edge-row"><h3><span>01</span>การอบรมหมดอายุ</h3><p>นัดใหม่ แต่ผลอบรมเดิมหมดอายุแล้ว</p><div class="resp">ระบบเช็คตอนสร้างนัด แจ้ง Visitor ทางอีเมล แล้วอบรมใหม่ที่หน้างาน<span class="tag">รู้ก่อนเดินทางมา ไม่ถูกกันที่ประตู</span></div></div>
+      <div class="edge-row"><h3><span>02</span>ยังไม่ยืนยัน Consent</h3><p>มาถึงโดยยังไม่ยืนยัน Consent</p><div class="resp">ยังไม่ออก QR แต่ยืนยันที่หน้างานได้ก่อนเข้าพื้นที่<span class="tag">พลาดขั้นตอนก็ยังไปต่อได้</span></div></div>
+      <div class="edge-row"><h3><span>03</span>เวลานัดไม่ตรงแผน</h3><p>นัดเปลี่ยนหลังได้ QR หรือมาก่อนเวลา</p><div class="resp">QR เดิมยังใช้ได้ ระบบส่งอีเมลแจ้งเวลาใหม่ QR ใช้ได้ตั้งแต่ 15 นาทีก่อนนัดถึงสิ้นวัน<span class="tag">ไม่ต้องรอ QR ใหม่</span></div></div>
+      <div class="edge-row"><h3><span>04</span>สแกน QR ไม่ได้</h3><p>แบตหมดหรือ QR Carbon หาย ทั้งที่ประตูและในพื้นที่</p><div class="resp">Security ค้นชื่อและตรวจบัตรประชาชน Host ค้นชื่อเพื่อยืนยันพบได้<span class="tag">QR เร็วที่สุด แต่ไม่ใช่ทางเดียว</span></div><img src="assets/vms/case-study/hh-detail-device.webp" alt="Handheld หน้ายืนยันตัวตนด้วยบัตรประชาชน" width="1006" height="2496" loading="lazy"></div>
+      <div class="edge-row"><h3><span>05</span>Walk-in ถูกปฏิเสธ</h3><p>Host ปฏิเสธ Walk-in ที่ Security ลงทะเบียนไว้</p><div class="resp">เปลี่ยนเป็น ปฏิเสธ ไม่ออก QR Carbon และแจ้งเหตุผลบน Handheld ถ้าจะเข้าอีกต้องลงทะเบียนใหม่<span class="tag">ผลกลับมาที่ประตูทันที</span></div><img src="assets/vms/case-study/hh-home-device.webp" alt="Handheld แจ้งเตือน Walk-in ถูกปฏิเสธ" width="1006" height="2496" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -605,9 +605,9 @@
       <span class="note-pill">ระบบขึ้นใช้งานจริงแล้ว · ยังไม่มีตัวเลขวัดผล</span>
     </div>
     <div class="results">
-      <div class="result"><div class="result__role"><span class="label">Problem 01</span>Host</div><div class="result__body"><p class="before">เดิม · รับข้อมูลผู้มาติดต่อจากโทรศัพท์และอีเมล แล้วรวบรวมเอง</p><p class="now">ตอนนี้ · ส่งลิงก์ให้ Visitor กรอกเอง ข้อมูลทุกทางรวมอยู่ที่เดียว</p><p class="gain">บริษัทได้ · ทุกรายการมีที่มาและตรวจย้อนได้</p></div></div>
-      <div class="result"><div class="result__role"><span class="label">Problem 02</span>Security</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่า Host อนุมัติแล้วหรือยัง ต้องโทรถามเอง</p><p class="now">ตอนนี้ · เห็นผลอนุมัติตอนสแกนที่ประตู ปกติไม่ต้องโทรถาม Host</p><p class="gain">บริษัทได้ · ออกแบบให้ลดการโทรประสานงาน และรู้ว่าใครเป็นคนอนุมัติ</p></div></div>
-      <div class="result"><div class="result__role"><span class="label">Problem 03</span>Security + Host</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่าใครยังอยู่ในพื้นที่ หลังการเข้าพบจบแล้ว</p><p class="now">ตอนนี้ · Host ยืนยันจบการพบ Security ยืนยันออกที่ประตู ปกติไม่ต้องไล่ถามกัน</p><p class="gain">บริษัทได้ · รู้ว่าใครยังอยู่ในโรงงาน</p></div></div>
+      <div class="result"><div class="result__role"><span class="label">ปัญหาข้อ 1</span>Host</div><div class="result__body"><p class="before">เดิม · รับข้อมูลผู้มาติดต่อจากโทรศัพท์และอีเมล แล้วรวบรวมเอง</p><p class="now">ตอนนี้ · ส่งลิงก์ให้ Visitor กรอกเอง ข้อมูลทุกทางรวมอยู่ที่เดียว</p><p class="gain">บริษัทได้ · ทุกรายการมีที่มาและตรวจย้อนได้</p></div></div>
+      <div class="result"><div class="result__role"><span class="label">ปัญหาข้อ 2</span>Security</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่า Host อนุมัติแล้วหรือยัง ต้องโทรถามเอง</p><p class="now">ตอนนี้ · เห็นผลอนุมัติตอนสแกนที่ประตู ปกติไม่ต้องโทรถาม Host</p><p class="gain">บริษัทได้ · ออกแบบให้ลดการโทรประสานงาน และรู้ว่าใครเป็นคนอนุมัติ</p></div></div>
+      <div class="result"><div class="result__role"><span class="label">ปัญหาข้อ 3</span>Security + Host</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่าใครยังอยู่ในพื้นที่ หลังการเข้าพบจบแล้ว</p><p class="now">ตอนนี้ · Host ยืนยันจบการพบ Security ยืนยันออกที่ประตู ปกติไม่ต้องไล่ถามกัน</p><p class="gain">บริษัทได้ · รู้ว่าใครยังอยู่ในโรงงาน</p></div></div>
     </div>
     <p class="fine" style="font-size:14px">นอกจากนี้ ทุกรายการมีบันทึก Consent ก่อนออก QR</p>
   </div>
@@ -617,7 +617,7 @@
 <section id="learn" class="cs-section">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">08 — บทเรียน</span>
+      <span class="eyebrow">08 — สิ่งที่ได้เรียนรู้</span>
       <h2>ระบบหลายบทบาท ต้องมีกฎก่อนมีหน้าจอ</h2>
     </div>
     <div class="learn">

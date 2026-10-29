@@ -53,7 +53,7 @@ window.I18N = {
  "งานวันนี้อยู่บนสุด ยอดรอชำระแยกสีจากยอดขาย จัด 19 เมนูใหม่เป็น 3 เมนูหลักบนแถบล่าง กับอีก 5 กลุ่มตามช่วงงาน ส่วน Sales Manager ใช้โครงเดียวกัน แล้วเพิ่มงานอนุมัติไว้บนสุด": "Today's work is at the top and unpaid amounts are coloured apart from sales. 19 menus were regrouped into 3 main tabs plus 5 groups by stage of work. Sales Managers get the same structure with approvals added at the top.",
  "ตัดสินใจ": "Decision",
  "เอาเมนูเปิดบิลออกจาก Home เพราะถ้าเปิดบิลจาก Home ได้ Sales จะไม่แน่ใจว่าบิลผูกกับร้านไหน": "Removed bill creation from Home, because a bill opened from Home leaves Sales unsure which store it belongs to.",
- "แก้ปัญหา": "Solves",
+ "ช่วยแก้": "What it fixes",
  "Sales Manager ไม่ต้องเรียนหน้าจอใหม่ และคำขอของ Sales ไม่ค้าง": "Sales Managers have no new screens to learn, and requests from Sales do not sit waiting.",
  "02 · แผนงาน · Sales": "02 · Route plan · Sales",
  "เปิดมาก็รู้ว่าวันนี้ต้องไปร้านไหนก่อน": "Open it and know which store comes first today",
@@ -93,8 +93,8 @@ window.I18N = {
  "สเปคของระบบ · 6,000 รายการต่อวัน": "System spec · 6,000 transactions a day",
  "ทีมหลัก 4 คน": "Core team of 4",
  "Designer คนเดียวของโครงการ ทั้ง 2 เฟส": "The project's only designer across both phases",
- "อยากเห็นรายละเอียดทุกจอ, edge case และเหตุผลเต็ม": "Every screen, edge case and full rationale (in Thai)",
+ "อยากดูครบทุกจอ พร้อมเหตุผลเบื้องหลัง?": "Want every screen and the reasoning behind it?",
  "อ่าน case study แบบเต็ม": "Read the full case study",
- "อ่านต่อ →": "Read →",
+ "อ่านต่อ →": "Read the full story →",
  "Field-sales CRM & Sales-operations Platform · ภายใต้ NDA หน้าจอวาดใหม่ ชื่อลูกค้า ชื่อระบบ และข้อมูลทั้งหมดเป็นข้อมูลสมมติ": "Field-sales CRM & Sales-operations Platform · Under NDA. Screens redrawn; client name, system names and all data are fictional."
 };
