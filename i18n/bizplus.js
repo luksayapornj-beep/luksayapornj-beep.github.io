@@ -3,7 +3,7 @@
 window.I18N = {
  "BIZ+ Digital Café Solution — Key Screens": "BIZ+ Digital Café Solution — Key Screens",
  "← ผลงานทั้งหมด": "← All work",
- "อ่านแบบเต็ม →": "Full case study (Thai) →",
+ "อ่านแบบเต็ม →": "Full case study →",
  "F&B · ร้านกาแฟหลายสาขา": "F&B · Multi-branch café",
  "ออเดอร์เดียว 6 จอ สถานะเดียวกัน": "One order, six apps, one status",
  "BIZ+ Digital Café Solution ให้ลูกค้าสั่งได้ 4 ทาง คือ QR ที่โต๊ะ ตู้ Kiosk LINE และหน้าเคาน์เตอร์ งานออกแบบคือทำให้ทุกจอ ตั้งแต่มือถือลูกค้าจนถึงครัวและหลังบ้าน เห็นออเดอร์เดียวกันด้วยสถานะเดียวกัน": "BIZ+ Digital Café Solution lets customers order 4 ways: table QR, kiosk, LINE and the counter. The design job was to make every screen, from the customer's phone to the kitchen and back office, show the same order with the same status.",

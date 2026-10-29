@@ -3,7 +3,7 @@
 window.I18N = {
  "Field-sales CRM & Sales-operations Platform — Key Screens": "Field-sales CRM & Sales-operations Platform — Key Screens",
  "← ผลงานทั้งหมด": "← All work",
- "อ่านแบบเต็ม →": "Full case study (Thai) →",
+ "อ่านแบบเต็ม →": "Full case study →",
  "บิลใบเดียว ต้องถูกต้องตั้งแต่หน้าร้าน": "One bill, right from the store front",
  "Field-sales CRM & Sales-operations Platform มีแอปบนแท็บเล็ตของทีมขายผู้จัดจำหน่าย B2B เป็นหัวใจ ใช้ตั้งแต่วางแผนเข้าร้าน เช็คอิน เปิดบิล จนถึงรับเงิน โดยเชื่อมกับ ERP เดิม บิลที่ Sales เปิดที่ร้านคือข้อมูลที่หัวหน้า หลังบ้าน และ Audit ต้องรอใช้ต่อ": "The Field-sales CRM & Sales-operations Platform centres on a tablet app for a B2B distributor's sales team, covering route planning, store check-in, billing and payment, connected to the existing ERP. The bill a salesperson opens in the store is the data that managers, back office and Audit all wait on.",
  "UX/UI Designer คนเดียว · ทำงานกับ PM และ BA": "Sole UX/UI Designer · with the PM and BA",

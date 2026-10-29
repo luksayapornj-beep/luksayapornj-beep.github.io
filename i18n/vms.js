@@ -3,7 +3,7 @@
 window.I18N = {
  "Visitor Management — Key Screens": "Visitor Management — Key Screens",
  "← ผลงานทั้งหมด": "← All work",
- "อ่านแบบเต็ม →": "Full case study (Thai) →",
+ "อ่านแบบเต็ม →": "Full case study →",
  "รู้ตลอดเวลาว่าใครยังอยู่ในโรงงาน": "Always know who is still inside the plant",
  "Enterprise Visitor Management System สำหรับโรงงานผลิต ผู้มาติดต่อเข้ามาได้ 4 ทาง และต้องผ่าน Host, Security และบางรายต้องผ่าน Trainer ก่อนเข้าพื้นที่ งานออกแบบคือทำให้ทุกบทบาทรู้ว่าผู้มาติดต่ออยู่ขั้นไหน ตั้งแต่ผ่านประตูจนออกไป": "An enterprise Visitor Management System for a manufacturing plant. Visitors arrive by 4 routes and must pass the Host and Security, and some a Trainer, before entering the site. The design job was to let every role see which step a visitor is at, from the gate until they leave.",
  "Product Designer · End-to-end · ทำงานกับ PM": "Product Designer · End-to-end · with the PM",
