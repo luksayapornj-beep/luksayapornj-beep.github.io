@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visitor Management — Case Study</title>
+<meta name="description" content="Product design case study: a visitor management system for a manufacturing site, connecting registration, approval, consent, training, gate check-in and check-out across five roles and three devices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/case-study.css">
+<style>
+  /* Case theme. Not in tokens.json yet. */
+  :root {
+    --case-accent: #0E8A6A;
+    --case-accent-strong: #0B6E55;
+    --case-accent-soft: #E7F4EF;
+    --case-on-accent: #FFFFFF;
+    --case-alt: #6B55E0;
+    --case-warn: #8A5A00;
+    --case-warn-soft: #FDF3DD;
+    --case-danger: #B42318;
+    --case-danger-soft: #FDECEA;
+    --case-device: #232628;
+    --case-device-edge: #4A4F55;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --case-accent: #4FC19F;
+      --case-accent-strong: #7AD4B8;
+      --case-accent-soft: #15302A;
+      --case-on-accent: #0B1A16;
+      --case-alt: #A99BFF;
+      --case-warn: #E3B25A;
+      --case-warn-soft: #3A2E14;
+      --case-danger: #F59A8F;
+      --case-danger-soft: #3A1A17;
+      --case-device: #2E3236;
+    }
+  }
+  :root[data-theme="dark"] {
+    --case-accent: #4FC19F;
+    --case-accent-strong: #7AD4B8;
+    --case-accent-soft: #15302A;
+    --case-on-accent: #0B1A16;
+    --case-alt: #A99BFF;
+    --case-warn: #E3B25A;
+    --case-warn-soft: #3A2E14;
+    --case-danger: #F59A8F;
+    --case-danger-soft: #3A1A17;
+    --case-device: #2E3236;
+  }
+
+  /* Screens are drawn light, so they sit on a light stage in both themes */
+  .shot { padding: clamp(16px, 3vw, 40px); border-radius: 28px; background: var(--color-bg-inset); }
+  .shot img { width: 100%; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08); }
+  .shot--pair { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: clamp(12px, 2.4vw, 32px); align-items: start; }
+  .shot--pair .phone { border-radius: 20px; }
+  .shot--narrow { max-width: 420px; margin: 0 auto; }
+  .handheld { width: 100%; max-width: 220px; margin: 0 auto; box-shadow: none !important; }
+  .hero-shot { display: grid; grid-template-columns: minmax(0, 3.2fr) minmax(0, 0.8fr); gap: clamp(12px, 2.4vw, 32px); align-items: end; }
+  .hero-shot .handheld { box-shadow: none; max-width: none; }
+  @media (max-width: 640px) {
+    .shot--pair, .hero-shot { grid-template-columns: 1fr; }
+    .shot--pair .phone { max-width: 260px; margin: 0 auto; }
+    .hero-shot .handheld { display: none; }
+  }
+
+  /* Solution rows */
+  .sol { display: flex; flex-direction: column; gap: 28px; padding-top: 48px; border-top: 1px solid var(--color-border); }
+  .sol__head { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px 64px; align-items: start; }
+  .sol__head .h3 { margin-top: 8px; }
+  .why-not { font-size: var(--font-size-sm); line-height: 1.6; color: var(--color-text-faint); }
+  .why-not b { color: var(--color-text-muted); font-weight: var(--font-weight-semibold); }
+
+  /* S02: long phone screen that scrolls inside a frame */
+  .scroller { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); align-items: center; }
+  .phone-scroll { position: relative; border-radius: 22px; overflow: hidden; background: #FFFFFF; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08); }
+  .phone-scroll__body { height: 520px; overflow-y: auto; overscroll-behavior: contain; }
+  .phone-scroll__body img, .phone-scroll__bar { border-radius: 0 !important; box-shadow: none !important; }
+  .phone-scroll__bar { position: absolute; left: 0; right: 0; bottom: 0; }
+  .phone-scroll__body::after { content: ""; display: block; height: 70px; }
+  .callouts { display: flex; flex-direction: column; gap: 12px; }
+  .callouts > div { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 14px; background: var(--color-bg); }
+  .callouts b { font-size: 15px; color: var(--color-text); font-weight: var(--font-weight-semibold); }
+  .callouts span { font-size: var(--font-size-sm); line-height: 1.55; }
+  @media (max-width: 720px) { .scroller { grid-template-columns: 1fr; } .phone-scroll { max-width: 300px; margin: 0 auto; width: 100%; } }
+
+  /* Numbered step figures */
+  .flow-figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); align-items: start; }
+  .flow-figs figure { display: flex; flex-direction: column; gap: 12px; }
+  .flow-figs figcaption, .pair-figs figcaption { display: flex; gap: 8px; align-items: baseline; font-size: var(--font-size-sm); line-height: 1.5; color: var(--color-text); }
+  .flow-figs figcaption b { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--case-accent); color: var(--case-on-accent); font-size: 12px; display: grid; place-items: center; }
+  @media (max-width: 900px) { .flow-figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .pair-figs { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: clamp(16px, 4vw, 64px); }
+  .pair-figs figure { display: flex; flex-direction: column; gap: 12px; }
+  .pair-figs figcaption { flex-direction: column; gap: 2px; }
+  .pair-figs figcaption b { color: var(--case-accent); font-weight: var(--font-weight-semibold); }
+  @media (max-width: 560px) { .pair-figs { grid-template-columns: 1fr; } }
+
+  /* Decision cards */
+  .decisions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+  .decision-card { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; border-radius: 18px; border: 1px solid var(--case-accent); background: var(--color-bg); }
+  .decision-card__title { font-size: 17px; font-weight: var(--font-weight-semibold); color: var(--color-text); line-height: 1.45; }
+  .decision-card .decision { padding: 0; background: none; }
+  .decision-card .decision > div { grid-template-columns: 64px minmax(0, 1fr); }
+  .decision-card__media { display: grid; grid-template-columns: minmax(0, 1fr) 72px; gap: 16px; align-items: start; }
+  .decision-card__media img { border-radius: 8px; margin-top: 10px; }
+
+  /* Users list */
+  .needs { display: flex; flex-direction: column; }
+  .needs li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 12px; padding: 22px 0; border-top: 1px solid var(--color-border); }
+  .needs .no { font-size: 24px; font-weight: var(--font-weight-semibold); color: var(--case-accent); line-height: 1.2; }
+  .needs .t { display: block; font-size: 17px; font-weight: var(--font-weight-semibold); color: var(--color-text); line-height: 1.5; margin-bottom: 4px; }
+  .needs .b { font-size: var(--font-size-sm); line-height: 1.6; }
+
+  /* Problem cards */
+  .problem-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+  @media (max-width: 820px) { .problem-grid { grid-template-columns: 1fr; } }
+  .problem-grid .card { padding: 26px 24px; gap: 18px; }
+  .problem-grid .numbered { grid-template-columns: 1fr; gap: 16px; }
+  .design-brief { padding: 26px 28px; border-radius: 20px; background: var(--case-accent-soft); display: flex; flex-direction: column; gap: 8px; }
+  .design-brief p { font-size: clamp(19px, 2vw, 24px); line-height: 1.45; font-weight: var(--font-weight-semibold); color: var(--color-text); }
+
+  /* Role → shared record */
+  .roles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  .role { display: flex; flex-direction: column; gap: 14px; padding: 18px; border-radius: 16px; background: var(--color-bg); border: 1px solid var(--color-border); }
+  .role--sub { border-style: dashed; }
+  .role__name { font-size: 17px; font-weight: var(--font-weight-semibold); color: var(--color-text); }
+  .role__dev { font-size: 12px; color: var(--color-text-faint); }
+  .role__acts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .role__acts span { padding: 3px 10px; border-radius: var(--radius-full); background: var(--color-bg-subtle); font-size: 12px; color: var(--color-text); }
+  .record { align-self: center; padding: 10px 20px; border-radius: var(--radius-full); background: var(--case-accent); color: var(--case-on-accent); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+  .record-line { width: 1px; height: 28px; background: var(--case-accent); align-self: center; }
+  @media (max-width: 960px) { .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .roles { grid-template-columns: 1fr; } }
+  .devices { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: var(--font-size-sm); }
+  .devices .chip { padding: 6px 14px; border-radius: var(--radius-full); border: 1px solid var(--color-border-strong); color: var(--color-text); }
+  .devices .chip--on { background: var(--case-accent); border-color: var(--case-accent); color: var(--case-on-accent); }
+
+  /* Status chips (shared by transitions, lifecycle) */
+  .st { display: inline-block; padding: 3px 10px; border-radius: 8px; font-size: 13px; font-weight: var(--font-weight-semibold); line-height: 1.5; white-space: nowrap; background: var(--color-bg-subtle); color: var(--color-text-muted); }
+  .st--wait { background: var(--case-warn-soft); color: var(--case-warn); }
+  .st--due { border: 1px dashed var(--color-border-strong); background: transparent; }
+  .st--in { background: var(--case-accent); color: var(--case-on-accent); }
+  .st--met { border: 1.5px solid var(--case-accent); background: transparent; color: var(--case-accent); }
+  .st--end { border: 1.5px solid var(--color-text-muted); background: transparent; color: var(--color-text); }
+  .st--out { background: var(--color-border-strong); color: var(--color-text); }
+  .st--no { background: var(--case-danger-soft); color: var(--case-danger); }
+
+  /* State transition table */
+  .tx { display: flex; flex-direction: column; gap: 8px; }
+  .tx__row { display: grid; grid-template-columns: 40px 120px minmax(0, 1.6fr) 24px 130px minmax(0, 1.4fr); gap: 12px; align-items: center; padding: 16px 18px; border-radius: 14px; background: var(--color-bg); }
+  .tx__head { background: none; padding-block: 0; font-size: 12px; color: var(--color-text-faint); }
+  .tx__id { font-size: 13px; font-weight: var(--font-weight-semibold); color: var(--color-text-faint); }
+  .tx__act { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-radius: 10px; background: var(--color-bg-subtle); }
+  .tx__who { font-size: 11px; font-weight: var(--font-weight-semibold); letter-spacing: 0.06em; color: var(--color-text-faint); }
+  .tx__what { font-size: 15px; font-weight: var(--font-weight-semibold); color: var(--color-text); line-height: 1.45; }
+  .tx__arrow { color: var(--color-text-faint); text-align: center; }
+  .tx__sys { font-size: var(--font-size-sm); line-height: 1.55; }
+  .tx__checks { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; padding-top: 14px; border-top: 1px dashed var(--color-border); }
+  .tx__checks > span { font-size: 12px; color: var(--color-text-faint); }
+  .tx__checks > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .tx__check { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 10px; background: var(--color-bg-subtle); font-size: 13px; line-height: 1.5; }
+  .tx__check b { display: flex; justify-content: space-between; gap: 8px; color: var(--case-accent); font-weight: var(--font-weight-semibold); }
+  .tx__check b small { color: var(--color-text-faint); font-weight: var(--font-weight-regular); }
+  @media (max-width: 900px) {
+    .tx__head { display: none; }
+    .tx__row { grid-template-columns: 40px auto 24px auto; }
+    .tx__act, .tx__sys { grid-column: 2 / -1; }
+    .tx__act { order: -1; grid-column: 1 / -1; }
+    .tx__checks > div { grid-template-columns: 1fr; }
+  }
+  .rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .rules > div { display: flex; flex-direction: column; gap: 6px; padding: 20px; border-radius: 16px; background: var(--case-accent-soft); }
+  .rules b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
+  .rules span { font-size: var(--font-size-sm); line-height: 1.6; }
+  @media (max-width: 820px) { .rules { grid-template-columns: 1fr; } }
+
+  /* S05 lifecycle strip */
+  .life { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+  .life > div { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 14px; background: var(--color-bg); border: 1px solid var(--color-border); }
+  .life .life--floor { background: var(--color-bg-subtle); border-style: dashed; }
+  .life small { font-size: 11px; color: var(--color-text-faint); }
+  .life p { font-size: 13px; line-height: 1.5; }
+  .life .st { align-self: flex-start; }
+  @media (max-width: 900px) { .life { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .life { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* Edge case table */
+  .edge-table { display: flex; flex-direction: column; border-radius: 20px; background: var(--color-bg); overflow: hidden; }
+  .edge-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1.8fr) 96px; gap: 16px 28px; padding: 24px 26px; align-items: start; }
+  .edge-row + .edge-row { border-top: 1px solid var(--color-border); }
+  .edge-row--head { padding-block: 16px; font-size: 12px; color: var(--color-text-faint); background: var(--color-bg-subtle); }
+  .edge-row h3 { display: flex; gap: 12px; font-size: 17px; line-height: 1.45; }
+  .edge-row h3 span { color: var(--case-accent); }
+  .edge-row p { font-size: var(--font-size-sm); line-height: 1.6; }
+  .edge-row .resp { display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.6; color: var(--color-text); }
+  .edge-row img { width: 96px; }
+  @media (max-width: 820px) {
+    .edge-row { grid-template-columns: minmax(0, 1fr) 80px; }
+    .edge-row--head { display: none; }
+    .edge-row > *:not(img) { grid-column: 1; }
+    .edge-row img { grid-column: 2; grid-row: 1 / span 3; width: 80px; }
+  }
+
+  .note-pill { align-self: flex-start; padding: 4px 12px; border-radius: var(--radius-full); background: var(--case-accent-soft); color: var(--case-accent); font-size: 13px; font-weight: var(--font-weight-semibold); }
+</style>
+</head>
+<body>
+
+<nav class="cs-nav" aria-label="Sections">
+  <div class="cs-nav__inner">
+    <a class="cs-nav__title" href="#overview">VMS</a>
+    <div class="cs-nav__links">
+      <a href="#problem">ปัญหา</a>
+      <a href="#users">ผู้ใช้</a>
+      <a href="#system">ระบบ</a>
+      <a href="#solution">Solution</a>
+      <a href="#edge">Edge cases</a>
+      <a href="#outcome">ผลลัพธ์</a>
+      <a href="#learn">บทเรียน</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- Hero -->
+<header id="overview" class="cs-section" style="padding-bottom:72px">
+  <div class="cs-wrap" style="gap:40px">
+    <div class="stack" style="gap:24px">
+      <div class="pills"><span class="pill pill--solid">Case study</span><span class="pill">Enterprise · Security &amp; Operations</span></div>
+      <h1>Enterprise Visitor Management System</h1>
+      <p class="lead">ระบบจัดการผู้มาติดต่อสำหรับโรงงานผลิต ที่ต้องเชื่อมการทำงานของหลายฝ่าย ตั้งแต่ลงทะเบียน อนุมัติ เข้าพื้นที่ จนออกจากพื้นที่</p>
+    </div>
+    <div class="stack">
+      <div class="grid-3">
+        <div class="card card--soft"><span class="label">โจทย์</span><span class="card__title">ผู้มาติดต่อเข้ามาได้ 4 ทาง แต่ต้องจัดการในระบบเดียว</span></div>
+        <div class="card card--soft"><span class="label">ความซับซ้อน</span><span class="card__title">5 บทบาท · 3 อุปกรณ์ · ทำงานบนระบบเดียวกัน</span></div>
+        <div class="card card--soft"><span class="label">เป้าหมายโครงการ</span><span class="card__title">รู้ตลอดเวลาว่าใครยังอยู่ในโรงงาน ตั้งแต่ผ่านประตูจนออกไป</span></div>
+      </div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product Designer · End-to-end</dd></div>
+        <div><dt>Platform</dt><dd>Desktop web · Mobile web · Handheld</dd></div>
+        <div><dt>Industry</dt><dd>F&amp;B Manufacturing</dd></div>
+      </dl>
+    </div>
+    <div class="stack stack--sm">
+      <div class="shot hero-shot">
+        <img src="assets/vms/case-study/vms-dashboard-hero.webp" alt="ผู้มาติดต่อวันนี้ บน desktop" width="2654" height="1560">
+        <img class="handheld" src="assets/vms/case-study/hh-home-device.webp" alt="หน้าหลักบน handheld สำหรับ Security ที่ประตู" width="1006" height="2496">
+      </div>
+      <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า สี โลโก้ และข้อมูลจริงถูกแทนด้วยข้อมูลสมมติ</p>
+    </div>
+  </div>
+</header>
+
+<!-- My role -->
+<section class="cs-section cs-section--ruled" aria-label="My role" style="padding-block:64px">
+  <div class="cs-wrap">
+    <div class="split split--top">
+      <div class="stack stack--sm">
+        <span class="eyebrow">My Role</span>
+        <p class="h3">รับช่วงต่อจาก Requirement<br>จนเป็น Flow และ UI ที่ทีมพัฒนาใช้ต่อได้</p>
+      </div>
+      <dl class="deflist">
+        <dt>PM</dt><dd>เก็บ Requirement และ Flow ภาพรวม ดูแล UAT</dd>
+        <dt class="is-me">Product Designer</dt><dd>นำ Requirement และข้อจำกัดหน้างานมาวาง Flow และออกแบบ UI พร้อมตรวจกฎของระบบและกรณีพิเศษ ก่อนส่งให้ทีมพัฒนา</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 01 Problem -->
+<section id="problem" class="cs-section cs-section--alt">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">01 — ปัญหา</span>
+      <h2>มาพบ 1 ครั้ง ต้องผ่านหลายมือก่อนถึงตัว Host</h2>
+      <p class="body-lg">กว่า Visitor จะได้พบ Host ต้องลงทะเบียน รออนุมัติ ยืนยัน Consent บางรายต้องอบรม แล้วจึงผ่านประตู พบเสร็จยังต้องแจ้งจบและสแกนออก แต่ละขั้นมีคนรับผิดชอบต่างกัน</p>
+      <span class="fine">ที่มา: สรุปจาก requirement ของโปรเจกต์</span>
+    </div>
+    <div class="problem-grid">
+      <div class="card">
+        <span class="label">ฝั่งหน้างาน</span>
+        <ol class="numbered">
+          <li><span class="no">01</span><div><span class="t">ข้อมูลผู้มาติดต่อกระจายหลายช่องทาง</span><span class="b">ข้อมูลส่งต่อผ่านโทรศัพท์ อีเมล และการแจ้งด้วยตนเอง เสี่ยงตกหล่น</span></div></li>
+          <li><span class="no">02</span><div><span class="t">ไม่รู้ว่าอนุมัติแล้วหรือยัง</span><span class="b">Security ไม่รู้ว่า Host อนุมัติแล้วหรือยัง ต้องโทรถามเอง</span></div></li>
+          <li><span class="no">03</span><div><span class="t">มองไม่เห็นว่าใครอยู่ในพื้นที่</span><span class="b">ไม่รู้ทันทีว่าใครยังอยู่ เข้ามาทางไหน หรือพบเสร็จแล้วหรือยัง</span></div></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="label">ฝั่งองค์กร</span>
+        <p class="card__title" style="font-size:18px;line-height:1.65">ต้องเก็บ Consent ตาม PDPA ก่อนออก QR บางรายต้องผ่านการอบรมก่อนเข้าพื้นที่ และทุกการเข้า–ออกต้องดูย้อนหลังได้ว่าใครเป็นคนยืนยัน</p>
+      </div>
+    </div>
+    <div class="stack stack--sm">
+      <span class="label label--muted">ข้อจำกัดในการออกแบบ</span>
+      <div class="grid-auto" style="--min:300px">
+        <div class="card"><span class="label">Handheld จอเล็ก</span><span class="card__title" style="font-weight:400">Security ใช้ Handheld ที่ประตู หน้าจอต้องอ่านและตัดสินใจได้ง่าย</span></div>
+        <div class="card"><span class="label">ใช้งานที่หน้างาน</span><span class="card__title" style="font-weight:400">Visitor, Host และ Security ใช้งานขณะยืนหรือเดิน ไม่ได้นั่งหน้าคอม</span></div>
+      </div>
+    </div>
+    <div class="design-brief">
+      <span class="label">โจทย์การออกแบบ</span>
+      <p>ทำให้แต่ละบทบาททำงานต่อกันได้ โดยรู้ว่าผู้มาติดต่ออยู่ขั้นตอนไหน</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Users -->
+<section id="users" class="cs-section">
+  <div class="cs-wrap">
+    <div class="split split--top">
+      <div class="cs-intro">
+        <span class="eyebrow">02 — ผู้ใช้</span>
+        <h2>ใครใช้ระบบ และต้องการอะไร</h2>
+        <p class="body-lg">ผู้ใช้หลักคือ Visitor, Security, Host และ Admin ส่วน Trainer เข้ามาเฉพาะรายที่ต้องอบรม</p>
+      </div>
+      <ol class="needs">
+        <li><span class="no">1</span><div><span class="t">Visitor ต้องเข้ามาได้โดยไม่ต้องติดตั้งแอป</span><span class="b">ส่วนใหญ่มาครั้งแรก และมาแค่วันเดียว</span></div></li>
+        <li><span class="no">2</span><div><span class="t">Security ต้องรู้ทันทีว่าให้ผ่านได้ไหม</span><span class="b">ยืนอยู่ที่ประตูทั้งวัน มีแค่ Handheld จอเล็กในมือ</span></div></li>
+        <li><span class="no">3</span><div><span class="t">Host ต้องอนุมัติได้จากมือถือ</span><span class="b">ไม่ได้นั่งหน้าคอมตลอด แต่เป็นคนเดียวที่รู้ว่าแขกมาทำอะไร</span></div></li>
+        <li><span class="no">4</span><div><span class="t">Admin ต้องเห็นภาพรวมและตรวจย้อนได้</span><span class="b">ดูแลข้อมูลผู้มาติดต่อ การตั้งค่า และรายงานบน Desktop</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 03 System -->
+<section id="system" class="cs-section cs-section--alt">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">03 — ภาพรวมระบบ</span>
+      <h2>เข้ามาได้ 4 ทาง แต่ข้อมูลรวมอยู่ที่เดียว</h2>
+      <p class="body-lg">นัดล่วงหน้า ลิงก์ลงทะเบียน Walk-in หรือ Temporary Card ทุกทางสร้างรายการไว้ที่เดียวกัน</p>
+    </div>
+    <figure class="stack stack--sm">
+      <div class="shot" style="background:#FFFFFF"><img src="assets/vms/case-study/vms-system-complexity.webp" alt="Employee Register, Visitor Pre-register และ Walk-in รวมเข้าเป็นรายการผู้มาติดต่อชุดเดียว ส่วน Temporary Card ไปที่จุดตรวจโดยตรง แล้วจึงเข้าพื้นที่" width="1774" height="887" style="box-shadow:none"></div>
+      <figcaption class="fine" style="font-size:14px">Temporary Card: Host อนุมัติเฉพาะครั้งแรก จากนั้นใช้บัตรเดิมเข้า–ออกได้ภายในช่วงวันที่และพื้นที่ที่กำหนด</figcaption>
+    </figure>
+    <div class="stack">
+      <p class="h3">ทุกบทบาทใช้ข้อมูลชุดเดียวกัน</p>
+      <div class="roles">
+        <div class="role"><div><div class="role__name">Visitor</div><div class="role__dev">Mobile web</div></div><div class="role__acts"><span>ลงทะเบียน</span><span>Consent</span><span>รับ QR</span></div></div>
+        <div class="role"><div><div class="role__name">Host</div><div class="role__dev">Desktop · Mobile</div></div><div class="role__acts"><span>เชิญ</span><span>อนุมัติ</span><span>ยืนยันพบ / จบการพบ</span></div></div>
+        <div class="role"><div><div class="role__name">Security</div><div class="role__dev">Desktop · Handheld</div></div><div class="role__acts"><span>ตรวจตัวตน</span><span>สแกนเข้า</span><span>สแกนออก</span></div></div>
+        <div class="role"><div><div class="role__name">Admin</div><div class="role__dev">Desktop</div></div><div class="role__acts"><span>ข้อมูลผู้มาติดต่อ</span><span>ตั้งค่า</span><span>รายงาน</span></div></div>
+        <div class="role role--sub"><div><div class="role__name">Trainer</div><div class="role__dev">Mobile web</div></div><div class="role__acts"><span>สแกน QR</span><span>ยืนยันผลอบรม</span></div></div>
+      </div>
+      <span class="record-line" aria-hidden="true"></span>
+      <span class="record">ข้อมูลผู้มาติดต่อชุดเดียวกัน</span>
+    </div>
+    <div class="devices">
+      <span class="label label--muted" style="margin-right:8px">อุปกรณ์ที่ใช้</span>
+      <span class="chip chip--on">Desktop web</span><span class="chip chip--on">Handheld</span><span class="chip chip--on">Mobile web</span>
+      <span aria-hidden="true" style="color:var(--color-text-faint)">+</span>
+      <span class="chip">Card Reader</span><span class="chip">QR Scanner</span><span class="chip">QR Printer</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 State transitions -->
+<section id="logic" class="cs-section">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">04 — การเปลี่ยนสถานะ</span>
+      <h2>สถานะเปลี่ยนตามเหตุการณ์จริงหน้างาน</h2>
+      <p class="body-lg">สถานะเปลี่ยนได้เมื่อคนที่มีสิทธิ์กดยืนยันเท่านั้น ตารางนี้แสดงทุกจุดที่สถานะเปลี่ยน ครบทั้ง 7 สถานะ</p>
+    </div>
+    <div class="tx" style="padding:clamp(12px,2vw,20px);border-radius:24px;background:var(--color-bg-subtle)">
+      <div class="tx__row tx__head" aria-hidden="true"><span></span><span>จากสถานะ</span><span>ใครทำอะไร</span><span></span><span>ไปสถานะ</span><span>ระบบทำต่อ</span></div>
+      <div class="tx__row"><span class="tx__id">T1</span><span><span class="st">เริ่มต้น</span></span><div class="tx__act"><span class="tx__who">HOST · VISITOR · SECURITY</span><span class="tx__what">สร้างรายการผู้มาติดต่อ (นัดล่วงหน้า / ลิงก์ / Walk-in / Temporary Card ครั้งแรก)</span></div><span class="tx__arrow">→</span><span><span class="st st--wait">รออนุมัติ</span></span><span class="tx__sys">แจ้ง Host ให้อนุมัติ</span></div>
+      <div class="tx__row"><span class="tx__id">T2</span><span><span class="st st--wait">รออนุมัติ</span></span><div class="tx__act"><span class="tx__who">HOST</span><span class="tx__what">อนุมัติ</span></div><span class="tx__arrow">→</span><span><span class="st st--due">รอมาถึง</span></span><span class="tx__sys">ส่งคำขอ Consent ให้ Visitor ยืนยันแล้วจึงออก QR</span></div>
+      <div class="tx__row"><span class="tx__id">T3</span><span><span class="st st--wait">รออนุมัติ</span></span><div class="tx__act"><span class="tx__who">HOST</span><span class="tx__what">ปฏิเสธ + ระบุเหตุผล</span></div><span class="tx__arrow">→</span><span><span class="st st--no">ปฏิเสธ</span></span><span class="tx__sys">แจ้ง Visitor ทางอีเมล ถ้าเป็น Walk-in แจ้ง Security บน Handheld</span></div>
+      <div class="tx__row"><span class="tx__id">T4</span><span><span class="st st--due">รอมาถึง</span></span><div class="tx__act"><span class="tx__who">SECURITY</span><span class="tx__what">สแกนเข้าที่ประตู</span></div><span class="tx__arrow">→</span><span><span class="st st--in">เข้าพื้นที่แล้ว</span></span><span class="tx__sys">นับเป็นผู้มาติดต่อที่อยู่ในพื้นที่</span>
+        <div class="tx__checks">
+          <span>เงื่อนไขก่อนสแกนเข้า · ระบบตรวจให้อัตโนมัติ</span>
+          <div>
+            <div class="tx__check"><b>✓ Consent <small>Edge 02</small></b>ยืนยันแล้ว หรือยืนยันที่หน้างานก่อนเข้า</div>
+            <div class="tx__check"><b>✓ การอบรม <small>Edge 01</small></b>ระบบเช็คว่าต้องอบรมไหม และแสดงวันที่อบรมล่าสุด ถ้าหมดอายุต้องอบรมใหม่ก่อน</div>
+            <div class="tx__check"><b>✓ ช่วงเวลา QR <small>Edge 03</small></b>ใช้ได้ตั้งแต่ 15 นาทีก่อนนัดจนสิ้นวันนัด</div>
+          </div>
+        </div>
+      </div>
+      <div class="tx__row"><span class="tx__id">T5</span><span><span class="st">เริ่มต้น</span></span><div class="tx__act"><span class="tx__who">SECURITY</span><span class="tx__what">สแกน Temporary Card (ครั้งถัดไป)</span></div><span class="tx__arrow">→</span><span><span class="st st--in">เข้าพื้นที่แล้ว</span></span><span class="tx__sys">ไม่ต้องรออนุมัติ ระบบเช็คว่าบัตรยังไม่หมดอายุและเข้าพื้นที่นี้ได้</span></div>
+      <div class="tx__row"><span class="tx__id">T6</span><span><span class="st st--in">เข้าพื้นที่แล้ว</span></span><div class="tx__act"><span class="tx__who">HOST</span><span class="tx__what">ยืนยันว่าพบแล้ว</span></div><span class="tx__arrow">→</span><span><span class="st st--met">พบ Host แล้ว</span></span><span class="tx__sys">ยังนับอยู่ในพื้นที่</span></div>
+      <div class="tx__row"><span class="tx__id">T7</span><span><span class="st st--met">พบ Host แล้ว</span></span><div class="tx__act"><span class="tx__who">HOST</span><span class="tx__what">ยืนยันจบการพบ</span></div><span class="tx__arrow">→</span><span><span class="st st--end">จบการพบ</span></span><span class="tx__sys">ยังนับอยู่ในพื้นที่ จนกว่าจะสแกนออก</span></div>
+      <div class="tx__row"><span class="tx__id">T8</span><span><span class="st st--end">จบการพบ</span></span><div class="tx__act"><span class="tx__who">SECURITY</span><span class="tx__what">สแกนออกที่ประตู</span></div><span class="tx__arrow">→</span><span><span class="st st--out">ออกแล้ว</span></span><span class="tx__sys">นำออกจากจำนวน "อยู่ในพื้นที่ตอนนี้"</span></div>
+    </div>
+    <div class="rules">
+      <div><b>ใครเปลี่ยนสถานะอะไรได้</b><span>Host ยืนยันการพบ · Security ยืนยันการเข้า–ออก</span></div>
+      <div><b>อยู่ในพื้นที่ตอนนี้</b><span>นับตั้งแต่สแกนเข้าจนสแกนออก แม้จะจบการพบแล้ว</span></div>
+      <div><b>สถานะสุดท้าย</b><span>ออกแล้ว และ ปฏิเสธ เปลี่ยนต่อไม่ได้ ถ้าจะเข้าอีกต้องลงทะเบียนใหม่ ยกเว้น Temporary Card ที่ใช้บัตรเดิมได้จนหมดอายุ</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Solution -->
+<section id="solution" class="cs-section cs-section--alt">
+  <div class="cs-wrap" style="gap:64px">
+    <div class="cs-intro">
+      <span class="eyebrow">05 — Solution ที่ออกแบบ</span>
+      <h2>7 หน้าจอ เรียงตามเส้นทางของผู้มาติดต่อ</h2>
+      <p class="body-lg">เริ่มจากลงทะเบียน อนุมัติ Consent และอบรม ไปจนถึงติดตามว่าใครยังอยู่ในพื้นที่ แต่ละหน้าจอระบุอุปกรณ์และบทบาทที่ใช้</p>
+    </div>
+
+    <!-- S01 -->
+    <article class="sol" id="s01">
+      <div class="sol__head">
+        <div><span class="label label--muted">S01 · Desktop + Mobile</span><p class="h3">ลงทะเบียน — จุดเริ่มต้นของข้อมูลผู้มาติดต่อ</p></div>
+        <div class="stack stack--sm">
+          <ol class="steps-list">
+            <li>เริ่มได้ 2 ทาง: Host "สร้างผู้ติดต่อใหม่" หรือ "คัดลอกลิงก์ลงทะเบียน" ส่งให้ Visitor กรอกเอง</li>
+            <li>ทั้ง 2 ทางได้ข้อมูลรูปแบบเดียวกัน</li>
+          </ol>
+          <div class="ux-note"><span class="label">UX · ไม่ต้องกรอกแทนทุกราย</span><p>Host ส่งลิงก์ให้ Visitor กรอกข้อมูลเองได้</p></div>
+        </div>
+      </div>
+      <div class="shot shot--pair">
+        <img src="assets/vms/case-study/vms-appointments.webp" alt="รายการนัดหมาย บน desktop" width="2654" height="1782" loading="lazy">
+        <img class="phone" src="assets/vms/case-study/m-appointments.webp" alt="รายการนัดหมาย บนมือถือ" width="750" height="2096" loading="lazy">
+      </div>
+    </article>
+
+    <!-- S02 -->
+    <article class="sol" id="s02">
+      <div class="sol__head">
+        <div><span class="label label--muted">S02 · Mobile web · Host</span><p class="h3">Host อนุมัติ Security เห็นผลที่ประตู</p></div>
+        <div class="stack stack--sm">
+          <ol class="steps-list">
+            <li>มีแค่ Host ที่อนุมัติหรือปฏิเสธได้</li>
+            <li>Security เห็นผลอนุมัติ แต่แก้ไม่ได้</li>
+            <li>ข้อมูลผู้มาติดต่อและเอกสารอยู่ในหน้าเดียว</li>
+          </ol>
+          <div class="ux-note"><span class="label">UX · ตัดสินใจจบในหน้าเดียว</span><p>Host ตัดสินใจได้โดยไม่ต้องเปิดหน้าอื่น</p></div>
+        </div>
+      </div>
+      <div class="shot scroller">
+        <div class="stack stack--sm">
+          <div class="phone-scroll">
+            <div class="phone-scroll__body" tabindex="0" aria-label="หน้ารายละเอียดการนัดหมาย เลื่อนดูได้">
+              <img src="assets/vms/case-study/m-approval-body.webp" alt="หน้ารายละเอียดการนัดหมายสำหรับ Host" width="900" height="3630" loading="lazy">
+            </div>
+            <img class="phone-scroll__bar" src="assets/vms/case-study/m-approval-actions.png" alt="ปุ่มปฏิเสธและอนุมัติ ล็อกอยู่ล่างจอ" width="900" height="225" loading="lazy">
+          </div>
+          <span class="fine" style="text-align:center">เลื่อนดูทั้งหน้า ↕</span>
+        </div>
+        <div class="callouts">
+          <div><b>สถานะ "รออนุมัติ"</b><span>เห็นได้ทันทีที่หัวการ์ด</span></div>
+          <div><b>เอกสารประกอบ</b><span>Host เปิดดูเอกสารที่แนบมาได้ในหน้าเดียวกัน</span></div>
+          <div><b>ปฏิเสธ · อนุมัติ</b><span>ปุ่มอยู่ล่างจอตลอด กดได้โดยไม่ต้องเลื่อนลงสุด</span></div>
+        </div>
+      </div>
+      <p class="why-not"><b>ทางที่ไม่เลือก</b> · ให้ Security อนุมัติแทนที่ประตู เพราะ Security ไม่รู้ว่าแขกมาทำอะไร</p>
+    </article>
+
+    <!-- S03 -->
+    <article class="sol" id="s03">
+      <div class="sol__head">
+        <div><span class="label label--muted">S03 · Mobile web · Visitor</span><p class="h3">Consent → QR — ยืนยันเงื่อนไขก่อนรับ QR</p></div>
+        <div class="stack stack--sm">
+          <ol class="steps-list">
+            <li>อีเมลแรกพาไปยืนยันเงื่อนไขก่อน ยังไม่มี QR</li>
+            <li>Visitor ยินยอม PDPA และกฎการเข้าพื้นที่</li>
+            <li>หลัง Consent ระบบส่ง QR ทางอีเมล</li>
+          </ol>
+          <div class="ux-note"><span class="label">UX · รู้ว่าทำไมยังไม่มี QR</span><p>Visitor เห็นว่าต้องยืนยันเงื่อนไขก่อน จึงไม่ต้องโทรถามว่า QR อยู่ไหน</p></div>
+        </div>
+      </div>
+      <div class="shot flow-figs">
+        <figure><img src="assets/vms/case-study/m-consent-email.png" alt="อีเมลเชิญยืนยันเงื่อนไขการเข้าพื้นที่" width="1120" height="1542" loading="lazy"><figcaption><b>1</b>Email · เชิญยืนยันเงื่อนไข</figcaption></figure>
+        <figure><img src="assets/vms/case-study/m-consent.png" alt="หน้ายืนยัน PDPA consent บนมือถือ" width="1125" height="1611" loading="lazy"><figcaption><b>2</b>Mobile · ยินยอม PDPA + ข้อกำหนด</figcaption></figure>
+        <figure><img src="assets/vms/case-study/m-qr-email.webp" alt="อีเมลส่ง QR Code สำหรับเข้าพื้นที่" width="1120" height="1840" loading="lazy"><figcaption><b>3</b>Email · ส่ง QR หลัง consent</figcaption></figure>
+        <figure><img src="assets/vms/case-study/m-qr-card.png" alt="บัตรผู้มาติดต่อพร้อม QR Code" width="750" height="1456" loading="lazy"><figcaption><b>4</b>Mobile · บัตร QR บันทึกเป็นรูปได้</figcaption></figure>
+      </div>
+      <div class="decisions">
+        <div class="decision-card">
+          <span class="label">DECISION</span>
+          <span class="decision-card__title">Consent ก่อนออก QR</span>
+          <dl class="decision">
+            <div><dt>ที่มา</dt><dd>องค์กรกำหนดให้เก็บ Consent ตาม PDPA ก่อนออก QR</dd></div>
+            <div><dt>ตัดสินใจ</dt><dd>ขอ Consent ทางอีเมลก่อนวันนัด ออก QR หลังยืนยันเท่านั้น ถ้ายังไม่ยืนยัน ทำที่หน้างานได้</dd></div>
+            <div><dt>เพราะ</dt><dd>เพิ่ม 1 ขั้นตอนก่อนวันนัด แต่มีทางสำรองที่หน้างาน</dd></div>
+            <div><dt>ไม่เลือก</dt><dd>ให้ทุกคนยืนยัน Consent ที่ประตู เพราะทำให้คิวหน้าประตูยาวในช่วงเช้า</dd></div>
+          </dl>
+        </div>
+        <div class="decision-card">
+          <span class="label">DECISION</span>
+          <span class="decision-card__title">QR บนมือถือ คู่กับ QR พิมพ์กระดาษ (QR Carbon)</span>
+          <div class="decision-card__media">
+            <dl class="decision">
+              <div><dt>ที่มา</dt><dd>ผู้มาติดต่อบางรายใช้ QR บนมือถือไม่ได้</dd></div>
+              <div><dt>ตัดสินใจ</dt><dd>พิมพ์ QR ลงกระดาษ สแกนได้เหมือน QR บนมือถือ</dd></div>
+              <div><dt>เพราะ</dt><dd>ทุกคนผ่านประตูแบบเดียวกัน แลกกับต้องพิมพ์ที่หน้างาน</dd></div>
+              <div><dt>ไม่เลือก</dt><dd>ให้ Security กรอกข้อมูลแทน เพราะคนกลุ่มนี้จะไม่ผ่านการตรวจ QR เหมือนคนอื่น</dd></div>
+            </dl>
+            <img src="assets/vms/case-study/vms-qr-carbon.png" alt="QR Carbon ที่พิมพ์จากเครื่องพิมพ์" width="838" height="1576" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- S04 -->
+    <article class="sol" id="s04">
+      <div class="sol__head">
+        <div><span class="label label--muted">S04 · Mobile web · Trainer</span><p class="h3">Training — ยืนยันการอบรมก่อนเข้าพื้นที่</p></div>
+        <div class="stack stack--sm">
+          <ol class="steps-list">
+            <li>ใช้เฉพาะผู้มาติดต่อที่ต้องอบรม หรือผลการอบรมหมดอายุ</li>
+            <li>Trainer สแกน QR จากบัตรและตรวจสอบตัวตน</li>
+            <li>Trainer ยืนยันผลการอบรม ระบบบันทึกผลไว้กับข้อมูลผู้มาติดต่อ</li>
+          </ol>
+          <div class="ux-note"><span class="label">UX · ไม่เพิ่มขั้นตอนให้ทุกคน</span><p>อบรมเฉพาะคนที่ต้องอบรม คนอื่นไม่ต้องผ่านขั้นนี้</p></div>
+        </div>
+      </div>
+      <div class="shot"><img src="assets/vms/case-study/m-training.webp" alt="Trainer สแกน QR และยืนยันผ่านการอบรม" width="1640" height="1436" loading="lazy" style="max-width:820px;margin:0 auto;box-shadow:none"></div>
+    </article>
+
+    <!-- S05 -->
+    <article class="sol" id="s05">
+      <div class="sol__head">
+        <div class="stack stack--sm">
+          <div><span class="label label--muted">S05 · Mobile web · Host + Security</span><p class="h3">จบการพบ ไม่ได้แปลว่าออกจากพื้นที่แล้ว</p></div>
+          <p class="why-not"><b>ทางที่ไม่เลือก</b> · ให้ระบบเปลี่ยนเป็น ออกแล้ว ทันทีเมื่อ Host จบการพบ เพราะแขกอาจยังอยู่ในโรงงาน</p>
+        </div>
+        <div class="ux-note"><span class="label">UX · ไม่ต้องค้นชื่อ</span><p>Host สแกน QR ที่ Visitor ถืออยู่ เพื่อเปิดหน้ายืนยันของคนนั้นทันที</p></div>
+      </div>
+      <div class="life" role="list" aria-label="เส้นเวลาสถานะระหว่างอยู่ในพื้นที่">
+        <div role="listitem"><small>สถานะ</small><span class="st st--in">เข้าพื้นที่แล้ว</span><p>Security สแกนเข้าที่ประตู</p></div>
+        <div role="listitem" class="life--floor"><small>หน้างาน</small><span class="st">รอ Host</span><p>รอที่จุดรับรอง</p></div>
+        <div role="listitem"><small>สถานะ</small><span class="st st--met">พบ Host แล้ว</span><p>Host กดยืนยันว่าพบแล้ว</p></div>
+        <div role="listitem" class="life--floor"><small>หน้างาน</small><span class="st">ระหว่างการพบ</span><p>ประชุมหรือทำงานในพื้นที่</p></div>
+        <div role="listitem"><small>สถานะ</small><span class="st st--end">จบการพบ</span><p>Host ยืนยันจบ</p></div>
+        <div role="listitem"><small>สถานะ</small><span class="st st--out">ออกแล้ว</span><p>Security สแกนออกที่ประตู</p></div>
+      </div>
+      <p class="strong">Host สแกน QR ของ Visitor แล้วกดยืนยัน 2 ครั้ง: ตอนพบ และตอนจบ</p>
+      <div class="shot pair-figs">
+        <figure><img src="assets/vms/case-study/m-host-checkin.png" alt="Host ยืนยันว่าพบผู้มาติดต่อแล้ว" width="1125" height="1920" loading="lazy"><figcaption><b>→ พบ Host แล้ว</b>Host กดยืนยันเมื่อผู้มาติดต่อมาพบแล้ว</figcaption></figure>
+        <figure><img src="assets/vms/case-study/m-host-checkout.png" alt="Host ยืนยันจบการพบ" width="1125" height="1920" loading="lazy"><figcaption><b>→ จบการพบ</b>Host ยืนยันเมื่อการพบจบ</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- S06 -->
+    <article class="sol" id="s06">
+      <div class="split split--top" style="align-items:center">
+        <div class="stack">
+          <div><span class="label label--muted">S06 · Desktop</span><p class="h3">Temporary Card — บัตรเดียวสำหรับการเข้า–ออกหลายครั้ง</p></div>
+          <p>ตอนออกบัตรกำหนดวันที่ใช้ได้และพื้นที่ที่เข้าได้ Host อนุมัติแค่ครั้งแรก ครั้งต่อไปสแกนบัตรเข้าได้เลย บัตรหมดอายุเองหรือปิดได้ทันที</p>
+          <div class="ux-note"><span class="label">UX · ไม่ต้องเริ่มใหม่ทุกครั้ง</span><p>ผู้ที่มาหลายครั้งไม่ต้องลงทะเบียนและรออนุมัติซ้ำ</p></div>
+        </div>
+        <div class="shot"><img src="assets/vms/case-study/vms-temp-card.webp" alt="หน้าออกบัตรชั่วคราว พร้อม preview บัตร" width="2388" height="2804" loading="lazy"></div>
+      </div>
+    </article>
+
+    <!-- S07 -->
+    <article class="sol" id="s07">
+      <div class="sol__head">
+        <div><span class="label label--muted">S07 · Desktop + Handheld</span><p class="h3">ผู้มาติดต่อวันนี้ — เห็นสถานะเดียวกันทุกเครื่อง</p></div>
+        <div class="stack stack--sm">
+          <ol class="steps-list">
+            <li>“อยู่ในพื้นที่ตอนนี้” เป็นตัวเลขหลักบนทั้ง Desktop และ Handheld</li>
+            <li>Desktop แสดงสถานะทั้งหมด เพื่อให้เห็นภาพรวมของผู้มาติดต่อวันนี้</li>
+            <li>Handheld แสดงเฉพาะสถานะที่ Security ต้องใช้ที่ประตู</li>
+            <li>เปลี่ยนสถานะที่เครื่องไหน อีกเครื่องก็เห็นสถานะเดียวกัน</li>
+          </ol>
+          <div class="ux-note"><span class="label">UX · ดูตัวเลขเดียวก็รู้</span><p>Security ดูตัวเลขเดียวก็รู้ว่าตอนนี้มีผู้มาติดต่อในพื้นที่กี่คน</p></div>
+        </div>
+      </div>
+      <div class="shot shot--pair">
+        <img src="assets/vms/case-study/vms-dashboard.webp" alt="ผู้มาติดต่อวันนี้ บน desktop: จำนวนที่อยู่ในพื้นที่ สถานะวันนี้ การมาถึงเทียบเวลานัด และรายชื่อตามสถานะ" width="2654" height="3646" loading="lazy">
+        <img class="handheld" src="assets/vms/case-study/hh-list-device.webp" alt="ผู้มาติดต่อวันนี้ บน handheld" width="1006" height="2496" loading="lazy">
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 06 Edge cases -->
+<section id="edge" class="cs-section">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">06 — Edge cases</span>
+      <h2>เมื่อเรื่องไม่เป็นไปตามแผน</h2>
+    </div>
+    <div class="edge-table" style="background:var(--color-bg-subtle)">
+      <div class="edge-row edge-row--head" aria-hidden="true"><span>กรณี</span><span>สถานการณ์</span><span>ระบบตอบสนอง</span><span></span></div>
+      <div class="edge-row"><h3><span>01</span>การอบรมหมดอายุ</h3><p>นัดใหม่ แต่ผลอบรมเดิมหมดอายุแล้ว</p><div class="resp">ระบบเช็คตอนสร้างนัด แจ้ง Visitor ทางอีเมล แล้วอบรมใหม่ที่หน้างาน<span class="tag">UX · รู้ก่อนเดินทางมา ไม่ถูกกันที่ประตู</span></div></div>
+      <div class="edge-row"><h3><span>02</span>ยังไม่ยืนยัน Consent</h3><p>มาถึงโดยยังไม่ยืนยัน Consent</p><div class="resp">ยังไม่ออก QR แต่ยืนยันที่หน้างานได้ก่อนเข้าพื้นที่<span class="tag">UX · พลาดขั้นตอนก็ยังไปต่อได้</span></div></div>
+      <div class="edge-row"><h3><span>03</span>เวลานัดไม่ตรงแผน</h3><p>นัดเปลี่ยนหลังได้ QR หรือมาก่อนเวลา</p><div class="resp">QR เดิมยังใช้ได้ ระบบส่งอีเมลแจ้งเวลาใหม่ QR ใช้ได้ตั้งแต่ 15 นาทีก่อนนัดถึงสิ้นวัน<span class="tag">UX · ไม่ต้องรอ QR ใหม่</span></div></div>
+      <div class="edge-row"><h3><span>04</span>สแกน QR ไม่ได้</h3><p>แบตหมดหรือ QR Carbon หาย ทั้งที่ประตูและในพื้นที่</p><div class="resp">Security ค้นชื่อและตรวจบัตรประชาชน Host ค้นชื่อเพื่อยืนยันพบได้<span class="tag">UX · QR เร็วที่สุด แต่ไม่ใช่ทางเดียว</span></div><img src="assets/vms/case-study/hh-detail-device.webp" alt="Handheld หน้ายืนยันตัวตนด้วยบัตรประชาชน" width="1006" height="2496" loading="lazy"></div>
+      <div class="edge-row"><h3><span>05</span>Walk-in ถูกปฏิเสธ</h3><p>Host ปฏิเสธ Walk-in ที่ Security ลงทะเบียนไว้</p><div class="resp">เปลี่ยนเป็น ปฏิเสธ ไม่ออก QR Carbon และแจ้งเหตุผลบน Handheld ถ้าจะเข้าอีกต้องลงทะเบียนใหม่<span class="tag">UX · ผลกลับมาที่ประตูทันที</span></div><img src="assets/vms/case-study/hh-home-device.webp" alt="Handheld แจ้งเตือน Walk-in ถูกปฏิเสธ" width="1006" height="2496" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 Outcome -->
+<section id="outcome" class="cs-section cs-section--alt">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">07 — ผลลัพธ์</span>
+      <h2>จากหน้าจอ สู่วิธีทำงานของโรงงาน</h2>
+      <span class="note-pill">ระบบขึ้นใช้งานจริงแล้ว · ยังไม่มีตัวเลขวัดผล</span>
+    </div>
+    <div class="results">
+      <div class="result"><div class="result__role"><span class="label">Problem 01</span>Host</div><div class="result__body"><p class="before">เดิม · รับข้อมูลผู้มาติดต่อจากโทรศัพท์และอีเมล แล้วรวบรวมเอง</p><p class="now">ตอนนี้ · ส่งลิงก์ให้ Visitor กรอกเอง ข้อมูลทุกทางรวมอยู่ที่เดียว</p><p class="gain">บริษัทได้ · ทุกรายการมีที่มาและตรวจย้อนได้</p></div></div>
+      <div class="result"><div class="result__role"><span class="label">Problem 02</span>Security</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่า Host อนุมัติแล้วหรือยัง ต้องโทรถามเอง</p><p class="now">ตอนนี้ · เห็นผลอนุมัติตอนสแกนที่ประตู ปกติไม่ต้องโทรถาม Host</p><p class="gain">บริษัทได้ · ออกแบบให้ลดการโทรประสานงาน และรู้ว่าใครเป็นคนอนุมัติ</p></div></div>
+      <div class="result"><div class="result__role"><span class="label">Problem 03</span>Security + Host</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่าใครยังอยู่ในพื้นที่ หลังการเข้าพบจบแล้ว</p><p class="now">ตอนนี้ · Host ยืนยันจบการพบ Security ยืนยันออกที่ประตู ปกติไม่ต้องไล่ถามกัน</p><p class="gain">บริษัทได้ · รู้ว่าใครยังอยู่ในโรงงาน</p></div></div>
+    </div>
+    <p class="fine" style="font-size:14px">นอกจากนี้ ทุกรายการมีบันทึก Consent ก่อนออก QR</p>
+  </div>
+</section>
+
+<!-- 08 Learnings -->
+<section id="learn" class="cs-section">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">08 — บทเรียน</span>
+      <h2>ระบบหลายบทบาท ต้องมีกฎก่อนมีหน้าจอ</h2>
+    </div>
+    <div class="learn">
+      <div><span class="label">01</span><p>สถานะต้องอิงสิ่งที่เกิดขึ้นจริง</p><span>ทุกสถานะบอกได้ว่า Visitor อยู่ขั้นไหน และใครเป็นคนยืนยัน</span></div>
+      <div><span class="label">02</span><p>Flow บอกทาง แต่กฎบอกว่าไปต่อได้เมื่อไร</p><span>รู้ว่าใครทำอะไรได้ เมื่อไร และต้องผ่านเงื่อนไขอะไร ก่อนวาดจอ</span></div>
+      <div><span class="label">03</span><p>กำหนดตัวชี้วัดตั้งแต่เริ่มโปรเจกต์</p><span>จับเวลาตั้งแต่ลงทะเบียนจนเข้าพื้นที่ไว้ก่อนใช้ระบบ เพื่อเทียบผลหลังใช้งาน</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="cs-footer">
+  <div class="cs-footer__inner">
+    <span>Visitor Management System · Product Design Case Study</span>
+    <span style="display:flex;gap:20px;flex-wrap:wrap"><a href="vms.html">← แบบย่อ (Key Screens)</a><a href="index.html">← ผลงานทั้งหมด</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field-sales CRM &amp; Sales-operations Platform — Case Study</title>
+<meta name="description" content="Product design case study: a tablet app for a B2B distributor's field-sales team, from route planning to payment, on top of an existing ERP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/case-study.css">
+<style>
+  /* Case theme. Not in tokens.json yet. */
+  :root {
+    --case-accent: #0E8A6A;
+    --case-accent-strong: #0B6E55;
+    --case-accent-soft: #E7F4EF;
+    --case-on-accent: #FFFFFF;
+    --case-alt: #6B55E0;
+    --case-warn: #8A5A00;
+    --case-warn-soft: #FDF3DD;
+    --case-device: #232628;
+    --case-device-edge: #4A4F55;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --case-accent: #4FC19F;
+      --case-accent-strong: #7AD4B8;
+      --case-accent-soft: #15302A;
+      --case-on-accent: #0B1A16;
+      --case-alt: #A99BFF;
+      --case-warn: #E3B25A;
+      --case-warn-soft: #3A2E14;
+      --case-device: #2E3236;
+    }
+  }
+  :root[data-theme="dark"] {
+    --case-accent: #4FC19F;
+    --case-accent-strong: #7AD4B8;
+    --case-accent-soft: #15302A;
+    --case-on-accent: #0B1A16;
+    --case-alt: #A99BFF;
+    --case-warn: #E3B25A;
+    --case-warn-soft: #3A2E14;
+    --case-device: #2E3236;
+  }
+
+  /* S05 product picker — drawn in HTML, so it stays a light "screen" in both themes */
+  .mock { display: flex; flex-direction: column; gap: 8px; padding: 12px 10px; border-radius: 14px; background: #F7F8FA; color: #272D37; font-size: 13px; }
+  .mock__item { display: flex; flex-direction: column; gap: 8px; padding: 10px; border-radius: 10px; background: #FFFFFF; border: 1px solid #EAEBF0; }
+  .mock__item.is-low { border-color: #F2AB58; }
+  .mock__name { font-size: 12px; font-weight: 600; line-height: 1.35; }
+  .mock__line { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+  .mock__stock { white-space: nowrap; font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 6px; background: #E7F4EF; color: #0E8A6A; }
+  .is-low .mock__stock { background: #FFF8EB; color: #8A5A00; }
+  .mock__qty { display: flex; align-items: center; gap: 4px; font-size: 14px; }
+  .mock__qty b { min-width: 18px; text-align: center; }
+  .mock__btn { width: 22px; height: 22px; border-radius: 999px; border: 1px solid #DAE0E6; display: grid; place-items: center; }
+  .mock__btn--add { width: 24px; height: 24px; border: 0; background: #0E8A6A; color: #FFFFFF; }
+  .is-low .mock__btn--add { background: #E4E7EC; color: #767676; }
+  .mock__hint { font-size: 11px; line-height: 1.4; color: #8A5A00; }
+  .mock__cta { height: 36px; border-radius: 999px; background: #0E8A6A; color: #FFFFFF; font-weight: 600; display: grid; place-items: center; }
+</style>
+</head>
+<body>
+
+<nav class="cs-nav" aria-label="Sections">
+  <div class="cs-nav__inner">
+    <a class="cs-nav__title" href="#overview">Field Sales</a>
+    <div class="cs-nav__links">
+      <a href="#problem">ปัญหา</a>
+      <a href="#users">ผู้ใช้</a>
+      <a href="#system">ระบบ</a>
+      <a href="#solution">Solution</a>
+      <a href="#edge">Edge cases</a>
+      <a href="#outcome">ผลลัพธ์</a>
+      <a href="#learn">บทเรียน</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- Hero -->
+<header id="overview" class="cs-section" style="padding-bottom:72px">
+  <div class="cs-wrap" style="gap:40px">
+    <div class="stack" style="gap:24px">
+      <div class="pills"><span class="pill pill--solid">Case study</span><span class="pill">Enterprise · B2B Field Sales</span></div>
+      <h1>Field-sales CRM &amp; Sales-operations Platform</h1>
+      <p class="lead">แอปบนแท็บเล็ตสำหรับทีมขายของผู้จัดจำหน่าย B2B ช่วยให้พนักงานขายทำงานตั้งแต่วางแผนเข้าร้าน เช็คอิน เปิดบิล ไปจนถึงการชำระเงินและจัดการงานขาย โดยเชื่อมต่อกับระบบ ERP และกระบวนการอนุมัติขององค์กร</p>
+    </div>
+    <div class="stack">
+      <div class="grid-3">
+        <div class="card card--soft"><span class="label">โจทย์</span><span class="card__title">วางแผน เยี่ยมร้าน เปิดบิล และรับเงิน ทำจบในแอปเดียว</span></div>
+        <div class="card card--soft"><span class="label">ความซับซ้อน</span><span class="card__title">4 บทบาท · กฎเปิด ยกเลิก และอนุมัติบิล · เชื่อม ERP แบบ real-time</span></div>
+        <div class="card card--soft"><span class="label">เป้าหมายโครงการ</span><span class="card__title">ปรับประสบการณ์ทำงานของ Sales เพิ่มประสิทธิภาพการขาย และรองรับการขยายฐานลูกค้า</span></div>
+      </div>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>UX/UI Designer · ทำงานร่วมกับ BA</dd></div>
+        <div><dt>Platform</dt><dd>Tablet app · Receipt printer · Web report</dd></div>
+        <div><dt>Industry</dt><dd>F&amp;B Distribution</dd></div>
+      </dl>
+    </div>
+    <div class="stack stack--sm">
+      <div class="hero-stage">
+        <div class="device"><img src="assets/field-sales/screens/new-home-v8c.webp" alt="หน้า Home ของ Sales" width="1488" height="2266"></div>
+        <div class="device device--lead"><img src="assets/field-sales/screens/rp-map-concept.webp" alt="แผนงานวันนี้ แบบแผนที่" width="1236" height="1881"></div>
+        <div class="device"><img src="assets/field-sales/screens/new-order-filled.webp" alt="หน้าเปิดบิลขาย" width="1488" height="2266"></div>
+      </div>
+      <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า ชื่อระบบ โลโก้ และข้อมูลจริงถูกแทนด้วยข้อมูลสมมติ</p>
+    </div>
+  </div>
+</header>
+
+<!-- My role -->
+<section id="role" class="cs-section" style="padding-top:0">
+  <div class="cs-wrap">
+    <div class="split split--top split--ruled">
+      <div class="stack stack--sm">
+        <span class="label" style="font-size:14px;font-weight:500">My Role</span>
+        <span class="h3">Designer คนเดียวของโครงการ ทั้ง 2 เฟส</span>
+      </div>
+      <div class="stack" style="gap:16px">
+        <dl class="deflist">
+          <dt>PM</dt><dd>เก็บ requirement ระดับฟิลด์ · ดูแลช่วง UAT</dd>
+          <dt>BA</dt><dd>วาง business logic และกฎการขาย</dd>
+          <dt class="is-me">UX/UI Designer</dt><dd>วาง Flow และออกแบบ UI จาก requirement ตรวจ edge case และซัพพอร์ตทีมพัฒนาจนถึง UAT</dd>
+        </dl>
+        <p class="fine" style="font-size:14px;line-height:1.6">เฟส 1 งานขายและเก็บเงินหน้าร้าน · เฟส 2 แผนงานแบบรอบ แคมเปญ แต้มสะสม และพรีออเดอร์ · 2023–2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 Problem -->
+<section id="problem" class="cs-section cs-section--alt">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">01 — ปัญหา</span>
+      <h2>บิลหนึ่งใบผ่านมือหลายคน แต่ละคนกลับเห็นข้อมูลไม่ครบ</h2>
+      <p class="body-lg">บิลเปิดที่หน้าร้าน แต่คนที่ทำงานต่อจากบิลนั้นอยู่หลังบ้าน</p>
+    </div>
+    <div class="card card--pad">
+      <ol class="numbered">
+        <li><span class="no">01</span><div><span class="t">ตรวจไม่ได้ว่า Sales ไปถึงร้านจริง <small>· Sales Manager</small></span><p class="b">ต้องตามเช็คเองว่า Sales ไปร้านตามแผนไหม</p></div></li>
+        <li><span class="no">02</span><div><span class="t">รู้ว่าของไม่พอช้าเกินไป <small>· Sales</small></span><p class="b">ERP ตรวจสต็อกตอนเปิดบิล ถ้าไม่พอ Sales ต้องแก้รายการต่อหน้าเจ้าของร้านก่อนรับเงิน</p></div></li>
+        <li><span class="no">03</span><div><span class="t">มองไม่เห็นว่าบิลค้างอยู่ขั้นไหน <small>· หลังบ้าน</small></span><p class="b">ไม่เห็นสถานะ แยกไม่ได้ว่าบิลยังรอเลขจาก ERP หรือร้านยังไม่จ่าย</p></div></li>
+        <li><span class="no">04</span><div><span class="t">ขั้นตอนและกฎการขายอยู่ในความจำของพนักงาน <small>· พนักงานใหม่</small></span><p class="b">ทีมเปลี่ยนคนบ่อย คนใหม่ต้องเรียนกฎการขายให้ทัน</p></div></li>
+      </ol>
+    </div>
+    <div class="card card--soft" style="padding:24px 28px;border-radius:20px;gap:6px">
+      <span class="label" style="font-size:13px">โจทย์การออกแบบ</span>
+      <span class="card__title" style="font-size:20px;line-height:1.5">Sales ทำงานจบที่ร้าน บิลถูกต้องตามกฎตั้งแต่ตอนเปิด และตรวจย้อนหลังได้ว่าไปร้านไหน รับเงินเท่าไร</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 Users -->
+<section id="users" class="cs-section">
+  <div class="cs-wrap">
+    <div class="split split--top" style="gap:48px 72px">
+      <div class="stack">
+        <span class="eyebrow">02 — ผู้ใช้</span>
+        <h2>Sales เป็นคนเปิดบิล แต่อีก 3 ฝ่ายรอข้อมูลจากบิลนั้น</h2>
+        <p class="body-lg">Sales มีหลายช่วงอายุ และเปลี่ยนคนบ่อย</p>
+      </div>
+      <dl class="rows">
+        <div><dt>Sales<small>ใช้แอปทั้งวัน</small></dt><dd>ขายและรับเงินจบที่ร้าน ต่อหน้าเจ้าของร้าน</dd></div>
+        <div><dt>Sales Manager<small>หัวหน้าทีม</small></dt><dd>ดูทีม และอนุมัติคำขอของ Sales</dd></div>
+        <div><dt>หลังบ้าน<small>รอข้อมูลจากแอป</small></dt><dd>ต้องได้บิลที่ถูกต้องเข้า ERP</dd></div>
+        <div><dt>Audit<small>ตรวจสอบ</small></dt><dd>อนุมัติการยกเลิกบิลขั้นสุดท้าย</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 03 System -->
+<section id="system" class="cs-section cs-section--alt">
+  <div class="cs-wrap" style="gap:40px">
+    <div class="cs-intro">
+      <span class="eyebrow">03 — ภาพรวมระบบ</span>
+      <h2>4 ช่วงงานบนแท็บเล็ต ต่อกับ ERP เดิม</h2>
+      <p>ทีมขายมีสองรูปแบบ คือ Cash Van ที่ขายและรับเงินที่ร้าน กับ Sales Credit ที่เปิดบิลแล้วส่งของทีหลัง ใช้แอปเดียวกัน แต่เป็นคนละ flow สำหรับลูกค้าคนละกลุ่ม ต่างกันที่การชำระเงินและการจัดส่ง</p>
+    </div>
+
+    <div class="stack" style="gap:24px">
+      <div class="stages" role="list">
+        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">01</span>วางแผน</div><p>วางเส้นทางและร้านที่ต้องไปในแต่ละวัน</p><img src="assets/field-sales/sys-step-1.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">02</span>เยี่ยมร้าน</div><p>เช็คอิน ดูข้อมูลร้าน และเช็คเอาท์</p><img src="assets/field-sales/sys-step-2.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">03</span>ขายและเปิดบิล</div><p>เลือกสินค้า ใส่โปรโมชั่น และเปิดบิล</p><img src="assets/field-sales/sys-step-3.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">04</span>จัดการงานขาย</div><p>รับเงิน เก็บหลักฐานส่งของ และพิมพ์ใบเสร็จ</p><img src="assets/field-sales/sys-step-4.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+        <span class="stage-arrow" style="left:24.375%" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="var(--case-on-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="stage-arrow" style="left:50%" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="var(--case-on-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="stage-arrow" style="left:75.625%" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="var(--case-on-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+
+      <div class="integrations">
+        <h3>ระบบที่เชื่อม</h3>
+        <div class="integration">
+          <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          <strong>GPS</strong>ตำแหน่งและการเข้าร้าน
+        </div>
+        <div class="integration integration--erp">
+          <strong>ระบบ ERP เดิม</strong>
+          <div class="erp-items">
+            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>ข้อมูลลูกค้า</span>
+            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>ข้อมูลสินค้า</span>
+            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>ราคาและโปรโมชั่น</span>
+            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="13" width="8" height="7" rx="1"/><rect x="13" y="13" width="8" height="7" rx="1"/><rect x="8" y="4" width="8" height="7" rx="1"/></svg>สต็อก</span>
+            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>เครดิต</span>
+          </div>
+        </div>
+        <div class="integration">
+          <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg>
+          <strong>เครื่องพิมพ์พกพา</strong>พิมพ์ใบเสร็จหน้าร้าน
+        </div>
+      </div>
+    </div>
+
+    <div id="cash-credit" class="stack" style="scroll-margin-top:72px">
+      <div class="stack" style="gap:6px">
+        <span class="h3" style="font-size:22px">Cash Van กับ Sales Credit ใช้แอปเดียวกัน แต่ flow ต่างกัน 4 จุด</span>
+        <p style="font-size:15px">เลือกสินค้า ของแถม และส่วนลดท้ายบิลใช้หน้าจอเดียวกัน</p>
+      </div>
+      <div class="table-scroll">
+        <table class="compare">
+          <thead><tr><th scope="col">ขั้นตอน</th><th scope="col" class="is-cash">Cash Van · ขายและรับเงินที่ร้าน</th><th scope="col" class="is-credit">Sales Credit · เปิดบิล ส่งของทีหลัง</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">วางแผนงาน</th><td>ระบบตั้งเป็นวันนี้ให้เลย</td><td>Sales ระบุวันเอง</td></tr>
+            <tr><th scope="row">เปิดบิล</th><td>ขายจากของบนรถ ระบบตรวจของในคลังก่อนให้รับชำระ</td><td>เปิดบิลแยกตามสาขา เลือกที่อยู่จัดส่งและกำหนดวันจัดส่ง</td></tr>
+            <tr><th scope="row">ประเภทการชำระ</th><td>เงินสด หรือ QR ที่ร้าน</td><td>เลือกก่อนเปิดบิล: เครดิต (แสดงวงเงินคงเหลือของสาขา) หรือโอนเงินก่อน</td></tr>
+            <tr><th scope="row">จัดการงานขาย</th><td>ร้านเซ็นรับบนจอ พิมพ์ใบเสร็จ จบที่ร้าน</td><td>ส่งของตามวันที่กำหนดไว้ ถ้าเลือกโอนแต่ร้านไม่โอน Sales ต้องส่งคำขอยกเลิกบิลให้อนุมัติ</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Solution -->
+<section id="solution" class="cs-section">
+  <div class="cs-wrap" style="gap:88px">
+    <div class="cs-intro">
+      <span class="eyebrow">04 — Solution</span>
+      <h2>เรียงตามงานหนึ่งวันของ Sales</h2>
+      <p class="body-lg">เล่าตาม flow ของ Cash Van ความต่างของ Sales Credit ดูได้ที่<a href="#cash-credit" style="font-weight:600">ตารางใน Section 03</a></p>
+    </div>
+
+    <!-- S01 -->
+    <article class="split">
+      <div class="device device-solo device-solo--wide"><img src="assets/field-sales/screens/new-home-v8c.webp" alt="Home ของ Sales: งานวันนี้ ยอดขาย และเมนูแบ่งตามช่วงงาน" width="1488" height="2266" loading="lazy"></div>
+      <div class="stack">
+        <span class="label" style="font-size:13px">S01 · แท็บเล็ต · Sales</span>
+        <h3 class="h3">Home ของ Sales เรียงเมนูตามช่วงงาน</h3>
+        <ol class="steps-list">
+          <li>งานวันนี้อยู่บนสุด กดนำทางหรือเช็คอินร้านถัดไปได้เลย</li>
+          <li>ยอดรอชำระแยกสีจากยอดขาย</li>
+          <li>จัดเมนู 19 รายการใหม่: 3 เมนูหลักอยู่แถบล่าง ที่เหลือแบ่งเป็น 5 กลุ่มตามช่วงงาน</li>
+          <li>เช็คอินแล้วเข้าหน้าร้านทันที งานของร้านทำที่หน้าร้านที่เดียว</li>
+        </ol>
+        <div class="ux-note"><span class="label">UX</span><p>Home ไว้ดูงานทั้งวัน งานของร้านทำที่หน้าร้าน</p></div>
+        <dl class="decision">
+          <div><dt>ที่มา</dt><dd>สร้างรายการขายได้หลังเช็คอินที่ร้านเท่านั้น</dd></div>
+          <div><dt>ตัดสินใจ</dt><dd>เช็คอินแล้วพาไปหน้าร้าน และเอาเมนูเปิดบิลออกจาก Home</dd></div>
+          <div><dt>เพราะ</dt><dd>ถ้าสร้างรายการจาก Home ได้ Sales จะไม่แน่ใจว่ารายการผูกกับร้านไหน</dd></div>
+          <div><dt>ไม่เลือก</dt><dd>ล็อกเมนูบน Home ไว้จนกว่าจะเช็คอิน เพราะพอปลดล็อกแล้วก็ยังไม่ชัดว่าเป็นของร้านไหน</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- S02 -->
+    <article class="split">
+      <div class="device device-solo"><img src="assets/field-sales/screens/new-home-manager-v3.webp" alt="Home ของ Sales Manager: คำขอรออนุมัติและสรุปทีม" width="1488" height="2266" loading="lazy"></div>
+      <div class="stack">
+        <span id="s02" class="label" style="font-size:13px;scroll-margin-top:120px">S02 · แท็บเล็ต · Sales Manager</span>
+        <h3 class="h3">Home ของ Sales Manager ใช้เมนูเดียวกับ Sales แล้วเพิ่มงานอนุมัติไว้บนสุด</h3>
+        <ol class="steps-list">
+          <li>คำขอจาก Sales อยู่บนสุด อนุมัติหรือปฏิเสธได้จาก Home ปฏิเสธต้องใส่เหตุผล</li>
+          <li>สรุปทีม: เยี่ยมร้านเทียบแผน ยอดขาย และคนที่ยังไม่เช็คอิน</li>
+          <li>เมนูและแถบล่างชุดเดียวกับ S01</li>
+        </ol>
+        <div class="ux-note"><span class="label">UX</span><p>ไม่ต้องเรียนหน้าจอใหม่ และคำขอของ Sales ไม่ค้าง</p></div>
+        <dl class="decision">
+          <div><dt>ที่มา</dt><dd>ใช้แอปเดียวกับ Sales เห็นทุกเมนู บวกงานอนุมัติ</dd></div>
+          <div><dt>ตัดสินใจ</dt><dd>ใช้โครง Home เดิมของ Sales แล้วแทนการ์ดงานวันนี้ด้วยงานอนุมัติและสรุปทีม</dd></div>
+          <div><dt>เพราะ</dt><dd>Dev ดึง component เดิมมาใช้ได้ และ Sales Manager ไม่ต้องเรียนหน้าจอใหม่</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- S03 -->
+    <article class="stack" style="gap:40px">
+      <div class="split" style="gap:20px 64px;align-items:end">
+        <div class="stack stack--sm">
+          <span id="s03" class="label" style="font-size:13px;scroll-margin-top:120px">S03 · แท็บเล็ต · Sales</span>
+          <h3 class="h3">แผนงานเรียงร้านตามเส้นทาง</h3>
+        </div>
+        <div class="stack stack--sm">
+          <div class="ux-note"><span class="label">UX</span><p>เปิดมาก็รู้ว่าวันนี้ต้องไปร้านไหนก่อน</p></div>
+          <dl class="decision">
+            <div><dt>ตัดสินใจ</dt><dd>เรียงร้านในแผนตามเส้นทาง จากใกล้ไปไกล</dd></div>
+            <div><dt>เพราะ</dt><dd>Sales รู้ว่าควรไปร้านไหนก่อนหลัง ไม่ต้องวนกลับ และประหยัดน้ำมัน</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="figures">
+        <figure>
+          <div class="device"><img src="assets/field-sales/screens/rp-month-concept.webp" alt="แผนงานรายเดือน แสดงจำนวนงานแต่ละประเภทต่อวัน" width="1236" height="1881" loading="lazy"></div>
+          <figcaption><span class="label" style="font-size:13px">01 · เดือนนี้</span>ปฏิทินเดือนนี้แสดงจำนวนงานแยกตามประเภทในแต่ละวัน สีและลำดับเหมือนกันทุกช่อง</figcaption>
+        </figure>
+        <figure>
+          <div class="device"><img src="assets/field-sales/screens/new-rp-list.webp" alt="แผนงานวันนี้ แบบรายการ เรียงตามเส้นทาง" width="1236" height="1881" loading="lazy"></div>
+          <figcaption><span class="label" style="font-size:13px">02 · วันนี้ · รายการ</span>แผนงานเรียงร้านตามเส้นทาง</figcaption>
+        </figure>
+        <figure>
+          <div class="device"><img src="assets/field-sales/screens/rp-map-concept.webp" alt="แผนงานวันนี้ แบบแผนที่" width="1236" height="1881" loading="lazy"></div>
+          <figcaption><span class="label" style="font-size:13px">03 · วันนี้ · แผนที่</span>ดูเป็นรายการหรือแผนที่ แล้วนำทางได้ทันที</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- S04 -->
+    <article class="split">
+      <div class="device device-solo"><img src="assets/field-sales/screens/new-store-info.webp" alt="หน้าข้อมูลร้าน ก่อนเช็คอินมีปุ่มเช็คอินปุ่มเดียว" width="1488" height="2266" loading="lazy"></div>
+      <div class="stack">
+        <span id="s04" class="label" style="font-size:13px;scroll-margin-top:120px">S04 · แท็บเล็ต · Sales</span>
+        <h3 class="h3">ก่อนเช็คอิน หน้าร้านมีปุ่มเดียว</h3>
+        <ol class="steps-list">
+          <li>ข้อมูลร้านรวมอยู่หน้าเดียว</li>
+          <li>ก่อนเช็คอิน มีแค่ปุ่มเช็คอิน เมนูขายซ่อนไว้</li>
+          <li>ใต้ปุ่มบอกว่าเช็คอินแล้วจะใช้เมนูไหนได้บ้าง</li>
+        </ol>
+        <div class="ux-note"><span class="label">UX</span><p>จอบอกเองว่าต้องทำอะไรก่อน ไม่ต้องจำกฎ</p></div>
+        <dl class="decision">
+          <div><dt>ตัดสินใจ</dt><dd>ซ่อนเมนูขายจนกว่าจะเช็คอิน ให้เหลือปุ่มเช็คอินปุ่มเดียว</dd></div>
+          <div><dt>เพราะ</dt><dd>หน้าร้านมีหลายเมนู ถ้าแสดงทุกเมนูที่ยังกดไม่ได้ Sales ต้องไล่หาว่าต้องกดอะไรก่อน</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- S05 -->
+    <article class="split">
+      <div class="device-row">
+        <div class="device device--sm" style="min-width:220px;max-width:260px">
+          <div class="mock" role="img" aria-label="จอเลือกสินค้า แสดงสต็อกคงเหลือ และห้ามใส่เกินของที่มี">
+            <span style="font-weight:600">เลือกสินค้า</span>
+            <div class="mock__item">
+              <span class="mock__name">ซอสหอยนางรม 24x350มล.</span>
+              <div class="mock__line"><span class="mock__stock">มี 12 ลัง</span><span class="mock__qty"><span class="mock__btn">−</span><b>4</b><span class="mock__btn mock__btn--add">+</span></span></div>
+            </div>
+            <div class="mock__item is-low">
+              <span class="mock__name">น้ำมะพร้าว 24x350มล.</span>
+              <div class="mock__line"><span class="mock__stock">มี 3 ลัง</span><span class="mock__qty"><span class="mock__btn">−</span><b>3</b><span class="mock__btn mock__btn--add">+</span></span></div>
+              <span class="mock__hint">ใส่ครบที่มีแล้ว เพิ่มไม่ได้</span>
+            </div>
+            <span class="mock__cta">ใส่ลงบิล · 7 ลัง</span>
+          </div>
+        </div>
+        <div class="device device--sm is-offset"><img src="assets/field-sales/screens/new-order-stock.png" alt="ERP แจ้งของในคลังไม่พอ รายการเดิมยังอยู่ให้แก้" width="1488" height="2266" loading="lazy"></div>
+      </div>
+      <div class="stack">
+        <span id="s05" class="label" style="font-size:13px;scroll-margin-top:120px">S05 · แท็บเล็ต · Sales</span>
+        <h3 class="h3">บอกสต็อกระหว่างเลือก และเก็บรายการไว้เมื่อต้องแก้</h3>
+        <ol class="steps-list">
+          <li>แต่ละรายการแสดงสต็อกจาก ERP ใส่เกินไม่ได้</li>
+          <li>ตอนส่งบิล ERP ตรวจซ้ำ ถ้าไม่พอ จอยกรายการนั้นขึ้นบนสุด แก้แล้วส่งใหม่ได้</li>
+        </ol>
+        <div class="ux-note"><span class="label">UX</span><p>ไม่ต้องเลือกสินค้าใหม่ต่อหน้าเจ้าของร้าน</p></div>
+        <dl class="decision">
+          <div><dt>ที่มา</dt><dd>เมื่อเปิดบิล ERP ตรวจสต็อก ถ้าไม่พอ Sales ต้องแก้รายการก่อนจึงรับชำระได้</dd></div>
+          <div><dt>ตัดสินใจ (ร่วมกับ BA)</dt><dd>แสดงสต็อกตั้งแต่ตอนเลือก และไม่ล้างรายการเมื่อ ERP ปฏิเสธ</dd></div>
+          <div><dt>เพราะ</dt><dd>Sales เห็นว่าของไม่พอตั้งแต่ตอนเลือก ถ้าสต็อกเปลี่ยนระหว่างนั้น ก็แก้แค่รายการที่ขาด</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- S06 -->
+    <article class="split">
+      <div class="device-row">
+        <div class="device device--sm"><img src="assets/field-sales/screens/new-order-awaiting.png" alt="บิลสถานะรอชำระ" width="1488" height="2266" loading="lazy"></div>
+        <div class="device device--sm is-offset"><img src="assets/field-sales/screens/new-order-payment.webp" alt="หน้าชำระเงินด้วย QR และถ่ายรูปสลิป" width="1488" height="2266" loading="lazy"></div>
+      </div>
+      <div class="stack">
+        <span id="s06" class="label" style="font-size:13px;scroll-margin-top:120px">S06 · แท็บเล็ต · Sales</span>
+        <h3 class="h3">บอกให้รู้ว่าบิลรอ ERP อยู่ หรือรอร้านจ่าย</h3>
+        <div class="status">
+          <span class="label label--muted">สถานะบิล</span>
+          <div class="status__flow">
+            <span class="state">เปิดบิล</span><span aria-hidden="true">→</span>
+            <span class="state state--warn">รอดำเนินการ<small>รอเลขจาก ERP · มีเลขอ้างอิงชั่วคราว</small></span><span aria-hidden="true">→</span>
+            <span class="state state--soft">รอชำระ<small>ได้เลขแล้ว · ยังไม่ได้เงิน</small></span><span aria-hidden="true">→</span>
+            <span class="state state--done">ชำระแล้ว</span>
+          </div>
+          <p>ERP ปฏิเสธเพราะของไม่พอ → แก้รายการเดิม หรือยกเลิกบิล (ดู <a href="#s05">S05</a>)</p>
+        </div>
+        <div class="ux-note"><span class="label">UX</span><p>เห็นว่าบิลอยู่ขั้นไหน ตั้งแต่รอเลขจาก ERP จนได้เงิน</p></div>
+        <dl class="decision">
+          <div><dt>ที่มา</dt><dd>บิลต้องได้เลขจาก ERP ก่อนรับเงิน</dd></div>
+          <div><dt>ตัดสินใจ (ร่วมกับ BA)</dt><dd>แยกช่วงรอ ERP เป็นสถานะ “รอดำเนินการ”</dd></div>
+          <div><dt>เพราะ</dt><dd>ถ้าไม่แสดงช่วงรอ ERP Sales จะไม่รู้ว่าบิลค้างอยู่ที่ระบบ หรือรอร้านจ่าย</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- S07 -->
+    <article class="split">
+      <div class="words">
+        <div><span>คำเดิม</span><span>คำใหม่</span></div>
+        <div><span class="old">บันทึกรายการสั่งซื้อ</span><span class="new">ใส่ลงบิล</span></div>
+        <div><span class="old">สินค้าในคลังไม่เพียงพอ</span><span class="new">ของในคลังไม่พอ ยังเปิดบิลไม่ได้</span></div>
+        <div><span class="old">ยอดรวมราคาสุทธิ</span><span class="new">ร้านต้องจ่าย</span></div>
+        <div><span class="old">ใบกำกับภาษี (หัวข้อ)</span><span class="new">ประเภทบิล</span></div>
+        <div><span class="old">แนบหลักฐานการชำระเงิน</span><span class="new">ถ่ายรูปสลิป</span></div>
+      </div>
+      <div class="stack">
+        <span class="label" style="font-size:13px">S07 · ทุกจอ · Sales</span>
+        <h3 class="h3">ใช้คำที่ Sales พูดกับร้าน แทนคำจากระบบบัญชี</h3>
+        <ol class="steps-list">
+          <li>เปลี่ยนคำบนจอเป็นคำที่พูดกันหน้าร้าน</li>
+          <li>ปุ่มที่ยังกดไม่ได้บอกเหตุผล ข้อผิดพลาดบอกวิธีแก้</li>
+          <li>หน้าจอเรียงตามลำดับงาน และกฎการขายขึ้นตอนที่ต้องใช้</li>
+        </ol>
+        <div class="ux-note"><span class="label">UX</span><p>คนเพิ่งเริ่มงานอ่านจอแล้วรู้ว่าต้องกดอะไรต่อ</p></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 05 Edge cases -->
+<section id="edge" class="cs-section cs-section--alt">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">05 — Edge cases</span>
+      <h2>กฎการขายที่ Sales เจอระหว่างทำงาน</h2>
+    </div>
+    <div class="edges">
+      <div class="edge">
+        <div><h3>ยกเลิกบิลที่ส่งแล้ว</h3><p>ต้องผ่านผู้จัดการและ Audit ถ้าปฏิเสธต้องมีเหตุผล</p></div>
+        <div class="design"><span class="tag">ออกแบบ</span>คำขอแสดงสถานะทีละขั้น และเหตุผลเมื่อถูกปฏิเสธ</div>
+      </div>
+      <div class="edge">
+        <div><h3>ราคา โปรโมชัน ของแถม</h3><p>ของแถมและส่วนลดทำให้ยอดจ่ายต่างจากราคาสินค้า</p></div>
+        <div class="design"><span class="tag">ออกแบบ</span>แยกเป็นบรรทัดของตัวเอง แล้วสรุปเป็น “ร้านต้องจ่าย”</div>
+      </div>
+      <div class="edge">
+        <div><h3>ร้านไม่มีที่อยู่ออกใบกำกับภาษี</h3><p>ออกใบกำกับภาษีได้เมื่อมีที่อยู่ของร้านเท่านั้น</p></div>
+        <div class="design"><span class="tag">ออกแบบ</span>ถามที่อยู่ระหว่างเปิดบิล แล้วบันทึกไว้ใช้ครั้งถัดไป</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Outcome -->
+<section id="outcome" class="cs-section cs-section--ruled">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">06 — ผลลัพธ์</span>
+      <h2>ออกแบบให้หัวหน้าและหลังบ้านดูข้อมูลจากแอปได้ ไม่ต้องตามถาม Sales</h2>
+      <div class="pills">
+        <span class="pill pill--soft pill--sm">ขึ้นระบบ 2024</span>
+        <span class="pill pill--sm">สเปค: รองรับ 600+ ผู้ใช้ · 6,000 รายการ/วัน</span>
+      </div>
+    </div>
+    <div class="results">
+      <div class="result">
+        <div class="result__role"><span class="label" style="font-size:13px">Problem 01</span>Sales Manager</div>
+        <div class="result__body"><span class="before">เดิม · ต้องตามเช็คว่า Sales ไปร้านจริงไหม</span><span class="now">ตอนนี้ · ทุกบิลผูกกับการเช็คอิน</span><span class="gain">บริษัทได้ · ดูการเยี่ยมร้านกับยอดขายได้จากที่เดียว</span></div>
+      </div>
+      <div class="result">
+        <div class="result__role"><span class="label" style="font-size:13px">Problem 02</span>Sales</div>
+        <div class="result__body"><span class="before">เดิม · รู้ว่าของไม่พอหลังเลือกครบทั้งบิล</span><span class="now">ตอนนี้ · เห็นสต็อกระหว่างเลือก แก้เฉพาะรายการที่ไม่พอ</span></div>
+      </div>
+      <div class="result">
+        <div class="result__role"><span class="label" style="font-size:13px">Problem 03</span>หลังบ้าน</div>
+        <div class="result__body"><span class="before">เดิม · แยกไม่ออกว่าบิลรอ ERP หรือรอเงิน</span><span class="now">ตอนนี้ · บิลแสดงสถานะ รอดำเนินการ → รอชำระ → ชำระแล้ว</span><span class="gain">บริษัทได้ · ออกแบบให้ไม่ต้องโทรถาม Sales เรื่องยอดค้าง</span></div>
+      </div>
+      <div class="result">
+        <div class="result__role"><span class="label" style="font-size:13px">Problem 04</span>พนักงานใหม่</div>
+        <div class="result__body"><span class="before">เดิม · ต้องเรียนกฎการขายให้ทัน</span><span class="now">ตอนนี้ · กฎขึ้นบนจอตอนที่ต้องใช้</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 Learnings -->
+<section id="learn" class="cs-section cs-section--alt">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">07 — บทเรียน</span>
+      <h2>ทำแอปใหม่บนระบบเดิม ต้องตกลงขอบเขตก่อนวาดจอ</h2>
+    </div>
+    <div class="learn">
+      <div><span class="label" style="font-size:13px">01</span><p>ตกลงก่อนว่าข้อมูลไหนอยู่ในแอป ข้อมูลไหนอยู่หลังบ้าน</p></div>
+      <div><span class="label" style="font-size:13px">02</span><p>ถามว่าใครรอข้อมูลนี้อยู่ ก่อนออกแบบแต่ละขั้น</p></div>
+      <div><span class="label" style="font-size:13px">03</span><p>เก็บตัวเลขก่อนขึ้นระบบ ไว้เทียบหลังใช้งาน</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="cs-footer">
+  <div class="cs-footer__inner">
+    <span>Field-sales CRM &amp; Sales-operations Platform · Product Design Case Study</span>
+    <span style="display:flex;gap:20px;flex-wrap:wrap"><a href="field-sales.html">← แบบย่อ (Key Screens)</a><a href="index.html">← ผลงานทั้งหมด</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
