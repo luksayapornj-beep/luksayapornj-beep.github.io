@@ -3,8 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visitor Management — Case Study</title>
-<meta name="description" content="Product design case study: a visitor management system for a manufacturing site, connecting registration, approval, consent, training, gate check-in and check-out across five roles and three devices.">
+<title>Visitor Management — Case Study · Luksayaporn J.</title>
+<meta name="description" content="How a visitor management system for a manufacturing plant lets every role see each visitor&#x27;s status, from the gate until they leave. Full case study by Luksayaporn J.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Visitor Management — Case Study · Luksayaporn J.">
+<meta property="og:description" content="How a visitor management system for a manufacturing plant lets every role see each visitor&#x27;s status, from the gate until they leave. Full case study by Luksayaporn J.">
+<meta property="og:url" content="https://luksayapornj-beep.github.io/vms-full.html">
+<meta property="og:image" content="https://luksayapornj-beep.github.io/assets/og/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="image_src" href="assets/og/og-card.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +21,7 @@
 <style>
   /* Case theme. Not in tokens.json yet. */
   :root {
-    --case-accent: #0E8A6A;
+    --case-accent: #0B6E55;
     --case-accent-strong: #0B6E55;
     --case-accent-soft: #E7F4EF;
     --case-on-accent: #FFFFFF;
@@ -212,6 +220,7 @@
 
 <nav class="cs-nav" aria-label="Sections">
   <div class="cs-nav__inner">
+    <a href="index.html" aria-label="← ผลงานทั้งหมด" style="flex:none;font-size:16px;color:inherit;text-decoration:none;padding:4px 2px">←</a>
     <a class="cs-nav__title" href="#overview">VMS</a>
     <div class="cs-nav__links">
       <a href="#problem">ปัญหา</a>
@@ -222,7 +231,7 @@
       <a href="#outcome">ผลลัพธ์</a>
       <a href="#learn">สิ่งที่ได้เรียนรู้</a>
     </div>
-    <span style="display:inline-flex;gap:6px;align-items:center;flex:none;font-size:13px;color:#2B2B2B" aria-label="Language"><button type="button" data-lang="th" style="all:unset;cursor:pointer">TH</button><span style="opacity:.35">|</span><button type="button" data-lang="en" style="all:unset;cursor:pointer">EN</button></span>
+    <span style="display:inline-flex;gap:6px;align-items:center;flex:none;font-size:13px;color:var(--color-text,#2B2B2B)" role="group" aria-label="ภาษา"><button type="button" data-lang="th" style="all:unset;cursor:pointer">TH</button><span style="opacity:.35">|</span><button type="button" data-lang="en" style="all:unset;cursor:pointer">EN</button></span>
   </div>
 </nav>
 
@@ -243,9 +252,10 @@
         <div class="card card--soft"><span class="label">เป้าหมายโครงการ</span><span class="card__title">รู้ตลอดเวลาว่าใครยังอยู่ในโรงงาน ตั้งแต่ผ่านประตูจนออกไป</span></div>
       </div>
       <dl class="meta">
-        <div><dt>Role</dt><dd>Product Designer · End-to-end</dd></div>
+        <div><dt>Role</dt><dd>UX/UI Designer · requirement จนส่งงาน dev · ทำงานกับ PM</dd></div>
         <div><dt>Platform</dt><dd>Desktop web · Mobile web · Handheld</dd></div>
         <div><dt>Industry</dt><dd>F&amp;B Manufacturing</dd></div>
+        <div><dt>Status</dt><dd>ขึ้นระบบแล้ว</dd></div>
       </dl>
     </div>
     <div class="stack stack--sm">
@@ -253,7 +263,7 @@
         <img src="assets/vms/case-study/vms-dashboard-hero.webp" alt="ผู้มาติดต่อวันนี้ บน desktop" width="2654" height="1560">
         <img class="handheld" src="assets/vms/case-study/hh-home-device.webp" alt="หน้าหลักบน handheld สำหรับ Security ที่ประตู" width="1006" height="2496">
       </div>
-      <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า สี โลโก้ และข้อมูลจริงถูกแทนด้วยข้อมูลสมมติ</p>
+      <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า สี โลโก้ และข้อมูลจริง เปลี่ยนเป็นข้อมูลสมมติ</p>
     </div>
   </div>
 </header>
@@ -264,11 +274,11 @@
     <div class="split split--top">
       <div class="stack stack--sm">
         <span class="eyebrow">บทบาทของฉัน</span>
-        <p class="h3">รับช่วงต่อจาก Requirement<br>จนเป็น Flow และ UI ที่ทีมพัฒนาใช้ต่อได้</p>
+        <p class="h3">รับช่วงต่อจาก requirement<br>จนเป็น flow และ UI ที่ทีมพัฒนาใช้ต่อได้</p>
       </div>
       <dl class="deflist">
-        <dt>PM</dt><dd>เก็บ Requirement และ Flow ภาพรวม ดูแล UAT</dd>
-        <dt class="is-me">Product Designer</dt><dd>นำ Requirement และข้อจำกัดหน้างานมาวาง Flow และออกแบบ UI พร้อมตรวจกฎของระบบและกรณีพิเศษ ก่อนส่งให้ทีมพัฒนา</dd>
+        <dt>PM</dt><dd>เก็บ requirement และ flow ภาพรวม ดูแล UAT (ทดสอบรับมอบกับผู้ใช้จริง)</dd>
+        <dt class="is-me">UX/UI Designer</dt><dd>นำ requirement และข้อจำกัดหน้างานมาวาง flow และออกแบบ UI พร้อมตรวจกฎของระบบและกรณีพิเศษ ก่อนส่งให้ทีมพัฒนา</dd>
       </dl>
     </div>
   </div>
@@ -381,12 +391,12 @@
           <span>เงื่อนไขก่อนสแกนเข้า · ระบบตรวจให้อัตโนมัติ</span>
           <div>
             <div class="tx__check"><b>✓ Consent <small>Edge 02</small></b>ยืนยันแล้ว หรือยืนยันที่หน้างานก่อนเข้า</div>
-            <div class="tx__check"><b>✓ การอบรม <small>Edge 01</small></b>ระบบเช็คว่าต้องอบรมไหม และแสดงวันที่อบรมล่าสุด ถ้าหมดอายุต้องอบรมใหม่ก่อน</div>
-            <div class="tx__check"><b>✓ ช่วงเวลา QR <small>Edge 03</small></b>ใช้ได้ตั้งแต่ 15 นาทีก่อนนัดจนสิ้นวันนัด</div>
+            <div class="tx__check"><b>✓ การอบรม <small>Edge 01</small></b>ระบบเช็กว่าต้องอบรมไหม และแสดงวันที่อบรมล่าสุด ถ้าหมดอายุต้องอบรมใหม่ก่อน</div>
+            <div class="tx__check"><b>✓ ช่วงเวลา QR <small>Edge 03</small></b>ใช้ได้ตั้งแต่ช่วงสั้น ๆ ก่อนนัดจนสิ้นวันนัด</div>
           </div>
         </div>
       </div>
-      <div class="tx__row"><span class="tx__id">T5</span><span><span class="st">เริ่มต้น</span></span><div class="tx__act"><span class="tx__who">SECURITY</span><span class="tx__what">สแกน Temporary Card (ครั้งถัดไป)</span></div><span class="tx__arrow">→</span><span><span class="st st--in">เข้าพื้นที่แล้ว</span></span><span class="tx__sys">ไม่ต้องรออนุมัติ ระบบเช็คว่าบัตรยังไม่หมดอายุและเข้าพื้นที่นี้ได้</span></div>
+      <div class="tx__row"><span class="tx__id">T5</span><span><span class="st">เริ่มต้น</span></span><div class="tx__act"><span class="tx__who">SECURITY</span><span class="tx__what">สแกน Temporary Card (ครั้งถัดไป)</span></div><span class="tx__arrow">→</span><span><span class="st st--in">เข้าพื้นที่แล้ว</span></span><span class="tx__sys">ไม่ต้องรออนุมัติ ระบบเช็กว่าบัตรยังไม่หมดอายุและเข้าพื้นที่นี้ได้</span></div>
       <div class="tx__row"><span class="tx__id">T6</span><span><span class="st st--in">เข้าพื้นที่แล้ว</span></span><div class="tx__act"><span class="tx__who">HOST</span><span class="tx__what">ยืนยันว่าพบแล้ว</span></div><span class="tx__arrow">→</span><span><span class="st st--met">พบ Host แล้ว</span></span><span class="tx__sys">ยังนับอยู่ในพื้นที่</span></div>
       <div class="tx__row"><span class="tx__id">T7</span><span><span class="st st--met">พบ Host แล้ว</span></span><div class="tx__act"><span class="tx__who">HOST</span><span class="tx__what">ยืนยันจบการพบ</span></div><span class="tx__arrow">→</span><span><span class="st st--end">จบการพบ</span></span><span class="tx__sys">ยังนับอยู่ในพื้นที่ จนกว่าจะสแกนออก</span></div>
       <div class="tx__row"><span class="tx__id">T8</span><span><span class="st st--end">จบการพบ</span></span><div class="tx__act"><span class="tx__who">SECURITY</span><span class="tx__what">สแกนออกที่ประตู</span></div><span class="tx__arrow">→</span><span><span class="st st--out">ออกแล้ว</span></span><span class="tx__sys">นำออกจากจำนวน "อยู่ในพื้นที่ตอนนี้"</span></div>
@@ -582,14 +592,14 @@
 <section id="edge" class="cs-section">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">06 — เมื่อไม่เป็นตามแผน</span>
+      <span class="eyebrow">06 — เมื่อไม่เป็นไปตามแผน</span>
       <h2>เมื่อเรื่องไม่เป็นไปตามแผน</h2>
     </div>
     <div class="edge-table" style="background:var(--color-bg-subtle)">
       <div class="edge-row edge-row--head" aria-hidden="true"><span>กรณี</span><span>สถานการณ์</span><span>ระบบตอบสนอง</span><span></span></div>
-      <div class="edge-row"><h3><span>01</span>การอบรมหมดอายุ</h3><p>นัดใหม่ แต่ผลอบรมเดิมหมดอายุแล้ว</p><div class="resp">ระบบเช็คตอนสร้างนัด แจ้ง Visitor ทางอีเมล แล้วอบรมใหม่ที่หน้างาน<span class="tag">รู้ก่อนเดินทางมา ไม่ถูกกันที่ประตู</span></div></div>
+      <div class="edge-row"><h3><span>01</span>การอบรมหมดอายุ</h3><p>นัดใหม่ แต่ผลอบรมเดิมหมดอายุแล้ว</p><div class="resp">ระบบเช็กตอนสร้างนัด แจ้ง Visitor ทางอีเมล แล้วอบรมใหม่ที่หน้างาน<span class="tag">รู้ก่อนเดินทางมา ไม่ถูกกันที่ประตู</span></div></div>
       <div class="edge-row"><h3><span>02</span>ยังไม่ยืนยัน Consent</h3><p>มาถึงโดยยังไม่ยืนยัน Consent</p><div class="resp">ยังไม่ออก QR แต่ยืนยันที่หน้างานได้ก่อนเข้าพื้นที่<span class="tag">พลาดขั้นตอนก็ยังไปต่อได้</span></div></div>
-      <div class="edge-row"><h3><span>03</span>เวลานัดไม่ตรงแผน</h3><p>นัดเปลี่ยนหลังได้ QR หรือมาก่อนเวลา</p><div class="resp">QR เดิมยังใช้ได้ ระบบส่งอีเมลแจ้งเวลาใหม่ QR ใช้ได้ตั้งแต่ 15 นาทีก่อนนัดถึงสิ้นวัน<span class="tag">ไม่ต้องรอ QR ใหม่</span></div></div>
+      <div class="edge-row"><h3><span>03</span>เวลานัดไม่ตรงแผน</h3><p>นัดเปลี่ยนหลังได้ QR หรือมาก่อนเวลา</p><div class="resp">QR เดิมยังใช้ได้ ระบบส่งอีเมลแจ้งเวลาใหม่ QR ใช้ได้ตั้งแต่ช่วงสั้น ๆ ก่อนนัดถึงสิ้นวัน<span class="tag">ไม่ต้องรอ QR ใหม่</span></div></div>
       <div class="edge-row"><h3><span>04</span>สแกน QR ไม่ได้</h3><p>แบตหมดหรือ QR Carbon หาย ทั้งที่ประตูและในพื้นที่</p><div class="resp">Security ค้นชื่อและตรวจบัตรประชาชน Host ค้นชื่อเพื่อยืนยันพบได้<span class="tag">QR เร็วที่สุด แต่ไม่ใช่ทางเดียว</span></div><img src="assets/vms/case-study/hh-detail-device.webp" alt="Handheld หน้ายืนยันตัวตนด้วยบัตรประชาชน" width="1006" height="2496" loading="lazy"></div>
       <div class="edge-row"><h3><span>05</span>Walk-in ถูกปฏิเสธ</h3><p>Host ปฏิเสธ Walk-in ที่ Security ลงทะเบียนไว้</p><div class="resp">เปลี่ยนเป็น ปฏิเสธ ไม่ออก QR Carbon และแจ้งเหตุผลบน Handheld ถ้าจะเข้าอีกต้องลงทะเบียนใหม่<span class="tag">ผลกลับมาที่ประตูทันที</span></div><img src="assets/vms/case-study/hh-home-device.webp" alt="Handheld แจ้งเตือน Walk-in ถูกปฏิเสธ" width="1006" height="2496" loading="lazy"></div>
     </div>
@@ -602,7 +612,7 @@
     <div class="cs-intro">
       <span class="eyebrow">07 — ผลลัพธ์</span>
       <h2>จากหน้าจอ สู่วิธีทำงานของโรงงาน</h2>
-      <span class="note-pill">ระบบขึ้นใช้งานจริงแล้ว · ยังไม่มีตัวเลขวัดผล</span>
+      <span class="note-pill">ขึ้นระบบแล้ว · ยังไม่มีตัวเลขวัดผล</span>
     </div>
     <div class="results">
       <div class="result"><div class="result__role"><span class="label">ปัญหาข้อ 1</span>Host</div><div class="result__body"><p class="before">เดิม · รับข้อมูลผู้มาติดต่อจากโทรศัพท์และอีเมล แล้วรวบรวมเอง</p><p class="now">ตอนนี้ · ส่งลิงก์ให้ Visitor กรอกเอง ข้อมูลทุกทางรวมอยู่ที่เดียว</p><p class="gain">บริษัทได้ · ทุกรายการมีที่มาและตรวจย้อนได้</p></div></div>
@@ -630,6 +640,7 @@
 
 </main>
 
+<nav data-case-end aria-label="เคสถัดไปและช่องทางติดต่อ" style="width:100%;max-width:1208px;box-sizing:border-box;margin:0 auto;padding:40px 24px 56px;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;color:var(--color-text,#2b2b2b)"><a href="bizplus-full.html" style="color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:var(--color-text-faint,#6b6b65)">เคสถัดไป</span><span style="font-size:20px;font-weight:600;line-height:1.3">BIZ+ Digital Café Solution →</span></a><span style="display:flex;gap:20px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="Luksayaporn_J_ProductDesigner_CV.pdf" target="_blank" rel="noopener" style="color:inherit">CV ↗</a><a href="mailto:luksayaporn.j@gmail.com" style="color:inherit">อีเมล ↗</a><a href="https://www.linkedin.com/in/luksayaporn" target="_blank" rel="noopener" style="color:inherit">LinkedIn ↗</a></span></nav>
 <footer class="cs-footer">
   <div class="cs-footer__inner">
     <span>Visitor Management System · Product Design Case Study</span>

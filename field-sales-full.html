@@ -3,8 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Field-sales CRM &amp; Sales-operations Platform — Case Study</title>
-<meta name="description" content="Product design case study: a tablet app for a B2B distributor's field-sales team, from route planning to payment, on top of an existing ERP.">
+<title>Field-sales CRM &amp; Sales-operations Platform — Case Study · Luksayaporn J.</title>
+<meta name="description" content="A tablet app for a B2B distributor&#x27;s field sales team: route plan, store check-in, billing and payment, connected to the ERP. Full case study by Luksayaporn J.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Field-sales CRM &amp; Sales-operations Platform — Case Study · Luksayaporn J.">
+<meta property="og:description" content="A tablet app for a B2B distributor&#x27;s field sales team: route plan, store check-in, billing and payment, connected to the ERP. Full case study by Luksayaporn J.">
+<meta property="og:url" content="https://luksayapornj-beep.github.io/field-sales-full.html">
+<meta property="og:image" content="https://luksayapornj-beep.github.io/assets/og/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="image_src" href="assets/og/og-card.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +21,7 @@
 <style>
   /* Case theme. Not in tokens.json yet. */
   :root {
-    --case-accent: #0E8A6A;
+    --case-accent: #0B6E55;
     --case-accent-strong: #0B6E55;
     --case-accent-soft: #E7F4EF;
     --case-on-accent: #FFFFFF;
@@ -67,6 +75,7 @@
 
 <nav class="cs-nav" aria-label="Sections">
   <div class="cs-nav__inner">
+    <a href="index.html" aria-label="← ผลงานทั้งหมด" style="flex:none;font-size:16px;color:inherit;text-decoration:none;padding:4px 2px">←</a>
     <a class="cs-nav__title" href="#overview">Field Sales</a>
     <div class="cs-nav__links">
       <a href="#problem">ปัญหา</a>
@@ -77,7 +86,7 @@
       <a href="#outcome">ผลลัพธ์</a>
       <a href="#learn">สิ่งที่ได้เรียนรู้</a>
     </div>
-    <span style="display:inline-flex;gap:6px;align-items:center;flex:none;font-size:13px;color:#2B2B2B" aria-label="Language"><button type="button" data-lang="th" style="all:unset;cursor:pointer">TH</button><span style="opacity:.35">|</span><button type="button" data-lang="en" style="all:unset;cursor:pointer">EN</button></span>
+    <span style="display:inline-flex;gap:6px;align-items:center;flex:none;font-size:13px;color:var(--color-text,#2B2B2B)" role="group" aria-label="ภาษา"><button type="button" data-lang="th" style="all:unset;cursor:pointer">TH</button><span style="opacity:.35">|</span><button type="button" data-lang="en" style="all:unset;cursor:pointer">EN</button></span>
   </div>
 </nav>
 
@@ -89,18 +98,20 @@
     <div class="stack" style="gap:24px">
       <div class="pills"><span class="pill pill--solid">Field-sales CRM &amp; Sales-operations Platform</span><span class="pill">Enterprise · B2B Field Sales</span></div>
       <h1>บิลใบเดียว ต้องถูกต้องตั้งแต่หน้าร้าน</h1>
-      <p class="lead">แอปบนแท็บเล็ตสำหรับทีมขายของผู้จัดจำหน่าย B2B ช่วยให้พนักงานขายทำงานตั้งแต่วางแผนเข้าร้าน เช็คอิน เปิดบิล ไปจนถึงการชำระเงินและจัดการงานขาย โดยเชื่อมต่อกับระบบ ERP และกระบวนการอนุมัติขององค์กร</p>
+      <p class="lead">แอปบนแท็บเล็ตสำหรับทีมขายของผู้จัดจำหน่าย B2B ช่วยให้พนักงานขายทำงานตั้งแต่วางแผนเข้าร้าน เช็กอิน เปิดบิล ไปจนถึงการชำระเงินและจัดการงานขาย โดยเชื่อมต่อกับระบบ ERP และกระบวนการอนุมัติขององค์กร</p>
     </div>
     <div class="stack">
       <div class="grid-3">
         <div class="card card--soft"><span class="label">โจทย์</span><span class="card__title">วางแผน เยี่ยมร้าน เปิดบิล และรับเงิน ทำจบในแอปเดียว</span></div>
-        <div class="card card--soft"><span class="label">ความซับซ้อน</span><span class="card__title">4 บทบาท · กฎเปิด ยกเลิก และอนุมัติบิล · เชื่อม ERP แบบ real-time</span></div>
+        <div class="card card--soft"><span class="label">ความซับซ้อน</span><span class="card__title">4 บทบาท · กฎเปิด ยกเลิก และอนุมัติบิล · เชื่อมกับ ERP เดิม</span></div>
         <div class="card card--soft"><span class="label">เป้าหมายโครงการ</span><span class="card__title">ปรับประสบการณ์ทำงานของ Sales เพิ่มประสิทธิภาพการขาย และรองรับการขยายฐานลูกค้า</span></div>
       </div>
       <dl class="meta">
-        <div><dt>Role</dt><dd>UX/UI Designer · ทำงานร่วมกับ BA</dd></div>
+        <div><dt>Role</dt><dd>UX/UI Designer คนเดียวของโปรเจกต์ · ทำงานกับ PM และ BA</dd></div>
         <div><dt>Platform</dt><dd>Tablet app · Receipt printer · Web report</dd></div>
+        <div><dt>Timeline</dt><dd>2023–2024 · 2 เฟส</dd></div>
         <div><dt>Industry</dt><dd>F&amp;B Distribution</dd></div>
+        <div><dt>Status</dt><dd>ขึ้นระบบครบ 2 เฟส</dd></div>
       </dl>
     </div>
     <div class="stack stack--sm">
@@ -109,7 +120,7 @@
         <div class="device device--lead"><img src="assets/field-sales/screens/rp-map-concept.webp" alt="แผนงานวันนี้ แบบแผนที่" width="1236" height="1881"></div>
         <div class="device"><img src="assets/field-sales/screens/new-order-filled.webp" alt="หน้าเปิดบิลขาย" width="1488" height="2266"></div>
       </div>
-      <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า ชื่อระบบ โลโก้ และข้อมูลจริงถูกแทนด้วยข้อมูลสมมติ</p>
+      <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า ชื่อระบบ โลโก้ และข้อมูลจริง เปลี่ยนเป็นข้อมูลสมมติ</p>
     </div>
   </div>
 </header>
@@ -120,13 +131,13 @@
     <div class="split split--top split--ruled">
       <div class="stack stack--sm">
         <span class="label" style="font-size:14px;font-weight:500">บทบาทของฉัน</span>
-        <span class="h3">Designer คนเดียวของโครงการ ทั้ง 2 เฟส</span>
+        <span class="h3">Designer คนเดียวของโปรเจกต์ ทั้ง 2 เฟส</span>
       </div>
       <div class="stack" style="gap:16px">
         <dl class="deflist">
-          <dt>PM</dt><dd>เก็บ requirement ระดับฟิลด์ · ดูแลช่วง UAT</dd>
+          <dt>PM</dt><dd>เก็บ requirement ระดับฟิลด์ · ดูแลช่วง UAT (ทดสอบรับมอบกับผู้ใช้จริง)</dd>
           <dt>BA</dt><dd>วาง business logic และกฎการขาย</dd>
-          <dt class="is-me">UX/UI Designer</dt><dd>วาง Flow และออกแบบ UI จาก requirement ตรวจ edge case และซัพพอร์ตทีมพัฒนาจนถึง UAT</dd>
+          <dt class="is-me">UX/UI Designer</dt><dd>วาง flow และออกแบบ UI จาก requirement ตรวจ edge case และช่วยทีมพัฒนาจนถึง UAT</dd>
         </dl>
         <p class="fine" style="font-size:14px;line-height:1.6">เฟส 1 งานขายและเก็บเงินหน้าร้าน · เฟส 2 แผนงานแบบรอบ แคมเปญ แต้มสะสม และพรีออเดอร์ · 2023–2024</p>
       </div>
@@ -144,7 +155,7 @@
     </div>
     <div class="card card--pad">
       <ol class="numbered">
-        <li><span class="no">01</span><div><span class="t">ตรวจไม่ได้ว่า Sales ไปถึงร้านจริง <small>· Sales Manager</small></span><p class="b">ต้องตามเช็คเองว่า Sales ไปร้านตามแผนไหม</p></div></li>
+        <li><span class="no">01</span><div><span class="t">ตรวจไม่ได้ว่า Sales ไปถึงร้านจริง <small>· Sales Manager</small></span><p class="b">ต้องตามเช็กเองว่า Sales ไปร้านตามแผนไหม</p></div></li>
         <li><span class="no">02</span><div><span class="t">รู้ว่าของไม่พอช้าเกินไป <small>· Sales</small></span><p class="b">ERP ตรวจสต็อกตอนเปิดบิล ถ้าไม่พอ Sales ต้องแก้รายการต่อหน้าเจ้าของร้านก่อนรับเงิน</p></div></li>
         <li><span class="no">03</span><div><span class="t">มองไม่เห็นว่าบิลค้างอยู่ขั้นไหน <small>· หลังบ้าน</small></span><p class="b">ไม่เห็นสถานะ แยกไม่ได้ว่าบิลยังรอเลขจาก ERP หรือร้านยังไม่จ่าย</p></div></li>
         <li><span class="no">04</span><div><span class="t">ขั้นตอนและกฎการขายอยู่ในความจำของพนักงาน <small>· พนักงานใหม่</small></span><p class="b">ทีมเปลี่ยนคนบ่อย คนใหม่ต้องเรียนกฎการขายให้ทัน</p></div></li>
@@ -188,8 +199,8 @@
     <div class="stack" style="gap:24px">
       <div class="stages" role="list">
         <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">01</span>วางแผน</div><p>วางเส้นทางและร้านที่ต้องไปในแต่ละวัน</p><img src="assets/field-sales/sys-step-1.webp" alt="" width="1254" height="1254" loading="lazy"></div>
-        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">02</span>เยี่ยมร้าน</div><p>เช็คอิน ดูข้อมูลร้าน และเช็คเอาท์</p><img src="assets/field-sales/sys-step-2.webp" alt="" width="1254" height="1254" loading="lazy"></div>
-        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">03</span>ขายและเปิดบิล</div><p>เลือกสินค้า ใส่โปรโมชั่น และเปิดบิล</p><img src="assets/field-sales/sys-step-3.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">02</span>เยี่ยมร้าน</div><p>เช็กอิน ดูข้อมูลร้าน และเช็กเอาต์</p><img src="assets/field-sales/sys-step-2.webp" alt="" width="1254" height="1254" loading="lazy"></div>
+        <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">03</span>ขายและเปิดบิล</div><p>เลือกสินค้า ใส่โปรโมชัน และเปิดบิล</p><img src="assets/field-sales/sys-step-3.webp" alt="" width="1254" height="1254" loading="lazy"></div>
         <div class="stage" role="listitem"><div class="stage__head"><span class="stage__no">04</span>จัดการงานขาย</div><p>รับเงิน เก็บหลักฐานส่งของ และพิมพ์ใบเสร็จ</p><img src="assets/field-sales/sys-step-4.webp" alt="" width="1254" height="1254" loading="lazy"></div>
         <span class="stage-arrow" style="left:24.375%" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="var(--case-on-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="stage-arrow" style="left:50%" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h9M7.5 3.5L11 7l-3.5 3.5" stroke="var(--case-on-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -207,7 +218,7 @@
           <div class="erp-items">
             <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>ข้อมูลลูกค้า</span>
             <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>ข้อมูลสินค้า</span>
-            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>ราคาและโปรโมชั่น</span>
+            <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>ราคาและโปรโมชัน</span>
             <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="13" width="8" height="7" rx="1"/><rect x="13" y="13" width="8" height="7" rx="1"/><rect x="8" y="4" width="8" height="7" rx="1"/></svg>สต็อก</span>
             <span><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>เครดิต</span>
           </div>
@@ -229,7 +240,7 @@
           <thead><tr><th scope="col">ขั้นตอน</th><th scope="col" class="is-cash">Cash Van · ขายและรับเงินที่ร้าน</th><th scope="col" class="is-credit">Sales Credit · เปิดบิล ส่งของทีหลัง</th></tr></thead>
           <tbody>
             <tr><th scope="row">วางแผนงาน</th><td>ระบบตั้งเป็นวันนี้ให้เลย</td><td>Sales ระบุวันเอง</td></tr>
-            <tr><th scope="row">เปิดบิล</th><td>ขายจากของบนรถ ระบบตรวจของในคลังก่อนให้รับชำระ</td><td>เปิดบิลแยกตามสาขา เลือกที่อยู่จัดส่งและกำหนดวันจัดส่ง</td></tr>
+            <tr><th scope="row">การเปิดบิล</th><td>ขายจากของบนรถ ระบบตรวจของในคลังก่อนให้รับชำระ</td><td>เปิดบิลแยกตามสาขา เลือกที่อยู่จัดส่งและกำหนดวันจัดส่ง</td></tr>
             <tr><th scope="row">ประเภทการชำระ</th><td>เงินสด หรือ QR ที่ร้าน</td><td>เลือกก่อนเปิดบิล: เครดิต (แสดงวงเงินคงเหลือของสาขา) หรือโอนเงินก่อน</td></tr>
             <tr><th scope="row">จัดการงานขาย</th><td>ร้านเซ็นรับบนจอ พิมพ์ใบเสร็จ จบที่ร้าน</td><td>ส่งของตามวันที่กำหนดไว้ ถ้าเลือกโอนแต่ร้านไม่โอน Sales ต้องส่งคำขอยกเลิกบิลให้อนุมัติ</td></tr>
           </tbody>
@@ -245,7 +256,7 @@
     <div class="cs-intro">
       <span class="eyebrow">04 — ออกแบบอะไร</span>
       <h2>เรียงตามงานหนึ่งวันของ Sales</h2>
-      <p class="body-lg">เล่าตาม flow ของ Cash Van ความต่างของ Sales Credit ดูได้ที่<a href="#cash-credit" style="font-weight:600">ตารางใน Section 03</a></p>
+      <p class="body-lg">เล่าตาม flow ของ Cash Van ความต่างของ Sales Credit ดูได้ที่<a href="#cash-credit" style="font-weight:600">ตารางในหัวข้อ 03</a></p>
     </div>
 
     <!-- S01 -->
@@ -255,17 +266,17 @@
         <span class="label" style="font-size:13px">S01 · แท็บเล็ต · Sales</span>
         <h3 class="h3">Home ของ Sales เรียงเมนูตามช่วงงาน</h3>
         <ol class="steps-list">
-          <li>งานวันนี้อยู่บนสุด กดนำทางหรือเช็คอินร้านถัดไปได้เลย</li>
+          <li>งานวันนี้อยู่บนสุด กดนำทางหรือเช็กอินร้านถัดไปได้เลย</li>
           <li>ยอดรอชำระแยกสีจากยอดขาย</li>
-          <li>จัดเมนู 19 รายการใหม่: 3 เมนูหลักอยู่แถบล่าง ที่เหลือแบ่งเป็น 5 กลุ่มตามช่วงงาน</li>
-          <li>เช็คอินแล้วเข้าหน้าร้านทันที งานของร้านทำที่หน้าร้านที่เดียว</li>
+          <li>จัดเมนูใหม่: 3 เมนูหลักอยู่แถบล่าง ที่เหลือแบ่งเป็น 5 กลุ่มตามช่วงงาน</li>
+          <li>เช็กอินแล้วเข้าหน้าร้านทันที งานของร้านทำที่หน้าร้านที่เดียว</li>
         </ol>
         <div class="ux-note"><span class="label">UX</span><p>Home ไว้ดูงานทั้งวัน งานของร้านทำที่หน้าร้าน</p></div>
         <dl class="decision">
-          <div><dt>ที่มา</dt><dd>สร้างรายการขายได้หลังเช็คอินที่ร้านเท่านั้น</dd></div>
-          <div><dt>ตัดสินใจ</dt><dd>เช็คอินแล้วพาไปหน้าร้าน และเอาเมนูเปิดบิลออกจาก Home</dd></div>
+          <div><dt>ที่มา</dt><dd>สร้างรายการขายได้หลังเช็กอินที่ร้านเท่านั้น</dd></div>
+          <div><dt>ตัดสินใจ</dt><dd>เช็กอินแล้วพาไปหน้าร้าน และเอาเมนูเปิดบิลออกจาก Home</dd></div>
           <div><dt>เพราะ</dt><dd>ถ้าสร้างรายการจาก Home ได้ Sales จะไม่แน่ใจว่ารายการผูกกับร้านไหน</dd></div>
-          <div><dt>ไม่เลือก</dt><dd>ล็อกเมนูบน Home ไว้จนกว่าจะเช็คอิน เพราะพอปลดล็อกแล้วก็ยังไม่ชัดว่าเป็นของร้านไหน</dd></div>
+          <div><dt>ไม่เลือก</dt><dd>ล็อกเมนูบน Home ไว้จนกว่าจะเช็กอิน เพราะพอปลดล็อกแล้วก็ยังไม่ชัดว่าเป็นของร้านไหน</dd></div>
         </dl>
       </div>
     </article>
@@ -278,7 +289,7 @@
         <h3 class="h3">Home ของ Sales Manager ใช้เมนูเดียวกับ Sales แล้วเพิ่มงานอนุมัติไว้บนสุด</h3>
         <ol class="steps-list">
           <li>คำขอจาก Sales อยู่บนสุด อนุมัติหรือปฏิเสธได้จาก Home ปฏิเสธต้องใส่เหตุผล</li>
-          <li>สรุปทีม: เยี่ยมร้านเทียบแผน ยอดขาย และคนที่ยังไม่เช็คอิน</li>
+          <li>สรุปทีม: เยี่ยมร้านเทียบแผน ยอดขาย และคนที่ยังไม่เช็กอิน</li>
           <li>เมนูและแถบล่างชุดเดียวกับ S01</li>
         </ol>
         <div class="ux-note"><span class="label">UX</span><p>ไม่ต้องเรียนหน้าจอใหม่ และคำขอของ Sales ไม่ค้าง</p></div>
@@ -301,7 +312,7 @@
           <div class="ux-note"><span class="label">UX</span><p>เปิดมาก็รู้ว่าวันนี้ต้องไปร้านไหนก่อน</p></div>
           <dl class="decision">
             <div><dt>ตัดสินใจ</dt><dd>เรียงร้านในแผนตามเส้นทาง จากใกล้ไปไกล</dd></div>
-            <div><dt>เพราะ</dt><dd>Sales รู้ว่าควรไปร้านไหนก่อนหลัง ไม่ต้องวนกลับ และประหยัดน้ำมัน</dd></div>
+            <div><dt>เพราะ</dt><dd>Sales รู้ว่าควรไปร้านไหนก่อนหลัง ออกแบบให้ไม่ต้องวนกลับ และตั้งใจให้ประหยัดน้ำมัน</dd></div>
           </dl>
         </div>
       </div>
@@ -323,18 +334,18 @@
 
     <!-- S04 -->
     <article class="split">
-      <div class="device device-solo"><img src="assets/field-sales/screens/new-store-info.webp" alt="หน้าข้อมูลร้าน ก่อนเช็คอินมีปุ่มเช็คอินปุ่มเดียว" width="1488" height="2266" loading="lazy"></div>
+      <div class="device device-solo"><img src="assets/field-sales/screens/new-store-info.webp" alt="หน้าข้อมูลร้าน ก่อนเช็กอินมีปุ่มเช็กอินปุ่มเดียว" width="1488" height="2266" loading="lazy"></div>
       <div class="stack">
         <span id="s04" class="label" style="font-size:13px;scroll-margin-top:120px">S04 · แท็บเล็ต · Sales</span>
-        <h3 class="h3">ก่อนเช็คอิน หน้าร้านมีปุ่มเดียว</h3>
+        <h3 class="h3">ก่อนเช็กอิน หน้าร้านมีปุ่มเดียว</h3>
         <ol class="steps-list">
           <li>ข้อมูลร้านรวมอยู่หน้าเดียว</li>
-          <li>ก่อนเช็คอิน มีแค่ปุ่มเช็คอิน เมนูขายซ่อนไว้</li>
-          <li>ใต้ปุ่มบอกว่าเช็คอินแล้วจะใช้เมนูไหนได้บ้าง</li>
+          <li>ก่อนเช็กอิน มีแค่ปุ่มเช็กอิน เมนูขายซ่อนไว้</li>
+          <li>ใต้ปุ่มบอกว่าเช็กอินแล้วจะใช้เมนูไหนได้บ้าง</li>
         </ol>
         <div class="ux-note"><span class="label">UX</span><p>จอบอกเองว่าต้องทำอะไรก่อน ไม่ต้องจำกฎ</p></div>
         <dl class="decision">
-          <div><dt>ตัดสินใจ</dt><dd>ซ่อนเมนูขายจนกว่าจะเช็คอิน ให้เหลือปุ่มเช็คอินปุ่มเดียว</dd></div>
+          <div><dt>ตัดสินใจ</dt><dd>ซ่อนเมนูขายจนกว่าจะเช็กอิน ให้เหลือปุ่มเช็กอินปุ่มเดียว</dd></div>
           <div><dt>เพราะ</dt><dd>หน้าร้านมีหลายเมนู ถ้าแสดงทุกเมนูที่ยังกดไม่ได้ Sales ต้องไล่หาว่าต้องกดอะไรก่อน</dd></div>
         </dl>
       </div>
@@ -432,12 +443,12 @@
 <section id="edge" class="cs-section cs-section--alt">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">05 — เมื่อไม่เป็นตามแผน</span>
+      <span class="eyebrow">05 — เมื่อไม่เป็นไปตามแผน</span>
       <h2>กฎการขายที่ Sales เจอระหว่างทำงาน</h2>
     </div>
     <div class="edges">
       <div class="edge">
-        <div><h3>ยกเลิกบิลที่ส่งแล้ว</h3><p>ต้องผ่านผู้จัดการและ Audit ถ้าปฏิเสธต้องมีเหตุผล</p></div>
+        <div><h3>ยกเลิกบิลที่ส่งแล้ว</h3><p>ต้องผ่าน Sales Manager และ Audit ถ้าปฏิเสธต้องมีเหตุผล</p></div>
         <div class="design"><span class="tag">ออกแบบ</span>คำขอแสดงสถานะทีละขั้น และเหตุผลเมื่อถูกปฏิเสธ</div>
       </div>
       <div class="edge">
@@ -457,16 +468,16 @@
   <div class="cs-wrap">
     <div class="cs-intro">
       <span class="eyebrow">06 — ผลลัพธ์</span>
-      <h2>ออกแบบให้หัวหน้าและหลังบ้านดูข้อมูลจากแอปได้ ไม่ต้องตามถาม Sales</h2>
+      <h2>ออกแบบให้ Sales Manager และหลังบ้านดูข้อมูลจากแอปได้ ไม่ต้องตามถาม Sales</h2>
       <div class="pills">
-        <span class="pill pill--soft pill--sm">ขึ้นระบบ 2024</span>
-        <span class="pill pill--sm">สเปค: รองรับ 600+ ผู้ใช้ · 6,000 รายการ/วัน</span>
+        <span class="pill pill--soft pill--sm">ขึ้นระบบครบ 2 เฟส</span>
+        <span class="pill pill--sm">สเปก: รองรับผู้ใช้ 600+ คน · 6,000 รายการ/วัน</span>
       </div>
     </div>
     <div class="results">
       <div class="result">
         <div class="result__role"><span class="label" style="font-size:13px">ปัญหาข้อ 1</span>Sales Manager</div>
-        <div class="result__body"><span class="before">เดิม · ต้องตามเช็คว่า Sales ไปร้านจริงไหม</span><span class="now">ตอนนี้ · ทุกบิลผูกกับการเช็คอิน</span><span class="gain">บริษัทได้ · ดูการเยี่ยมร้านกับยอดขายได้จากที่เดียว</span></div>
+        <div class="result__body"><span class="before">เดิม · ต้องตามเช็กว่า Sales ไปร้านจริงไหม</span><span class="now">ตอนนี้ · ทุกบิลผูกกับการเช็กอิน</span><span class="gain">บริษัทได้ · ดูการเยี่ยมร้านกับยอดขายได้จากที่เดียว</span></div>
       </div>
       <div class="result">
         <div class="result__role"><span class="label" style="font-size:13px">ปัญหาข้อ 2</span>Sales</div>
@@ -501,6 +512,7 @@
 
 </main>
 
+<nav data-case-end aria-label="เคสถัดไปและช่องทางติดต่อ" style="width:100%;max-width:1208px;box-sizing:border-box;margin:0 auto;padding:40px 24px 56px;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;color:var(--color-text,#2b2b2b)"><a href="clinic.html" style="color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:var(--color-text-faint,#6b6b65)">เคสถัดไป</span><span style="font-size:20px;font-weight:600;line-height:1.3">Healthcare POS, CRM &amp; Clinic Operations Platform →</span></a><span style="display:flex;gap:20px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="Luksayaporn_J_ProductDesigner_CV.pdf" target="_blank" rel="noopener" style="color:inherit">CV ↗</a><a href="mailto:luksayaporn.j@gmail.com" style="color:inherit">อีเมล ↗</a><a href="https://www.linkedin.com/in/luksayaporn" target="_blank" rel="noopener" style="color:inherit">LinkedIn ↗</a></span></nav>
 <footer class="cs-footer">
   <div class="cs-footer__inner">
     <span>Field-sales CRM &amp; Sales-operations Platform · Product Design Case Study</span>

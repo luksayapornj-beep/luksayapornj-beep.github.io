@@ -243,3 +243,7 @@ h2 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.25; }
 .cs-footer__inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--color-text-faint); }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Thai body text needs room for tone marks */
+html[lang=th] .ux-note p, html[lang=th] .decision dd, html[lang=th] .callouts span,
+html[lang=th] .design-brief p, html[lang=th] .tx__what { line-height: 1.65; }

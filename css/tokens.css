@@ -5,7 +5,7 @@
   --color-bg-inset: #EFEFED;
   --color-text: #1A1A19;
   --color-text-muted: #5C5C57;
-  --color-text-faint: #8A8A83;
+  --color-text-faint: #6B6B65;
   --color-border: #E2E2DE;
   --color-border-strong: #C7C7C1;
   --color-accent: #1F4A8C;
@@ -57,7 +57,7 @@
     --color-bg-inset: #262624;
     --color-text: #F2F2EF;
     --color-text-muted: #A8A89F;
-    --color-text-faint: #77776F;
+    --color-text-faint: #8E8E86;
     --color-border: #33332F;
     --color-border-strong: #4A4A44;
     --color-accent: #8FB3E8;
@@ -72,7 +72,7 @@
   --color-bg-inset: #262624;
   --color-text: #F2F2EF;
   --color-text-muted: #A8A89F;
-  --color-text-faint: #77776F;
+  --color-text-faint: #8E8E86;
   --color-border: #33332F;
   --color-border-strong: #4A4A44;
   --color-accent: #8FB3E8;
