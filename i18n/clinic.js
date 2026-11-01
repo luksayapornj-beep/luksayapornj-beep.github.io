@@ -10,7 +10,7 @@ window.I18N = {
  "2 เฟส · หลายสาขา": "2 phases · multiple branches",
  "ขึ้นระบบแล้ว · ส่งมอบครบ 2 เฟส": "Live · both phases delivered",
  "ภายใต้ NDA หน้าจอวาดใหม่จากไฟล์ออกแบบจริง ชื่อคลินิก Serene Clinic ชื่อคนไข้ แพทย์ และตัวเลขทั้งหมดเป็นข้อมูลสมมติ": "Under NDA. Screens are redrawn from the real design files. The clinic name Serene Clinic, patient and doctor names, and all figures are fictional.",
- "กฎของคลินิกซับซ้อนกว่าร้านค้าทั่วไป และต้องถูกต้องตั้งแต่หน้าเคาน์เตอร์": "Clinic rules are more complex than retail, and they have to be right at the front desk",
+ "กฎของคลินิกซับซ้อนกว่าร้านค้าทั่วไป และต้องถูกต้องตั้งแต่หน้าเคาน์เตอร์": "Clinic rules are more complex than in retail, and they have to be right at the front desk",
  "ขายได้ 5 แบบ แต่ละแบบมีกฎต่างกัน": "Five ways to sell, each with its own rules",
  "คอร์ส วงเงิน บุฟเฟต์ แพ็กเกจ และโปรโมชัน เช่น บุฟเฟต์มีอายุนับจากใช้ครั้งแรก แพ็กเกจจำกัดจำนวนต่อสัญญา": "Courses, credit, buffets, packages and promotions. A buffet, for example, expires a set time after first use; packages are limited per contract.",
  "ตัดคอร์สได้เฉพาะลูกค้าที่เช็กอินที่สาขา": "Sessions can be deducted only for customers checked in at the branch",
@@ -126,7 +126,7 @@ window.I18N = {
  "ค่าตั้งต้นมาจาก Master Course ถ้าเปลี่ยนสูตรหรือจำนวนยา ต้องกรอกจำนวนที่ใช้จริงเอง": "Defaults come from the master course; if the formula or amount changes, staff enter the actual amount.",
  "ค่าแพทย์ · ตัดสต็อก · รายงาน": "Doctor fees · stock · reports",
  "เคสถัดไป": "Next case",
- "อีเมล ↗": "Email ↗",
+ "อีเมล ↗︎": "Email ↗︎",
  "เฉพาะหน้าจอหลัก": "Key screens only",
  "ภาษา": "Language",
  "เคสถัดไปและช่องทางติดต่อ": "Next case and contact"

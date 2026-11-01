@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="th">
+<html lang="th" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,7 @@
 
 <nav class="cs-nav" aria-label="Sections">
   <div class="cs-nav__inner">
-    <a href="index.html" aria-label="← ผลงานทั้งหมด" style="flex:none;font-size:16px;color:inherit;text-decoration:none;padding:4px 2px">←</a>
+    <a href="index.html" aria-label="ผลงานทั้งหมด" style="flex:none;font-size:16px;color:inherit;text-decoration:none;padding:4px 2px">←</a>
     <a class="cs-nav__title" href="#overview">Field Sales</a>
     <div class="cs-nav__links">
       <a href="#problem">ปัญหา</a>
@@ -117,7 +117,7 @@
     <div class="stack stack--sm">
       <div class="hero-stage">
         <div class="device"><img src="assets/field-sales/screens/new-home-v8c.webp" alt="หน้า Home ของ Sales" width="1488" height="2266"></div>
-        <div class="device device--lead"><img src="assets/field-sales/screens/rp-map-concept.webp" alt="แผนงานวันนี้ แบบแผนที่" width="1236" height="1881"></div>
+        <div class="device device--lead"><img src="assets/field-sales/screens/new-rp-list.webp" alt="แผนงานวันนี้ แบบรายการ เรียงตามเส้นทาง" width="1236" height="1881"></div>
         <div class="device"><img src="assets/field-sales/screens/new-order-filled.webp" alt="หน้าเปิดบิลขาย" width="1488" height="2266"></div>
       </div>
       <p class="fine">ภายใต้ NDA หน้าจอทั้งหมดวาดใหม่สำหรับ case study นี้ ชื่อลูกค้า ชื่อระบบ โลโก้ และข้อมูลจริง เปลี่ยนเป็นข้อมูลสมมติ</p>
@@ -274,9 +274,8 @@
         <div class="ux-note"><span class="label">UX</span><p>Home ไว้ดูงานทั้งวัน งานของร้านทำที่หน้าร้าน</p></div>
         <dl class="decision">
           <div><dt>ที่มา</dt><dd>สร้างรายการขายได้หลังเช็กอินที่ร้านเท่านั้น</dd></div>
-          <div><dt>ตัดสินใจ</dt><dd>เช็กอินแล้วพาไปหน้าร้าน และเอาเมนูเปิดบิลออกจาก Home</dd></div>
+          <div><dt>ออกแบบ</dt><dd>เช็กอินแล้วพาไปหน้าร้าน และเอาเมนูเปิดบิลออกจาก Home</dd></div>
           <div><dt>เพราะ</dt><dd>ถ้าสร้างรายการจาก Home ได้ Sales จะไม่แน่ใจว่ารายการผูกกับร้านไหน</dd></div>
-          <div><dt>ไม่เลือก</dt><dd>ล็อกเมนูบน Home ไว้จนกว่าจะเช็กอิน เพราะพอปลดล็อกแล้วก็ยังไม่ชัดว่าเป็นของร้านไหน</dd></div>
         </dl>
       </div>
     </article>
@@ -295,7 +294,7 @@
         <div class="ux-note"><span class="label">UX</span><p>ไม่ต้องเรียนหน้าจอใหม่ และคำขอของ Sales ไม่ค้าง</p></div>
         <dl class="decision">
           <div><dt>ที่มา</dt><dd>ใช้แอปเดียวกับ Sales เห็นทุกเมนู บวกงานอนุมัติ</dd></div>
-          <div><dt>ตัดสินใจ</dt><dd>ใช้โครง Home เดิมของ Sales แล้วแทนการ์ดงานวันนี้ด้วยงานอนุมัติและสรุปทีม</dd></div>
+          <div><dt>ฉันตัดสินใจ</dt><dd>ใช้โครง Home เดิมของ Sales แล้วแทนการ์ดงานวันนี้ด้วยงานอนุมัติและสรุปทีม</dd></div>
           <div><dt>เพราะ</dt><dd>Dev ดึง component เดิมมาใช้ได้ และ Sales Manager ไม่ต้องเรียนหน้าจอใหม่</dd></div>
         </dl>
       </div>
@@ -311,15 +310,15 @@
         <div class="stack stack--sm">
           <div class="ux-note"><span class="label">UX</span><p>เปิดมาก็รู้ว่าวันนี้ต้องไปร้านไหนก่อน</p></div>
           <dl class="decision">
-            <div><dt>ตัดสินใจ</dt><dd>เรียงร้านในแผนตามเส้นทาง จากใกล้ไปไกล</dd></div>
-            <div><dt>เพราะ</dt><dd>Sales รู้ว่าควรไปร้านไหนก่อนหลัง ออกแบบให้ไม่ต้องวนกลับ และตั้งใจให้ประหยัดน้ำมัน</dd></div>
+            <div><dt>ที่มา (requirement)</dt><dd>เรียงร้านในแผนตามเส้นทาง จากใกล้ไปไกล</dd></div>
+            <div><dt>เพราะ</dt><dd>Sales รู้ว่าควรไปร้านไหนก่อนหลัง ไม่ต้องวนกลับ</dd></div>
           </dl>
         </div>
       </div>
       <div class="figures">
         <figure>
           <div class="device"><img src="assets/field-sales/screens/rp-month-concept.webp" alt="แผนงานรายเดือน แสดงจำนวนงานแต่ละประเภทต่อวัน" width="1236" height="1881" loading="lazy"></div>
-          <figcaption><span class="label" style="font-size:13px">01 · เดือนนี้</span>ปฏิทินเดือนนี้แสดงจำนวนงานแยกตามประเภทในแต่ละวัน สีและลำดับเหมือนกันทุกช่อง</figcaption>
+          <figcaption><span class="label" style="font-size:13px">01 · เดือนนี้ · Concept ไม่ได้ขึ้นระบบ</span>ปฏิทินเดือนนี้แสดงจำนวนงานแยกตามประเภทในแต่ละวัน สีและลำดับเหมือนกันทุกช่อง</figcaption>
         </figure>
         <figure>
           <div class="device"><img src="assets/field-sales/screens/new-rp-list.webp" alt="แผนงานวันนี้ แบบรายการ เรียงตามเส้นทาง" width="1236" height="1881" loading="lazy"></div>
@@ -327,7 +326,7 @@
         </figure>
         <figure>
           <div class="device"><img src="assets/field-sales/screens/rp-map-concept.webp" alt="แผนงานวันนี้ แบบแผนที่" width="1236" height="1881" loading="lazy"></div>
-          <figcaption><span class="label" style="font-size:13px">03 · วันนี้ · แผนที่</span>ดูเป็นรายการหรือแผนที่ แล้วนำทางได้ทันที</figcaption>
+          <figcaption><span class="label" style="font-size:13px">03 · วันนี้ · แผนที่ · Concept ไม่ได้ขึ้นระบบ</span>แนวคิดเพิ่มมุมมองแผนที่ ยังไม่ได้ขึ้นระบบ</figcaption>
         </figure>
       </div>
     </article>
@@ -345,7 +344,7 @@
         </ol>
         <div class="ux-note"><span class="label">UX</span><p>จอบอกเองว่าต้องทำอะไรก่อน ไม่ต้องจำกฎ</p></div>
         <dl class="decision">
-          <div><dt>ตัดสินใจ</dt><dd>ซ่อนเมนูขายจนกว่าจะเช็กอิน ให้เหลือปุ่มเช็กอินปุ่มเดียว</dd></div>
+          <div><dt>ที่มา (requirement)</dt><dd>ซ่อนเมนูขายจนกว่าจะเช็กอิน ให้เหลือปุ่มเช็กอินปุ่มเดียว</dd></div>
           <div><dt>เพราะ</dt><dd>หน้าร้านมีหลายเมนู ถ้าแสดงทุกเมนูที่ยังกดไม่ได้ Sales ต้องไล่หาว่าต้องกดอะไรก่อน</dd></div>
         </dl>
       </div>
@@ -512,7 +511,7 @@
 
 </main>
 
-<nav data-case-end aria-label="เคสถัดไปและช่องทางติดต่อ" style="width:100%;max-width:1208px;box-sizing:border-box;margin:0 auto;padding:40px 24px 56px;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;color:var(--color-text,#2b2b2b)"><a href="clinic.html" style="color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:var(--color-text-faint,#6b6b65)">เคสถัดไป</span><span style="font-size:20px;font-weight:600;line-height:1.3">Healthcare POS, CRM &amp; Clinic Operations Platform →</span></a><span style="display:flex;gap:20px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="Luksayaporn_J_ProductDesigner_CV.pdf" target="_blank" rel="noopener" style="color:inherit">CV ↗</a><a href="mailto:luksayaporn.j@gmail.com" style="color:inherit">อีเมล ↗</a><a href="https://www.linkedin.com/in/luksayaporn" target="_blank" rel="noopener" style="color:inherit">LinkedIn ↗</a></span></nav>
+<nav data-case-end aria-label="เคสถัดไปและช่องทางติดต่อ" style="width:100%;max-width:1208px;box-sizing:border-box;margin:0 auto;padding:40px 24px 56px;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end;font-family:'IBM Plex Sans','IBM Plex Sans Thai',sans-serif;color:var(--color-text,#2b2b2b)"><a href="clinic.html" style="color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:var(--color-text-faint,#6b6b65)">เคสถัดไป</span><span style="font-size:20px;font-weight:600;line-height:1.3">Healthcare POS, CRM &amp; Clinic Operations Platform →</span></a><span style="display:flex;gap:20px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="Luksayaporn_J_ProductDesigner_CV.pdf" target="_blank" rel="noopener" style="color:inherit">CV ↗︎</a><a href="mailto:luksayaporn.j@gmail.com" style="color:inherit">อีเมล ↗︎</a><a href="https://www.linkedin.com/in/luksayaporn" target="_blank" rel="noopener" style="color:inherit">LinkedIn ↗︎</a></span></nav>
 <footer class="cs-footer">
   <div class="cs-footer__inner">
     <span>Field-sales CRM &amp; Sales-operations Platform · Product Design Case Study</span>

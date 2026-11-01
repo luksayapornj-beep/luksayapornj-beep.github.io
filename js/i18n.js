@@ -55,7 +55,7 @@
       const on = b.dataset.lang === lang;
       b.setAttribute('aria-pressed', on);
       b.style.fontWeight = on ? '600' : '400';
-      b.style.opacity = on ? '1' : '.55';
+      b.style.opacity = on ? '1' : '.75';
     });
   };
 
