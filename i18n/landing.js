@@ -23,7 +23,6 @@ window.I18N = {
  "Learned where systems break.": "รู้ว่าระบบมักพังตรงไหน",
  "Business Analyst": "Business Analyst",
  "Turned requirements into rules and process flows.": "แปลง requirement เป็นกฎและ process flow",
- "2021 – now": "2021 – ปัจจุบัน",
  "Design what people see, and what the system has to do behind it.": "ออกแบบสิ่งที่คนเห็น และสิ่งที่ระบบต้องทำอยู่เบื้องหลัง",
  "Open to Product Designer and Senior UX/UI Designer roles · Bangkok or remote": "เปิดรับงาน Product Designer และ Senior UX/UI Designer · กรุงเทพฯ หรือ remote",
  "Work": "ผลงาน",
