@@ -15,10 +15,9 @@ window.I18N_KEEP = [
  "Requirement", "Business Logic", "Workflow", "UX / UI", "Handoff", "UAT", "TH", "EN", "LinkedIn ↗︎"
 ];
 window.I18N = {
- "I came to design from software testing and business analysis, so I work out the rules, states and edge cases before I draw a screen.": "ฉันเริ่มจากงานทดสอบซอฟต์แวร์และงาน BA ก่อนมาเป็น designer เลยวางกฎ สถานะ และ edge case ให้ชัดก่อนวาดหน้าจอ",
- "I design enterprise and B2B products with complex business rules and multi-role workflows across web, mobile, kiosk, POS, and admin systems.": "ฉันออกแบบผลิตภัณฑ์ enterprise และ B2B ที่มีกฎธุรกิจซับซ้อนและมีผู้ใช้หลายบทบาท ทั้งบน web, mobile, kiosk, POS และระบบหลังบ้าน",
-   "I use Figma AI, Figma Make, ChatGPT, and Claude for design exploration and documentation, while making design decisions myself.": "ฉันใช้ Figma AI, Figma Make, ChatGPT และ Claude ช่วยสำรวจแนวทางออกแบบและทำเอกสาร ส่วนการตัดสินใจด้านดีไซน์ ฉันเป็นคนตัดสินใจเอง",
- "Product Designer (UX/UI)": "Product Designer (UX/UI)",
+ "I came to design through software testing and business analysis.": "ฉันเข้าสู่งานดีไซน์ผ่านงานทดสอบซอฟต์แวร์และงาน BA",
+ "AI (Figma AI, Figma Make, ChatGPT, Claude) speeds up exploration and documentation. The design decisions stay mine.": "AI (Figma AI, Figma Make, ChatGPT, Claude) ช่วยให้สำรวจแนวทางและทำเอกสารได้เร็วขึ้น ส่วนการตัดสินใจด้านดีไซน์ยังเป็นของฉัน",
+      "Product Designer (UX/UI)": "Product Designer (UX/UI)",
   "Software Tester": "Software Tester",
  "Learned where systems break.": "รู้ว่าระบบมักพังตรงไหน",
  "Business Analyst": "Business Analyst",
@@ -96,7 +95,7 @@ window.I18N = {
  "Make complexity": "ทำเรื่องซับซ้อน",
  "clear.": "ใ\u2060ห\u2060้\u2060เ\u2060ข\u2060้\u2060า\u2060ใ\u2060จ\u2060ง\u2060่\u2060า\u2060ย",
  "See selected work": "ดูผลงานเด่น",
- "Download CV": "ดาวน์โหลด CV",
+ "View CV": "ดู CV",
  "Hi, I’m Luksayaporn.": "สวัสดี เราล\u2060ั\u2060ก\u2060ษ\u2060ย\u2060า\u2060พ\u2060รนะ",
  "I design systems for": "ออกแบบระบบให้ ",
  "7 years in software · 5 as a Product Designer (UX/UI) · Bangkok · open to remote": "ทำงานสายซอฟต์แวร์ 7 ปี · เป็น\u00a0Product\u00a0Designer\u00a0(UX/UI)\u00a05\u00a0ปี · กรุงเทพฯ · ร\u2060ั\u2060บ\u2060ง\u2060า\u2060น\u00a0remote",
