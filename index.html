@@ -88,6 +88,8 @@ html[lang=th] h1,html[lang=th] h2,html[lang=th] h3{letter-spacing:0!important}
 @media(max-width:640px){.case-num,.case-cta,.eyebrow{font-size:12px}.case h3{font-size:38px}html[lang=th] .case h3{font-size:34px;line-height:1.3}}html[lang=th] .tag,html[lang=th] .case-cta,html[lang=th] .g-meta,html[lang=th] .eyebrow,html[lang=th] .mono,html[lang=th] .label{letter-spacing:.02em;font-family:"IBM Plex Mono","IBM Plex Sans Thai",monospace}@media(max-width:640px){.footer .nav-link{display:inline-block;padding:12px 0;margin-right:18px}[data-lang]{padding:12px 4px!important;margin:-12px 0!important}.brand{padding:10px 0}}
 .footer-mail{margin:0 0 22px;font-size:20px}.footer-mail a{border-bottom:1px solid var(--line);padding:6px 0;user-select:all;-webkit-user-select:all}
 .about-body{max-width:860px}.about-lead{font-size:22px;line-height:1.55;letter-spacing:-.025em;margin:0 0 16px;color:var(--ink)}.path{list-style:none;margin:0 0 32px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}.path li{display:flex;flex-direction:column;gap:6px;padding:20px 20px 0 0;position:relative}.path li::before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--ink-3)}.path li:last-child::before{background:var(--ink)}.path-when{font-size:12px;letter-spacing:.06em;color:var(--ink-3)}.path b{font-size:17px;font-weight:600;color:var(--ink)}.path li>span:last-child{font-size:15px;line-height:1.5;color:var(--ink-2)}.about-text{margin:0 0 28px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:780px}.about-open{margin:0;font-size:15px;color:var(--ink-2)}@media(max-width:640px){.about-lead{font-size:19px}.path{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line);margin-left:3px}.path li{padding:0 0 22px 20px}.path li::before{top:6px;left:-4px}}
+.g-shot{position:relative;cursor:zoom-in}.g-shot:focus-visible{outline:2px solid var(--ink);outline-offset:3px}.g-shot::after{content:"";position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;background:rgba(22,22,26,.78) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='M15 15l5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .15s}.g-shot:hover::after,.g-shot:focus-visible::after{opacity:1}@media (hover:none){.g-shot::after{opacity:.9;width:32px;height:32px}}
+.lb{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:56px 16px 24px;background:rgba(16,16,20,.94);opacity:0;transition:opacity .15s}.lb.on{opacity:1}.lb img{max-width:min(1600px,94vw);max-height:76vh;width:auto;height:auto;object-fit:contain;border-radius:10px;background:#fff}.lb-cap{color:#fff;text-align:center;max-width:720px}.lb-cap b{display:block;font-size:17px;font-weight:600}.lb-cap span{font-size:13px;color:#b9b9c0}.lb button{all:unset;cursor:pointer;position:absolute;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;color:#fff;font-size:24px;line-height:1;background:rgba(255,255,255,.12)}.lb button:hover,.lb button:focus-visible{background:rgba(255,255,255,.24)}.lb .lb-x{top:12px;right:12px}.lb .lb-prev{left:12px;top:50%;transform:translateY(-50%)}.lb .lb-next{right:12px;top:50%;transform:translateY(-50%)}@media (max-width:640px){.lb .lb-prev,.lb .lb-next{top:auto;bottom:16px;transform:none}.lb{padding-bottom:76px}}@media (prefers-reduced-motion:reduce){.lb,.g-shot::after{transition:none}}
 </style>
 </head>
 <body>
@@ -137,8 +139,8 @@ html[lang=th] h1,html[lang=th] h2,html[lang=th] h3{letter-spacing:0!important}
 <section class="section shell" id="about">
 <div class="section-head"><h2>About</h2><p>THE PERSON BEHIND THE SYSTEMS</p></div>
 <div class="about-body">
-<p class="about-lead">Product Designer with 7 years in software, including 5 in UX/UI design. My background spans Software Testing, Business Analysis, and Product Design.</p>
-<p class="about-text">I design enterprise and B2B products with complex business rules and multi-role workflows across web, mobile, kiosk, POS, and admin systems. Live projects include Visitor Management, POS (6 connected apps), ERP-based Field Sales, and Clinic Operations.</p>
+<p class="about-lead">I came to design from software testing and business analysis, so I work out the rules, states and edge cases before I draw a screen.</p>
+<p class="about-text">I design enterprise and B2B products with complex business rules and multi-role workflows across web, mobile, kiosk, POS, and admin systems.</p>
 <ol class="path">
 <li><span class="path-when">2019</span><b>Software Tester</b><span>Learned where systems break.</span></li>
 <li><span class="path-when">2020</span><b>Business Analyst</b><span>Turned requirements into rules and process flows.</span></li>
@@ -228,6 +230,65 @@ html[lang=th] h1,html[lang=th] h2,html[lang=th] h3{letter-spacing:0!important}
   new MutationObserver(start).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(reserve, 150); });
   start();
+})();
+</script>
+<script>
+// More work: tap a cover to see it full size; arrows, swipe and Esc work.
+(() => {
+  const tiles = [...document.querySelectorAll('.g-tile')];
+  if (!tiles.length) return;
+  const th = () => document.documentElement.lang === 'th';
+  let lb, i = 0, back = null;
+  const show = n => {
+    i = (n + tiles.length) % tiles.length;
+    const t = tiles[i], img = t.querySelector('img');
+    lb.querySelector('img').src = img.currentSrc || img.src;
+    lb.querySelector('img').alt = img.alt;
+    lb.querySelector('.lb-cap b').textContent = t.querySelector('h3').textContent;
+    lb.querySelector('.lb-cap span').textContent = t.querySelector('.g-meta')?.textContent || '';
+  };
+  const close = () => {
+    lb.classList.remove('on'); document.body.style.overflow = '';
+    removeEventListener('keydown', key);
+    setTimeout(() => { lb.remove(); lb = null; }, 150);
+    back && back.focus();
+  };
+  const key = e => {
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') show(i + 1);
+    else if (e.key === 'ArrowLeft') show(i - 1);
+  };
+  const open = n => {
+    back = document.activeElement;
+    lb = document.createElement('div');
+    lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true');
+    lb.innerHTML = '<img alt=""><div class="lb-cap"><b></b><span></span></div>' +
+      `<button class="lb-x" aria-label="${th() ? 'ปิด' : 'Close'}">×</button>` +
+      `<button class="lb-prev" aria-label="${th() ? 'ก่อนหน้า' : 'Previous'}">‹</button>` +
+      `<button class="lb-next" aria-label="${th() ? 'ถัดไป' : 'Next'}">›</button>`;
+    lb.addEventListener('click', e => {
+      if (e.target.closest('.lb-prev')) show(i - 1);
+      else if (e.target.closest('.lb-next')) show(i + 1);
+      else if (!e.target.closest('img')) close();
+    });
+    let x0 = null;
+    lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+    });
+    document.body.appendChild(lb); document.body.style.overflow = 'hidden';
+    show(n); addEventListener('keydown', key);
+    requestAnimationFrame(() => lb.classList.add('on'));
+    lb.querySelector('.lb-x').focus();
+  };
+  tiles.forEach((t, n) => {
+    const s = t.querySelector('.g-shot');
+    s.setAttribute('role', 'button'); s.tabIndex = 0;
+    s.addEventListener('click', () => open(n));
+    s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(n); } });
+  });
 })();
 </script>
 </body>

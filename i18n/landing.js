@@ -15,9 +15,9 @@ window.I18N_KEEP = [
  "Requirement", "Business Logic", "Workflow", "UX / UI", "Handoff", "UAT", "TH", "EN", "LinkedIn ↗︎"
 ];
 window.I18N = {
- "Product Designer with 7 years in software, including 5 in UX/UI design. My background spans Software Testing, Business Analysis, and Product Design.": "Product Designer ที่ทำงานสายซอฟต์แวร์มา 7 ปี เป็น UX/UI 5 ปี พื้นฐานมาจากงานทดสอบซอฟต์แวร์ งาน BA และงานออกแบบผลิตภัณฑ์",
- "I design enterprise and B2B products with complex business rules and multi-role workflows across web, mobile, kiosk, POS, and admin systems. Live projects include Visitor Management, POS (6 connected apps), ERP-based Field Sales, and Clinic Operations.": "ฉันออกแบบผลิตภัณฑ์ enterprise และ B2B ที่มีกฎธุรกิจซับซ้อนและมีผู้ใช้หลายบทบาท ทั้งบน web, mobile, kiosk, POS และระบบหลังบ้าน งานที่ขึ้นระบบแล้ว ได้แก่ ระบบจัดการผู้มาติดต่อ, POS ที่เชื่อม 6 แอป, แอปทีมขายที่ทำงานบน ERP และระบบบริหารคลินิก",
- "I use Figma AI, Figma Make, ChatGPT, and Claude for design exploration and documentation, while making design decisions myself.": "ฉันใช้ Figma AI, Figma Make, ChatGPT และ Claude ช่วยสำรวจแนวทางออกแบบและทำเอกสาร ส่วนการตัดสินใจด้านดีไซน์ ฉันเป็นคนตัดสินใจเอง",
+ "I came to design from software testing and business analysis, so I work out the rules, states and edge cases before I draw a screen.": "ฉันเริ่มจากงานทดสอบซอฟต์แวร์และงาน BA ก่อนมาเป็น designer เลยวางกฎ สถานะ และ edge case ให้ชัดก่อนวาดหน้าจอ",
+ "I design enterprise and B2B products with complex business rules and multi-role workflows across web, mobile, kiosk, POS, and admin systems.": "ฉันออกแบบผลิตภัณฑ์ enterprise และ B2B ที่มีกฎธุรกิจซับซ้อนและมีผู้ใช้หลายบทบาท ทั้งบน web, mobile, kiosk, POS และระบบหลังบ้าน",
+   "I use Figma AI, Figma Make, ChatGPT, and Claude for design exploration and documentation, while making design decisions myself.": "ฉันใช้ Figma AI, Figma Make, ChatGPT และ Claude ช่วยสำรวจแนวทางออกแบบและทำเอกสาร ส่วนการตัดสินใจด้านดีไซน์ ฉันเป็นคนตัดสินใจเอง",
  "Product Designer (UX/UI)": "Product Designer (UX/UI)",
   "Software Tester": "Software Tester",
  "Learned where systems break.": "รู้ว่าระบบมักพังตรงไหน",
