@@ -1,6 +1,12 @@
 // English for vms.html. Keys are the Thai text in the page (whitespace collapsed).
 // Text inside [data-fit-w] mockups stays Thai. Check with scripts/check-i18n.py.
 window.I18N = {
+ "สรุปโปรเจกต์ใน 1 นาที": "The project in one minute",
+ "VMS เป็นระบบจัดการผู้มาติดต่อในองค์กร ปัญหาหลักคือกระบวนการมีหลายฝ่ายเกี่ยวข้อง ทั้ง Visitor, Host และ Security ซึ่งต้องประสานงานกันหลายขั้นตอน ทำให้มีความเสี่ยงเรื่องการรออนุมัติ การติดตามสถานะ และความถูกต้องของข้อมูล": "VMS is a visitor management system for an organisation. The main problem was that many parties were involved, Visitors, Hosts and Security, and they had to coordinate over several steps. That created risk in waiting for approval, tracking status and keeping the data right.",
+ "รับผิดชอบด้าน UX/UI โดยเน้นทำความเข้าใจ workflow ของผู้ใช้งานแต่ละ role วิเคราะห์ business rules และออกแบบประสบการณ์ให้รองรับการทำงานของหลายฝ่าย": "I was responsible for UX/UI: understanding the workflow of each role, analysing the business rules, and designing an experience that supports how several teams work together.",
+ "เริ่มจากทำความเข้าใจ requirement และแยกผู้ใช้งานตาม role จากนั้น map journey ตั้งแต่ก่อนเข้าพื้นที่จนออกจากพื้นที่ เพื่อดูว่าแต่ละฝ่ายต้องทำอะไร ใช้ข้อมูลอะไร และมีจุดไหนที่ต้องส่งต่องานกัน แล้วนำมาวาง user flow และออกแบบหน้าจอ": "I started from the requirements and split users by role, then mapped the journey from before arrival to leaving the site: what each team does, what data it uses and where work is handed over. That became the user flows and the screens.",
+ "Visitor ไม่ได้เข้ามาด้วยวิธีเดียว เช่น pre-register, walk-in หรือ temporary card ซึ่งแต่ละแบบมีเงื่อนไขต่างกัน อย่าง temporary card ให้ Host อนุมัติแค่ครั้งแรก ครั้งต่อไปสแกนบัตรเข้าได้เลย ไม่ต้องรออนุมัติและไม่ใช้ QR แบบ flow ปกติ จึงต้องแยกเงื่อนไขนี้ให้ชัด เพื่อให้ระบบรองรับการทำงานจริง และไม่บังคับให้ทุกคนผ่านขั้นตอนเดียวกัน": "Visitors don't all arrive the same way: pre-registered, walk-in or with a temporary card, and each has different rules. With a temporary card the Host approves only the first visit; after that the card scans straight in, with no waiting for approval and no QR as in the normal flow. I separated that rule clearly so the system fits real work and doesn't force everyone through the same steps.",
+ "ได้ workflow ที่ชัดเจนขึ้นในระดับ design ว่าแต่ละ role ต้องทำอะไร และระบบควรจัดการสถานะอย่างไร เป้าหมายคือช่วยลดการประสานงานที่ซ้ำซ้อน เพิ่มความสามารถในการติดตามผู้มาติดต่อ และรองรับเงื่อนไขการทำงานจริง": "A clearer workflow at design level: what each role does and how the system should handle each status. The aim is less duplicated coordination, better visitor tracking, and support for the real working conditions.",
  "อยากดูเหตุผล ทางเลือกที่ไม่เลือก ผลก่อน/หลัง และ edge case?": "Want the reasoning, the options I rejected, before/after and edge cases?",
  "Visitor Management — Key Screens · Luksayaporn J.": "Visitor Management — Key Screens · Luksayaporn J.",
  "← ผลงานทั้งหมด": "← All work",
@@ -56,7 +62,7 @@ window.I18N = {
  "เห็นสถานะเดียวกันทุกเครื่อง": "The same status on every device",
  "\"อยู่ในพื้นที่ตอนนี้\" เป็นตัวเลขหลักทั้งสองเครื่อง Desktop แสดงทุกสถานะเพื่อดูภาพรวม Handheld แสดงเฉพาะสถานะที่ Security ต้องใช้ที่ประตู": "\"On site now\" is the main number on both devices. The desktop shows every status for the overview; the handheld shows only the statuses Security needs at the gate.",
  "Security ดูตัวเลขเดียวก็รู้ว่าตอนนี้มีผู้มาติดต่อในพื้นที่กี่คน เปลี่ยนสถานะที่เครื่องไหน อีกเครื่องก็เห็นเหมือนกัน": "One number tells Security how many visitors are on site. A status changed on one device shows on the other.",
- "ผ่าน UAT ครบ 5 บทบาท ขึ้นระบบแล้ว ยังไม่มีตัวเลขวัดผล": "Passed UAT across all 5 roles and live. Impact has not been formally measured.",
+ "ขึ้นระบบแล้ว ยังไม่มีตัวเลขวัดผล": "The system is live. Impact has not been formally measured.",
  "อ่าน case study แบบเต็ม": "Read the full case study",
  "อ่านต่อ →": "Read the full case study →",
  "Enterprise Visitor Management System · ภายใต้ NDA หน้าจอวาดใหม่ ชื่อลูกค้า สี โลโก้ และข้อมูลทั้งหมดเป็นข้อมูลสมมติ": "Enterprise Visitor Management System · Under NDA. Screens redrawn; client name, colours, logo and all data are fictional.",
