@@ -2,6 +2,16 @@
 // Text drawn as part of a product screen maps to itself and stays Thai.
 // Check with scripts/check-i18n.py.
 window.I18N = {
+ "โปรเจกต์นี้ไม่มี BA ฉันทำงานกับ PM โดยตรง": "There was no BA on this project; I worked directly with the PM.",
+ "กระบวนการ": "Process",
+ "จาก requirement": "From requirements",
+ "ถึง UAT": "to UAT",
+ "ประชุม requirement กับ PM แล้วแยกให้เห็นว่าแต่ละฝ่ายทำอะไร และส่งต่องานกันตรงไหน": "Requirement sessions with the PM, then mapping what each team does and where work is handed over.",
+ "รวม 4 ทางเข้าเป็นข้อมูลผู้มาติดต่อชุดเดียว วาง 7 สถานะ และกำหนดว่าใครยืนยันสถานะไหน": "Merged 4 entry routes into one visitor record, set 7 statuses and who confirms each one.",
+ "Journey ของ 5 บทบาท · user flow · system flow": "Journeys for 5 roles · user flows · system flow",
+ "UI บน desktop มือถือ และ handheld · prototype ใน Figma ให้ทีมดู flow": "UI on desktop, mobile and handheld · Figma prototype to walk the team through the flow",
+ "ส่ง flow กฎ และ edge case ให้ทีมพัฒนา · ผ่าน UAT ครบ 5 บทบาท × 4 ทางเข้า": "Flows, rules and edge cases handed to developers · passed UAT across 5 roles × 4 entry routes",
+ "ถ้าได้ทำต่อ จะวัดความถูกต้องของรายชื่อคนที่อยู่ในพื้นที่ และจำนวนรายการที่ยังไม่ปิดตอนจบวัน": "Next, I would measure how accurate the on-site list is and how many records are still open at the end of the day.",
  "UX/UI Designer · requirement จนส่งงาน dev · ทำงานกับ PM": "UX/UI Designer · requirements to dev handoff · with the PM",
  "Visitor Management — Case Study · Luksayaporn J.": "Visitor Management — Case Study · Luksayaporn J.",
  "ปัญหา": "The problem",
@@ -223,7 +233,7 @@ window.I18N = {
  "ผลกลับมาที่ประตูทันที": "The answer reaches the gate at once",
  "07 — ผลลัพธ์": "07 — What changed",
  "จากหน้าจอ สู่วิธีทำงานของโรงงาน": "From screens to how the plant works",
- "ขึ้นระบบแล้ว · ยังไม่มีตัวเลขวัดผล": "The system is live · impact has not been formally measured",
+ "ผ่าน UAT ครบ 5 บทบาท × 4 ทางเข้า · ขึ้นระบบแล้ว · ยังไม่มีตัวเลขวัดผล": "Passed UAT across 5 roles × 4 entry routes · live · impact not formally measured",
  "เดิม · รับข้อมูลผู้มาติดต่อจากโทรศัพท์และอีเมล แล้วรวบรวมเอง": "Before · Visitor details came by phone and email and were collected by hand",
  "ตอนนี้ · ส่งลิงก์ให้ Visitor กรอกเอง ข้อมูลทุกทางรวมอยู่ที่เดียว": "Now · Visitors fill in a form from a link themselves, and every route lands in one place",
  "บริษัทได้ · ทุกรายการมีที่มาและตรวจย้อนได้": "For the company · Every record has a source and an audit trail",

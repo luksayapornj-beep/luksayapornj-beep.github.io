@@ -56,7 +56,7 @@ window.I18N = {
  "เห็นสถานะเดียวกันทุกเครื่อง": "The same status on every device",
  "\"อยู่ในพื้นที่ตอนนี้\" เป็นตัวเลขหลักทั้งสองเครื่อง Desktop แสดงทุกสถานะเพื่อดูภาพรวม Handheld แสดงเฉพาะสถานะที่ Security ต้องใช้ที่ประตู": "\"On site now\" is the main number on both devices. The desktop shows every status for the overview; the handheld shows only the statuses Security needs at the gate.",
  "Security ดูตัวเลขเดียวก็รู้ว่าตอนนี้มีผู้มาติดต่อในพื้นที่กี่คน เปลี่ยนสถานะที่เครื่องไหน อีกเครื่องก็เห็นเหมือนกัน": "One number tells Security how many visitors are on site. A status changed on one device shows on the other.",
- "ขึ้นระบบแล้ว ยังไม่มีตัวเลขวัดผล": "The system is live. Impact has not been formally measured.",
+ "ผ่าน UAT ครบ 5 บทบาท ขึ้นระบบแล้ว ยังไม่มีตัวเลขวัดผล": "Passed UAT across all 5 roles and live. Impact has not been formally measured.",
  "อ่าน case study แบบเต็ม": "Read the full case study",
  "อ่านต่อ →": "Read the full case study →",
  "Enterprise Visitor Management System · ภายใต้ NDA หน้าจอวาดใหม่ ชื่อลูกค้า สี โลโก้ และข้อมูลทั้งหมดเป็นข้อมูลสมมติ": "Enterprise Visitor Management System · Under NDA. Screens redrawn; client name, colours, logo and all data are fictional.",

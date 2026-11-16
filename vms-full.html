@@ -281,6 +281,26 @@
         <dt class="is-me">UX/UI Designer</dt><dd>นำ requirement และข้อจำกัดหน้างานมาวาง flow และออกแบบ UI พร้อมตรวจกฎของระบบและกรณีพิเศษ ก่อนส่งให้ทีมพัฒนา</dd>
       </dl>
     </div>
+    <p class="fine" style="font-size:14px;margin-top:16px">โปรเจกต์นี้ไม่มี BA ฉันทำงานกับ PM โดยตรง</p>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="cs-section cs-section--ruled" aria-label="Process" style="padding-block:64px">
+  <div class="cs-wrap">
+    <div class="split split--top">
+      <div class="stack stack--sm">
+        <span class="eyebrow">กระบวนการ</span>
+        <p class="h3">จาก requirement<br>ถึง UAT</p>
+      </div>
+      <dl class="deflist">
+        <dt>Understand</dt><dd>ประชุม requirement กับ PM แล้วแยกให้เห็นว่าแต่ละฝ่ายทำอะไร และส่งต่องานกันตรงไหน</dd>
+        <dt>Define</dt><dd>รวม 4 ทางเข้าเป็นข้อมูลผู้มาติดต่อชุดเดียว วาง 7 สถานะ และกำหนดว่าใครยืนยันสถานะไหน</dd>
+        <dt>Map</dt><dd>Journey ของ 5 บทบาท · user flow · system flow</dd>
+        <dt>Design &amp; prototype</dt><dd>UI บน desktop มือถือ และ handheld · prototype ใน Figma ให้ทีมดู flow</dd>
+        <dt>Hand off &amp; test</dt><dd>ส่ง flow กฎ และ edge case ให้ทีมพัฒนา · ผ่าน UAT ครบ 5 บทบาท × 4 ทางเข้า</dd>
+      </dl>
+    </div>
   </div>
 </section>
 
@@ -612,7 +632,7 @@
     <div class="cs-intro">
       <span class="eyebrow">07 — ผลลัพธ์</span>
       <h2>จากหน้าจอ สู่วิธีทำงานของโรงงาน</h2>
-      <span class="note-pill">ขึ้นระบบแล้ว · ยังไม่มีตัวเลขวัดผล</span>
+      <span class="note-pill">ผ่าน UAT ครบ 5 บทบาท × 4 ทางเข้า · ขึ้นระบบแล้ว · ยังไม่มีตัวเลขวัดผล</span>
     </div>
     <div class="results">
       <div class="result"><div class="result__role"><span class="label">ปัญหาข้อ 1</span>Host</div><div class="result__body"><p class="before">เดิม · รับข้อมูลผู้มาติดต่อจากโทรศัพท์และอีเมล แล้วรวบรวมเอง</p><p class="now">ตอนนี้ · ส่งลิงก์ให้ Visitor กรอกเอง ข้อมูลทุกทางรวมอยู่ที่เดียว</p><p class="gain">บริษัทได้ · ทุกรายการมีที่มาและตรวจย้อนได้</p></div></div>
@@ -620,6 +640,7 @@
       <div class="result"><div class="result__role"><span class="label">ปัญหาข้อ 3</span>Security + Host</div><div class="result__body"><p class="before">เดิม · ไม่รู้ว่าใครยังอยู่ในพื้นที่ หลังการเข้าพบจบแล้ว</p><p class="now">ตอนนี้ · Host ยืนยันจบการพบ Security ยืนยันออกที่ประตู ไม่ต้องไล่โทรถามกัน</p><p class="gain">บริษัทได้ · รู้ว่าใครยังอยู่ในโรงงาน</p></div></div>
     </div>
     <p class="fine" style="font-size:14px">นอกจากนี้ ทุกรายการมีบันทึก Consent ก่อนออก QR</p>
+    <p class="fine" style="font-size:14px">ถ้าได้ทำต่อ จะวัดความถูกต้องของรายชื่อคนที่อยู่ในพื้นที่ และจำนวนรายการที่ยังไม่ปิดตอนจบวัน</p>
   </div>
 </section>
 
