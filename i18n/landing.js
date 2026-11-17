@@ -4,6 +4,7 @@
 window.I18N_SOURCE = 'en';
 // Names, tags and process labels that stay English in both languages.
 window.I18N_KEEP = [
+ "Visitor Management", "System", "BIZ+ Digital", "Café Solution", "Field-sales CRM &", "Sales-operations Platform", "Healthcare POS, CRM &", "Clinic Operations Platform",
  "LUK.", "luksayaporn.j@gmail.com", "01 / VMS", "Visitor Management", "Security", "Web · Handheld",
  "02 / BIZ+", "POS & Ordering", "Omnichannel", "Kiosk · QR · LINE",
  "03 / FIELD SALES", "Sales CRM", "B2B Distribution", "ERP-connected", "Tablet",
@@ -15,6 +16,10 @@ window.I18N_KEEP = [
  "Requirement", "Business Logic", "Workflow", "UX / UI", "Handoff", "UAT", "TH", "EN", "LinkedIn ↗︎"
 ];
 window.I18N = {
+ "One visitor lifecycle. Four ways in.": "ผู้มาติดต่อหนึ่งคน เข้ามาได้ 4 ทาง",
+ "One order. Six apps.": "ออเดอร์เดียว ผ่าน 6 แอป",
+ "From route plan to paid bill.": "วางแผนเยี่ยมร้าน จนเก็บเงินได้",
+ "One course balance. Every screen.": "คอร์สลูกค้าชุดเดียว ตรงกันทุกจอ",
  "I came to design through software testing and business analysis.": "ฉันเข้าสู่งานดีไซน์ผ่านงานทดสอบซอฟต์แวร์และงาน BA",
  "AI (Figma AI, Figma Make, ChatGPT, Claude) speeds up exploration and documentation. The design decisions stay mine.": "AI (Figma AI, Figma Make, ChatGPT, Claude) ช่วยให้สำรวจแนวทางและทำเอกสารได้เร็วขึ้น ส่วนการตัดสินใจด้านดีไซน์ยังเป็นของฉัน",
       "Product Designer (UX/UI)": "Product Designer (UX/UI)",
@@ -33,20 +38,12 @@ window.I18N = {
  "From requirements → workflow → interface → shipped product.": "ตั้งแต่ requirement → workflow → interface → จนขึ้นระบบจริง",
  "I’m especially interested in products with multiple roles, business rules, edge cases, and real operational constraints.": "ฉันสนใจเป็นพิเศษกับผลิตภัณฑ์ที่มีผู้ใช้หลายบทบาท มีกฎทางธุรกิจ มี edge case (กรณีพิเศษ) และมีข้อจำกัดจากหน้างานจริง",
  "04 / CASE STUDIES": "04 / CASE STUDIES",
- "One visitor lifecycle.": "ผู้มาติดต่อห\u2060น\u2060ึ\u2060่\u2060ง\u2060ค\u2060น",
- "Four ways in.": "เข้ามาได้ 4 ทาง",
  "An enterprise visitor management system that turns fragmented coordination into one traceable workflow across Visitors, Hosts, Security, Trainers and Admins.": "Enterprise Visitor Management System ที่รวมการประสานงานซึ่งเคยกระจัดกระจาย เป็น workflow เดียวที่ตรวจย้อนได้ ใช้ร่วมกันทั้งผู้มาติดต่อ, Host, Security, Trainer และ Admin",
  "Read case study →": "อ่าน case study →",
  "Manufacturing": "โรงงานผลิต",
- "One order.": "ออเดอร์เดียว",
- "Six apps.": "ผ่าน 6 แอป",
  "BIZ+ Digital Café Solution: a café system connecting POS and mobile POS (MPOS), kiosk, table QR, kitchen display, admin, and LINE Official Account (LINE OA) through a shared order-state model.": "BIZ+ Digital Café Solution: ระบบร้านกาแฟที่เชื่อม POS/MPOS, Kiosk, QR ที่โต๊ะ, จอครัว, หลังบ้าน และ LINE OA ด้วยชุดสถานะออเดอร์ชุดเดียว",
  "F&B Café": "ร้านกาแฟ F&B",
- "From route plan": "วางแผนเยี่ยมร้าน",
- "to paid bill.": "จนเก็บเงินได้",
  "Field-sales CRM & Sales-operations Platform: a tablet app for a B2B distributor’s field sales team, specified for 600+ users, covering route plans, store check-in, billing, and payment in one flow, connected to the client’s ERP and approval rules.": "Field-sales CRM & Sales-operations Platform: แอปบนแท็บเล็ตสำหรับทีมขายของผู้จัดจำหน่าย B2B ออกแบบรองรับผู้ใช้ 600+ คน ใช้วางแผนเส้นทาง เช็กอินร้าน เปิดบิล และรับชำระใน flow เดียว เชื่อมกับ ERP และกฎการอนุมัติของลูกค้า",
- "One course balance.": "คอร์สลูกค้าชุดเดียว",
- "Every screen.": "ตรงกันทุกจอ",
  "Healthcare POS, CRM & Clinic Operations Platform for a multi-branch aesthetic clinic. Front-desk check-in, sales and course deduction on POS, treatment notes on the doctor’s tablet, and management approvals all read the same customer course balance.": "Healthcare POS, CRM & Clinic Operations Platform สำหรับคลินิกความงามหลายสาขา เช็กอินหน้าเคาน์เตอร์ ขายและตัดคอร์สบน POS บันทึกการรักษาบนแท็บเล็ตของแพทย์ และผู้บริหารอนุมัติรายการ ทุกส่วนอ่านยอดคอร์สคงเหลือของลูกค้าชุดเดียวกัน",
  "Confidentiality note:": "หมายเหตุเรื่องความลับ:",
  "Client identity, product naming, brand elements, and data have been anonymised. The project context, my role, process, and design decisions are represented accurately at an appropriate level of detail.": "ตัวตนลูกค้า ชื่อผลิตภัณฑ์ องค์ประกอบแบรนด์ และข้อมูล ปรับให้ระบุตัวไม่ได้แล้ว ส่วนบริบทของโปรเจกต์ บทบาทของฉัน กระบวนการ และการตัดสินใจด้านการออกแบบ นำเสนอตามจริงในระดับรายละเอียดที่เหมาะสม",
