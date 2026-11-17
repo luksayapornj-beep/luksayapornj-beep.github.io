@@ -1,6 +1,8 @@
 // English for field-sales.html. Keys are the Thai text in the page (whitespace collapsed).
 // Text inside [data-fit-w] mockups stays Thai. Check with scripts/check-i18n.py.
 window.I18N = {
+ "ได้ออกแบบ workflow ให้พนักงานขายใช้งานง่ายขึ้น เพราะระบบมี business rules จาก ERP ค่อนข้างเยอะ ทั้ง stock, credit และ payment ความท้าทายคือทำอย่างไรให้ UX เรียบง่าย แต่ยังถูกต้องตามเงื่อนไขของธุรกิจ": "Designing a workflow that made selling easier for reps. The ERP brings a lot of business rules, stock, credit and payment, and the challenge was keeping the UX simple while staying true to those rules.",
+ "สิ่งที่ภูมิใจ": "What I'm proud of",
  "ผลงานทั้งหมด": "All work",
  "โจทย์": "Brief",
  "ปัญหาและผู้ใช้": "Problem and users",
