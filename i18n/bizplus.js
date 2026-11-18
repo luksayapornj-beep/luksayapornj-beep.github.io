@@ -37,9 +37,6 @@ window.I18N = {
  "เคสถัดไปและช่องทางติดต่อ": "Next case and contact",
   "Flow ของตู้ Kiosk 7 ขั้น ตั้งแต่หน้าแรกจนได้เลขคิว": "The 7-step kiosk flow, from the home screen to the queue number",
   "1 หน้าแรก → 2 เลือกการรับ → 3 เมนู → 4 ตัวเลือก → 5 สรุปรายการ → 6 ชำระเงิน → 7 เลขคิว": "1 Home → 2 Dine-in or takeaway → 3 Menu → 4 Options → 5 Order summary → 6 Payment → 7 Queue number (screen text is in Thai)",
-  "เลือกจากรูปเมนูใหญ่": "Choose from large menu photos",
-  "ตู้จอแนวตั้ง แท็บหมวดอยู่ด้านบน รูปเมนูเรียงสามคอลัมน์": "A portrait screen with category tabs on top and menu photos in three columns",
-  "การอ่านชื่อเมนูทีละรายการ": "Reading menu names one by one",
   "ตู้กลับหน้าแรกเอง": "The kiosk resets itself",
   "ถ้าไม่จ่ายภายในเวลาที่นับถอยหลัง ตู้จะกลับไปหน้าแรกเอง": "If payment isn't made before the countdown ends, the kiosk returns to the home screen",
   "ออเดอร์ที่ค้างอยู่บนตู้ให้ลูกค้าคนถัดไป": "Half-finished orders left on the kiosk for the next customer",
@@ -97,8 +94,6 @@ window.I18N = {
   "เปิดมาที่สาขาใกล้สุดให้เลย และบอกทันทีว่าสาขาเปิดอยู่ไหม แทนการให้ลูกค้าเลือกสาขาก่อนเห็นเมนู เพราะลูกค้าส่วนมากรับที่สาขาใกล้ตัว": "Open straight at the nearest branch and show at once whether it is open, instead of making customers pick a branch before seeing the menu, because most customers pick up at the branch nearest them.",
   "ลูกค้าเห็นเมนูได้ทันทีโดยไม่ต้องเลือกสาขาก่อน และไม่สั่งตอนร้านปิด": "Customers see the menu straight away without picking a branch first, and can't order while it's closed",
   "ระยะทางและสถานะร้านอยู่เหนือเมนู ป้ายสีแดงบอกเวลาเปิดครั้งถัดไป และหน้าหลังสั่งรวมสถานะ แต้ม และปุ่มสั่งอีกครั้ง": "Distance and branch status sit above the menu, a red label shows the next opening time, and the post-order page brings together status, points and a reorder button",
-  "เข้าจาก Rich Menu ของร้าน": "Enter from the café's Rich Menu",
-  "กด MENU ใน LINE OA แล้วเปิดหน้าสั่งล่วงหน้าได้เลย": "Tap MENU in the LINE OA to open the pre-order page directly",
   "ขั้นตอนก่อนเริ่มสั่ง": "Steps before ordering can start",
   "· Flexibility and Efficiency of Use (Nielsen ข้อ 7)": "· Flexibility and efficiency of use (Nielsen #7)",
   "ร้านปิดรับสั่งล่วงหน้าเองได้": "Cafés can switch off pre-orders themselves",
@@ -124,5 +119,7 @@ window.I18N = {
   "ยอมให้สต็อกติดลบ แทนการบล็อกการขายเมื่อสต็อกเป็น 0 เพราะร้านจดสต็อกที่อื่นก่อน แล้วหลังบ้านจึงวางสิ่งที่เจ้าของร้านต้องจัดการ เช่น สต็อกติดลบและออเดอร์ค้างจ่าย ไว้ก่อนข้อมูลยอดขาย": "Allow negative stock instead of blocking sales at 0, because cafés record stock elsewhere first. The back office then puts what owners need to act on, such as negative stock and unpaid orders, before the sales figures.",
   "ร้านขายต่อได้แม้สต็อกยังไม่อัปเดต และเจ้าของร้านรู้ว่าต้องจัดการอะไรทันที": "Cafés keep selling before stock is updated, and owners see straight away what to act on",
   "แต่ละรายการพาไปหน้าที่แก้ได้": "Each item leads to where it can be fixed",
-  "สต็อกติดลบ ใกล้หมด และออเดอร์ค้างจ่าย กดแล้วไปหน้าที่ปรับได้ทันที": "Negative stock, low stock and unpaid orders each open the page where they can be adjusted"
+  "สต็อกติดลบ ใกล้หมด และออเดอร์ค้างจ่าย กดแล้วไปหน้าที่ปรับได้ทันที": "Negative stock, low stock and unpaid orders each open the page where they can be adjusted",
+  "เข้าจากเมนูด้านล่างแชต LINE": "Enter from the menu below the LINE chat",
+  "กด MENU ใน Rich Menu ของ LINE OA แล้วเปิดหน้าสั่งล่วงหน้าได้เลย": "Tap MENU in the LINE OA's Rich Menu to open the pre-order page directly"
 };
