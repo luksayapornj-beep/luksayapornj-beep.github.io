@@ -255,11 +255,15 @@
   .before b { margin-right:8px; padding:2px 8px; border-radius:6px; background:var(--color-bg-inset); color:var(--color-text); font-size:13px; }
   .say { display:flex; flex-direction:column; gap:4px; padding:18px 22px; border-left:3px solid var(--case-accent); font-size:clamp(17px,1.8vw,19px); line-height:1.6; color:var(--color-text); }
   .say span { font-size:12px; font-weight:var(--font-weight-semibold); color:var(--case-accent); }
-  .impact { display:flex; flex-direction:column; gap:8px; padding:20px 22px; border-radius:18px; background:var(--case-accent-soft); }
+  .impact { margin-top:4px; display:flex; flex-direction:column; gap:8px; padding:20px 22px; border-radius:18px; background:var(--case-accent-soft); }
   .impact p { font-size:var(--font-size-sm); line-height:1.6; color:var(--color-text); }
-  .impact p b { display:inline-block; min-width:84px; font-weight:var(--font-weight-semibold); color:var(--case-accent-strong); }
+  .impact p { display:grid; grid-template-columns:minmax(0,170px) minmax(0,1fr); gap:4px 16px; margin:0; }
+  @media (max-width:560px){ .impact p { grid-template-columns:1fr; } }
+  .impact p b { display:block; font-weight:var(--font-weight-semibold); color:var(--case-accent-strong); }
 
   .shot img.flat { box-shadow:none; border-radius:0; }
+  .ticks { margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px; font-size:15px; line-height:1.6; }
+  .hero-shot { display:block; width:100%; height:auto; }
   .kflow { overflow-x:auto; border-radius:16px; background:var(--color-bg); -webkit-overflow-scrolling:touch; }
   .kflow img { display:block; width:100%; min-width:880px; height:auto; }
   .reduce { display:block; margin-top:6px; font-size:13px; line-height:1.55; color:var(--color-text-muted, inherit); }
@@ -344,12 +348,12 @@
     <a href="index.html" aria-label="ผลงานทั้งหมด" style="flex:none;font-size:16px;color:inherit;text-decoration:none;padding:4px 2px">←</a>
     <a class="cs-nav__title" href="#overview">BIZ+</a>
     <div class="cs-nav__links">
-      <a href="#overview">โจทย์</a>
+      <a href="#brief">โจทย์ธุรกิจ</a>
       <a href="#system">ภาพรวมระบบ</a>
-      <a href="#kiosk">โจทย์ของ Kiosk</a>
-      <a href="#story-1">เรื่องที่ 1</a>
-      <a href="#story-2">เรื่องที่ 2</a>
-      <a href="#story-3">เรื่องที่ 3</a>
+      <a href="#story-1">สถานะ</a>
+      <a href="#story-2">Kiosk</a>
+      <a href="#story-3">LINE</a>
+      <a href="#story-4">หลังบ้าน</a>
       <a href="#close">ปิดท้าย</a>
     </div>
     <span style="display:inline-flex;gap:6px;align-items:center;flex:none;font-size:13px;color:var(--color-text,#2B2B2B)" role="group" aria-label="ภาษา"><button type="button" data-lang="th" style="all:unset;cursor:pointer">TH</button><span style="opacity:.35">|</span><button type="button" data-lang="en" style="all:unset;cursor:pointer">EN</button></span>
@@ -364,64 +368,51 @@
     <div class="stack" style="gap:24px">
       <div class="pills"><span class="pill pill--solid">01 — Requirement และ Business Objective</span><span class="pill">F&amp;B · Café Operations</span></div>
       <h1>BIZ+ Digital Café Solution</h1>
-      <p class="lead">ระบบร้านกาแฟแบบครบวงจร ที่ทุกช่องทางเชื่อมต่อกันแบบ seamless เคสนี้เจาะที่ตู้ Kiosk ตั้งแต่ลูกค้าแตะหน้าจอจนได้เลขคิว</p>
+      <p class="lead">ระบบขายสำหรับร้านกาแฟ ที่ลูกค้าสั่งได้หลายช่องทาง ทั้ง Kiosk, QR Order, POS และ LINE ลูกค้าต้องรู้ว่าออเดอร์ถึงขั้นไหน และพนักงานแต่ละฝ่ายต้องทำงานต่อกันได้</p>
     </div>
     <div class="stack">
       <div class="grid-3">
-        <div class="card card--soft"><span class="label">Business Objective</span><span class="card__title">ระบบร้านกาแฟแบบครบวงจร ให้ทุกช่องทางเชื่อมต่อกันแบบ seamless</span></div>
-        <div class="card card--soft"><span class="label">ความซับซ้อน</span><span class="card__title">ลูกค้าใช้เองไม่มีพนักงานช่วย · จ่ายด้วยพร้อมเพย์อย่างเดียว · ออเดอร์ต้องเข้า POS ครัว และจอคิว</span></div>
-        <div class="card card--soft"><span class="label">โจทย์การออกแบบ</span><span class="card__title">ลูกค้าสั่ง จ่าย และรู้ว่าจะรับของเมื่อไร ได้เองจนจบที่ตู้</span></div>
+        <div class="card card--soft"><span class="label">Business Objective</span><span class="card__title">ระบบขายที่เชื่อมทุกช่องทาง และขยายรองรับหลายร้านค้า</span></div>
+        <div class="card card--soft"><span class="label">ความซับซ้อน</span><span class="card__title">4 ช่องทางสั่ง · 6 แอป · หลายร้านที่ทำงานต่างกัน</span></div>
+        <div class="card card--soft"><span class="label">โจทย์การออกแบบ</span><span class="card__title">Flow ของออเดอร์ที่เชื่อมกัน แม้สั่งคนละช่องทาง ออเดอร์ก็ต้องไปที่ครัวและจุดรับเหมือนกัน</span></div>
       </div>
       <dl class="meta">
-        <div><dt>Platform</dt><dd>Kiosk · ในระบบที่มี Mobile · POS · Kitchen display · Web admin</dd></div>
+        <div><dt>Platform</dt><dd>Mobile · Kiosk · POS · Kitchen display · Web admin</dd></div>
         <div><dt>Industry</dt><dd>F&amp;B Café</dd></div>
         <div><dt>Status</dt><dd>ขึ้นระบบแล้ว</dd></div>
       </dl>
     </div>
     <div class="stack stack--sm">
-      <div class="kflow"><img src="assets/bizplus/narrative/kiosk-flow.webp" alt="Flow ของตู้ Kiosk 7 ขั้น ตั้งแต่หน้าแรกจนได้เลขคิว" width="2902" height="650"></div>
-      <p class="fine">1 หน้าแรก → 2 เลือกการรับ → 3 เมนู → 4 ตัวเลือก → 5 สรุปรายการ → 6 ชำระเงิน → 7 เลขคิว</p>
+      <img class="hero-shot" src="assets/bizplus/narrative/hero.webp" alt="สั่งอาหารบน POS, QR ที่โต๊ะ, รายละเอียดออเดอร์ใน LINE และตู้ kiosk" width="3471" height="1919">
       <p class="fine">หน้าจอวาดใหม่จาก flow ของระบบจริง ไม่ใช่ภาพหน้าจอจากระบบ ชื่อร้าน Mellow Café และข้อมูลทั้งหมดเป็นข้อมูลสมมติ</p>
     </div>
   </div>
 </header>
 
-<!-- 02 System -->
-<section id="system" class="cs-section cs-section--alt">
+<!-- 02 Business brief -->
+<section id="brief" class="cs-section cs-section--alt">
   <div class="cs-wrap">
-    <div class="cs-intro">
-      <span class="eyebrow">02 — ภาพรวมระบบ</span>
-      <h2>ระบบร้านกาแฟครบวงจร 6 แอป ทุกช่องทางเชื่อมกัน</h2>
-      <p class="body-lg">ลูกค้าสั่งได้ 4 ทาง ทั้ง QR ที่โต๊ะ ตู้ Kiosk LINE และหน้าเคาน์เตอร์ ทุกออเดอร์เข้า POS ก่อน แล้วต่อไปครัวและจอคิว เจ้าของร้านดูยอดและสต็อกบนเว็บ</p>
-    </div>
-    <div class="flowmap"><ol class="flow__steps"><li><span class="flow__no">1</span><b>สั่งและจ่าย</b><span class="flow__who">ลูกค้า</span><button type="button" class="flowshot" data-full="assets/bizplus/narrative/qr.png" aria-label="ดูจอ: สั่งผ่าน QR ที่โต๊ะ และหน้าชำระเงิน"><img src="assets/bizplus/narrative/qr.png" alt="สั่งผ่าน QR ที่โต๊ะ และหน้าชำระเงิน" loading="lazy" style="object-position:center top"></button><span class="flow__do">สั่งจาก QR, kiosk, LINE หรือเคาน์เตอร์ หน้าชำระเงินแสดงเลขออเดอร์</span><span class="pin pin--rule"><em>Business Rule</em>ออเดอร์มีเลขตั้งแต่หน้าชำระเงิน</span></li><li class="on--before"><span class="flow__no">2</span><b>สั่งหน้าร้าน</b><span class="flow__who">ลูกค้า</span><button type="button" class="flowshot" data-full="assets/bizplus/narrative/kiosk.png" aria-label="ดูจอ: ตู้ kiosk"><img src="assets/bizplus/narrative/kiosk.png" alt="ตู้ kiosk" loading="lazy" style="object-position:center top"></button><span class="flow__do">เลือกเมนูจากภาพ และตัวเลือกที่ต้องเลือกให้ครบ</span><span class="pin pin--before"><em>เคสนี้</em>เจาะที่ตู้ Kiosk</span></li><li><span class="flow__no">3</span><b>สั่งล่วงหน้า</b><span class="flow__who">สมาชิก LINE</span><button type="button" class="flowshot" data-full="assets/bizplus/narrative/line.png" aria-label="ดูจอ: สั่งผ่าน LINE"><img src="assets/bizplus/narrative/line.png" alt="สั่งผ่าน LINE" loading="lazy" style="object-position:center top"></button><span class="flow__do">เปิดมาที่สาขาใกล้สุด สั่งได้เมื่อสาขาเปิด</span></li><li><span class="flow__no">4</span><b>รับออเดอร์</b><span class="flow__who">พนักงาน</span><button type="button" class="flowshot" data-full="assets/bizplus/narrative/pos.png" aria-label="ดูจอ: POS ของพนักงาน"><img src="assets/bizplus/narrative/pos.png" alt="POS ของพนักงาน" loading="lazy" style="object-position:center top"></button><span class="flow__do">ทุกช่องทางเข้า POS ก่อน แล้วส่งต่อครัว</span><span class="pin pin--rule"><em>Business Rule</em>ทุกออเดอร์เข้า POS ก่อน</span></li><li><span class="flow__no">5</span><b>เตรียมและรับ</b><span class="flow__who">ครัว · ลูกค้า</span><button type="button" class="flowshot" data-full="assets/bizplus/narrative/kitchen.png" aria-label="ดูจอ: จอครัวและจอคิว"><img src="assets/bizplus/narrative/kitchen.png" alt="จอครัวและจอคิว" loading="lazy" style="object-position:center top"></button><span class="flow__do">ครัวกดสถานะ จอคิวบอกว่าพร้อมรับ</span></li><li><span class="flow__no">6</span><b>ดูยอดและสต็อก</b><span class="flow__who">เจ้าของร้าน</span><button type="button" class="flowshot" data-full="assets/bizplus/narrative/admin.png" aria-label="ดูจอ: แดชบอร์ดของเจ้าของร้าน"><img src="assets/bizplus/narrative/admin.png" alt="แดชบอร์ดของเจ้าของร้าน" loading="lazy" style="object-position:center top"></button><span class="flow__do">เห็นยอดขาย สต็อก และสิ่งที่ต้องจัดการวันนี้</span></li></ol></div>
-    <p class="chain__next">เคสนี้เจาะที่ตู้ Kiosk ↓</p>
+    <div class="cs-intro"><span class="eyebrow">02 — โจทย์ธุรกิจ</span><h2>ระบบขายที่เชื่อมทุกช่องทาง และขยายรองรับหลายร้านค้า</h2>
+      <p class="body-lg">ออเดอร์ที่สั่งผ่าน QR ต้องขึ้นที่ POS และจอครัว เปลี่ยนสถานะบนจอคิว ตัดสต็อก และบันทึกลงประวัติ LINE ของสมาชิกที่กรอกเบอร์ไว้ ถ้าจุดใดไม่ตรง ยอดในรายงานก็จะไม่ตรงกับเงินที่รับจริง</p></div>
+    <ol class="needs" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px 40px">
+      <li><span class="no">01</span><div><span class="t">ลูกค้าสั่งและจ่ายเองได้</span><span class="b">ก่อนมีตู้ ลูกค้าสั่งกับพนักงานที่ POS ได้ทางเดียว</span><span class="fixes" style="margin-top:8px"><span class="fix">Decision 2</span></span></div></li>
+      <li><span class="no">02</span><div><span class="t">เปิดให้สมาชิกสั่งล่วงหน้าผ่าน LINE</span><span class="b">ลูกค้าที่ล็อกอินด้วยเบอร์โทรหรือ LINE จะได้แต้มจากทุกช่องทางเข้าบัญชีเดียวกัน</span><span class="fixes" style="margin-top:8px"><span class="fix">Decision 3</span></span></div></li>
+      <li><span class="no">03</span><div><span class="t">ทุกช่องทางเห็นออเดอร์เดียวกัน</span><span class="b">ทุกออเดอร์เข้า POS ก่อน แล้วส่งต่อไปครัวและจุดรับสินค้า</span><span class="fixes" style="margin-top:8px"><span class="fix">Decision 1</span></span></div></li>
+      <li><span class="no">04</span><div><span class="t">ระบบเดียวต้องขายให้หลายร้านที่ทำงานไม่เหมือนกัน</span><span class="b">แต่ละร้านกำหนดได้ว่าใช้ฟีเจอร์ไหน</span><span class="fixes" style="margin-top:8px"><span class="fix">Decision 4</span></span></div></li>
+    </ol>
   </div>
 </section>
 
-<!-- 03 Kiosk brief -->
-<section id="kiosk" class="cs-section">
+<!-- 03 System -->
+<section id="system" class="cs-section">
   <div class="cs-wrap">
-    <div class="split split--top">
-      <div class="cs-intro">
-        <span class="eyebrow">03 — โจทย์ของ Kiosk</span>
-        <h2>ลูกค้าต้องสั่ง จ่าย และรู้ว่าจะรับเมื่อไร ได้เองที่ตู้</h2>
-        <p class="body-lg">ก่อนมีตู้ ลูกค้าสั่งกับพนักงานที่ POS ได้ทางเดียว ตู้ Kiosk มาจาก requirement ของธุรกิจ เป็นช่องทางใหม่ที่ต้องเชื่อมกับ POS ครัว จอคิว และแต้มสมาชิกเหมือนช่องทางอื่น ออกแบบให้ช่วยลดคิวหน้าเคาน์เตอร์ช่วงคนเยอะ</p>
-      </div>
-      <ol class="needs">
-        <li><span class="no">01</span><div><span class="t">เลือกเมนูและตัวเลือกให้ถูก</span><span class="b">ไม่มีพนักงานคอยถาม และครัวทำตามตัวเลือกที่ลูกค้ากดมา</span></div></li>
-        <li><span class="no">02</span><div><span class="t">จ่ายเองให้จบที่ตู้</span><span class="b">จ่ายได้ทางเดียวคือ QR พร้อมเพย์ และตู้ต้องพร้อมให้ลูกค้าคนถัดไป</span></div></li>
-        <li><span class="no">03</span><div><span class="t">รู้ว่าเมื่อไรไปรับ</span><span class="b">หลังจ่าย ลูกค้าต้องรู้เลขคิว และรู้ว่าออเดอร์ถึงไหนโดยไม่ต้องถามพนักงาน</span></div></li>
-      </ol>
+    <div class="cs-intro">
+      <span class="eyebrow">03 — ภาพรวมระบบ</span>
+      <h2>ออเดอร์หนึ่งใบ ผ่าน 6 touchpoint</h2>
+      <p class="body-lg">ลูกค้าใช้มือถือหรือตู้ พนักงานใช้แท็บเล็ต ครัวใช้จอแนวนอน เจ้าของร้านใช้เว็บ ทุกคนอ่านออเดอร์ชุดเดียวกัน</p>
     </div>
-    <div class="stack stack--sm" style="margin-top:32px">
-      <span class="label label--muted">เงื่อนไขที่ต้องออกแบบรองรับ</span>
-      <div class="grid-auto" style="--min:260px">
-        <div class="card"><span class="label">จ่ายด้วยพร้อมเพย์อย่างเดียว</span><span class="card__title" style="font-weight:400">หน้าชำระเงินของตู้เป็น QR พร้อมเพย์</span></div>
-        <div class="card"><span class="label">สมาชิกสะสมแต้มได้</span><span class="card__title" style="font-weight:400">ลูกค้าที่ล็อกอินด้วยเบอร์โทรหรือ LINE จะได้แต้มจากทุกช่องทางเข้าบัญชีเดียวกัน</span></div>
-        <div class="card"><span class="label">ออเดอร์ต้องต่อเข้าระบบ</span><span class="card__title" style="font-weight:400">ออเดอร์จากตู้เข้า POS ก่อน แล้วขึ้นจอครัวและจอคิวด้วยสถานะชุดเดียวกัน</span></div>
-      </div>
-    </div>
+    <div class="kflow"><img src="assets/bizplus/narrative/system.webp" alt="แผนผังระบบ: LINE นอกร้าน, QR ที่โต๊ะและ Kiosk เข้า POS แล้วต่อไปจอครัวและจอคิว ส่วน Web Admin อยู่หลังร้าน" width="3480" height="2083" loading="lazy"></div>
+    <p class="chain__next">ต่อไปคือ 4 Design Decisions ที่ทำให้ทุกจุดเชื่อมกัน ↓</p>
   </div>
 </section>
 
@@ -429,13 +420,14 @@
 <section id="story-1" class="cs-section cs-section--alt">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">04 — ออกแบบ UX/UI · เรื่องที่ 1 · โจทย์ 01</span>
-      <h2>เลือกเมนูและตัวเลือกให้ถูก ตั้งแต่ครั้งแรก</h2>
-      <p class="before"><b>โจทย์</b>ไม่มีพนักงานคอยถาม และครัวทำตามตัวเลือกที่ลูกค้ากดมา</p>
+      <span class="eyebrow">04 — Design Decision 1 · Shared Order Status</span>
+      <h2>สถานะออเดอร์ชุดเดียว ที่ทุกจอใช้ร่วมกัน</h2>
+      <p class="before"><b>โจทย์</b>ลูกค้าต้องรู้ว่าออเดอร์ของตัวเองถึงขั้นตอนไหน และพนักงานแต่ละฝ่ายต้องทำงานต่อกันได้ แม้ออเดอร์มาจากคนละช่องทาง</p>
+      <p class="body-lg">กำหนดสถานะออเดอร์ 4 สถานะให้ใช้ร่วมกัน แต่ให้แต่ละหน้าจอแสดงเฉพาะสิ่งที่จำเป็น จอครัวเน้นรายการที่ต้องทำและปุ่มเปลี่ยนสถานะ ส่วนจอคิวเน้นเลขคิวให้ลูกค้าเห็นชัดว่าพร้อมรับหรือยัง แทนการให้แต่ละจอใช้คำของตัวเอง เพราะถ้าคำต่างกัน ลูกค้าจะถามพนักงาน และพนักงานต้องเดินไปดูที่ครัว</p>
     </div>
-    <div class="shot"><img class="flat" src="assets/bizplus/narrative/kiosk-choose.png" alt="ตู้ Kiosk: เลือกการรับ เมนู และตัวเลือก" width="1186" height="650" loading="lazy"></div>
-    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>เลือกวิธีรับตั้งแต่ต้น</b>ทานที่ร้าน รับที่จุดบริการ หรือกลับบ้าน เลือกครั้งเดียวก่อนเห็นเมนู<span class="reduce"><b>ช่วยลด</b> ครัวต้องถามว่าทานที่ร้านหรือกลับบ้าน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip1" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip1" hidden><b>หลักการ</b> · Error Prevention (Nielsen ข้อ 5)</div></li><li><b>เลือกจากรูปเมนูใหญ่</b>ตู้จอแนวตั้ง แท็บหมวดอยู่ด้านบน รูปเมนูเรียงสามคอลัมน์<span class="reduce"><b>ช่วยลด</b> การอ่านชื่อเมนูทีละรายการ<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip2" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip2" hidden><b>หลักการ</b> · Recognition rather than Recall (Nielsen ข้อ 6)</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>บอกชัดว่าตัวเลือกไหนต้องเลือก</b>บอกจำนวนไว้ใต้หัวข้อ เลือกครบแล้วขึ้นเครื่องหมายถูก<span class="reduce"><b>ช่วยลด</b> การลืมเลือกตัวเลือกที่จำเป็น<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip3" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip3" hidden><b>หลักการ</b> · Error Prevention (Nielsen ข้อ 5)</div></li><li><b>ปุ่มอยู่ล่างจอทุกหน้า</b>ย้อนกลับ ใส่ตะกร้า และชำระเงิน อยู่ตำแหน่งเดิมทุกหน้า<span class="reduce"><b>ช่วยลด</b> การหาปุ่มไปต่อในแต่ละหน้า<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip4" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip4" hidden><b>หลักการ</b> · Consistency and Standards (Nielsen ข้อ 4)</div></li></ul></div></div>
-    <p class="say"><span>สรุปในประโยคเดียว</span>ไม่มีพนักงานคอยถาม และครัวทำตามที่ลูกค้ากด ดังนั้นตู้จึงให้เลือกจากรูป บอกจำนวนตัวเลือกที่ต้องเลือก และขึ้นเครื่องหมายถูกเมื่อครบ เพื่อให้ออเดอร์ถูกตั้งแต่ครั้งแรก</p>
+    <div class="impact"><p><b>UX Impact ที่ตั้งใจ</b> ลดความสับสนระหว่างลูกค้า พนักงาน และครัว</p><p><b>UI Impact</b> ใช้ชื่อสถานะและสีสอดคล้องกัน พร้อมจัดข้อมูลตามบริบทของแต่ละจอ</p></div>
+    <div class="shot"><img class="flat" src="assets/bizplus/narrative/kitchen-track.webp" alt="จอครัว จอคิว และหน้าติดตามคำสั่งซื้อบนมือถือ แสดงคิว 0005 สถานะกำลังเตรียมตรงกันทุกจอ" width="2769" height="2160" loading="lazy"></div>
+    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>ครัวกดครั้งเดียว ทุกจอเปลี่ยนตาม</b>จอคิวและมือถือลูกค้าเปลี่ยนสถานะทันที<span class="reduce"><b>ช่วยลด</b> การเดินไปถามที่เคาน์เตอร์<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip3" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip3" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>หน้าติดตามบนมือถือ</b>เลขคิวและ 4 ขั้นของสถานะ บอกว่าตอนนี้อยู่ขั้นไหน<span class="reduce"><b>ช่วยลด</b> การยืนรอฟังเรียกหน้าเคาน์เตอร์<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ftip101" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ftip101" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li><li><b>จอคิวตัวเลขใหญ่</b>แยก "กำลังเตรียม" กับ "พร้อมรับ" อ่านได้จากระยะไกล<span class="reduce"><b>ช่วยลด</b> การเพ่งหาเลขคิวของตัวเอง<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip4" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip4" hidden><b>หลักการ</b> · Visual Hierarchy · Glanceability</div></li></ul></div></div>
   </div>
 </section>
 
@@ -443,13 +435,15 @@
 <section id="story-2" class="cs-section">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">04 — ออกแบบ UX/UI · เรื่องที่ 2 · โจทย์ 02</span>
-      <h2>จ่ายด้วยพร้อมเพย์ให้จบที่ตู้</h2>
-      <p class="before"><b>โจทย์</b>จ่ายได้ทางเดียวคือ QR พร้อมเพย์ และตู้ต้องพร้อมให้ลูกค้าคนถัดไป</p>
+      <span class="eyebrow">04 — Design Decision 2 · Kiosk Ordering</span>
+      <h2>ตู้ Kiosk ที่ลูกค้าสั่งเองได้ โดยไม่ข้ามตัวเลือกสำคัญ</h2>
+      <p class="before"><b>โจทย์ธุรกิจ</b>ก่อนมีตู้ ลูกค้าสั่งกับพนักงานที่ POS ได้ทางเดียว ธุรกิจต้องการให้ลูกค้าสั่งและจ่ายเองได้ด้วยพร้อมเพย์</p>
+      <p class="body-lg">หน้าปรับแต่งเครื่องดื่มแสดงตัวเลือกที่ต้องเลือก และมีเครื่องหมายถูกเมื่อเลือกครบ ก่อนเข้าสู่การชำระเงิน</p>
     </div>
-    <div class="shot shot--narrow" style="max-width:640px"><img class="flat" src="assets/bizplus/narrative/kiosk-pay.png" alt="ตู้ Kiosk: สรุปรายการและหน้าชำระเงินด้วย QR พร้อมเพย์" width="772" height="650" loading="lazy"></div>
-    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>แก้รายการได้ในหน้าเดียว</b>หน้าสรุปแก้จำนวน แก้ไข หรือลบได้ทันที<span class="reduce"><b>ช่วยลด</b> การย้อนกลับไปเลือกใหม่ตั้งแต่ต้น<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip5" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip5" hidden><b>หลักการ</b> · User Control and Freedom (Nielsen ข้อ 3)</div></li><li><b>ตู้กลับหน้าแรกเอง</b>ถ้าไม่จ่ายภายในเวลาที่นับถอยหลัง ตู้จะกลับไปหน้าแรกเอง<span class="reduce"><b>ช่วยลด</b> ออเดอร์ที่ค้างอยู่บนตู้ให้ลูกค้าคนถัดไป<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip6" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip6" hidden><b>หลักการ</b> · Error Prevention (Nielsen ข้อ 5)</div></li><li><b>รองรับกรณีผิดพลาด</b>เช่น payment failed, timeout และ refund<span class="reduce"><b>ช่วยลด</b> ออเดอร์ค้างที่ไม่มีใครรู้<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip7" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip7" hidden><b>หลักการ</b> · Error Prevention (Nielsen ข้อ 5)</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>ยอดรวมอยู่บนปุ่มชำระเงิน</b>ปุ่มกดได้เมื่อมีของในตะกร้า<span class="reduce"><b>ช่วยลด</b> การกลับไปเช็กยอดก่อนจ่าย<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip8" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip8" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li><li><b>หน้าชำระเงินบอกครบในจอเดียว</b>QR พร้อมเพย์ เลขคำสั่งซื้อ ยอดที่ต้องจ่าย และเวลาที่เหลือ<span class="reduce"><b>ช่วยลด</b> ความไม่แน่ใจว่าต้องจ่ายเท่าไร และเหลือเวลาอีกนานแค่ไหน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip9" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip9" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li></ul></div></div>
-    <p class="say"><span>สรุปในประโยคเดียว</span>ตู้รับแค่พร้อมเพย์ และต้องพร้อมให้คนถัดไป ดังนั้นหน้าชำระเงินจึงบอกยอด เลขคำสั่งซื้อ และเวลาที่เหลือในจอเดียว และถ้าหมดเวลาตู้กลับหน้าแรกเอง เพื่อให้ลูกค้าจ่ายจบที่ตู้ และไม่มีออเดอร์ค้างให้คนถัดไป</p>
+    <div class="impact"><p><b>UX Impact ที่ตั้งใจ</b> ช่วยให้ลูกค้าสั่งด้วยตัวเองได้ และลดโอกาสข้ามตัวเลือกสำคัญ</p><p><b>UI Impact</b> รูปเมนูใหญ่ ปุ่มสัมผัสชัดเจน และแสดงยอดรวมก่อนจ่าย</p></div>
+    <div class="kflow"><img src="assets/bizplus/narrative/kiosk-flow.webp" alt="Flow ของตู้ Kiosk 7 ขั้น ตั้งแต่หน้าแรกจนได้เลขคิว" width="3480" height="780" loading="lazy"></div>
+    <p class="fine">1 หน้าแรก → 2 เลือกการรับ → 3 เมนู → 4 ตัวเลือก → 5 สรุปรายการ → 6 ชำระเงิน → 7 เลขคิว</p>
+    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>เลือกจากรูปเมนูใหญ่</b>ตู้จอแนวตั้ง แท็บหมวดอยู่ด้านบน รูปเมนูเรียงสามคอลัมน์<span class="reduce"><b>ช่วยลด</b> การอ่านชื่อเมนูทีละรายการ<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip1" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip1" hidden><b>หลักการ</b> · Recognition rather than Recall (Nielsen ข้อ 6)</div></li><li><b>ตู้กลับหน้าแรกเอง</b>ถ้าไม่จ่ายภายในเวลาที่นับถอยหลัง ตู้จะกลับไปหน้าแรกเอง<span class="reduce"><b>ช่วยลด</b> ออเดอร์ที่ค้างอยู่บนตู้ให้ลูกค้าคนถัดไป<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip3" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip3" hidden><b>หลักการ</b> · Error Prevention (Nielsen ข้อ 5)</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>หน้าชำระเงินบอกครบในจอเดียว</b>QR พร้อมเพย์ เลขคำสั่งซื้อ ยอดที่ต้องจ่าย และเวลาที่เหลือ<span class="reduce"><b>ช่วยลด</b> ความไม่แน่ใจว่าต้องจ่ายเท่าไร และเหลือเวลาอีกนานแค่ไหน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip5" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip5" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li><li><b>จบด้วยเลขคิวตัวใหญ่ คู่กับ QR</b>สแกนเพื่อติดตามสถานะต่อบนมือถือ<span class="reduce"><b>ช่วยลด</b> การยืนรอฟังเรียกหน้าเคาน์เตอร์<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip6" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip6" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li></ul></div></div>
   </div>
 </section>
 
@@ -457,23 +451,38 @@
 <section id="story-3" class="cs-section cs-section--alt">
   <div class="cs-wrap">
     <div class="cs-intro">
-      <span class="eyebrow">04 — ออกแบบ UX/UI · เรื่องที่ 3 · โจทย์ 03</span>
-      <h2>หลังจ่าย รู้ว่าเมื่อไรไปรับ โดยไม่ต้องถาม</h2>
-      <p class="before"><b>โจทย์</b>ก่อนหน้านี้ลูกค้าต้องถามพนักงานหรือรอเรียกชื่อ ถึงจะรู้ว่าได้ของหรือยัง</p>
+      <span class="eyebrow">04 — Design Decision 3 · LINE OA Pre-order</span>
+      <h2>สั่งล่วงหน้าผ่าน LINE OA โดยไม่สั่งตอนร้านปิด</h2>
+      <p class="before"><b>โจทย์ธุรกิจ</b>เปิดให้สมาชิกสั่งล่วงหน้าผ่าน LINE เป็นช่องทางที่ยังไม่เคยมี ออเดอร์ต้องผูกกับสาขาที่จะไปรับ และแต่ละสาขาเปิดปิดไม่พร้อมกัน</p>
+      <p class="body-lg">เปิดมาที่สาขาใกล้สุดให้เลย และบอกทันทีว่าสาขาเปิดอยู่ไหม แทนการให้ลูกค้าเลือกสาขาก่อนเห็นเมนู เพราะลูกค้าส่วนมากรับที่สาขาใกล้ตัว</p>
     </div>
-    <div class="shot shot--pair"><img src="assets/bizplus/narrative/kitchen.png" alt="จอครัวและจอคิว" loading="lazy"><img class="flat" src="assets/bizplus/narrative/kiosk-queue.png" alt="ตู้ Kiosk: หน้าเลขคิวพร้อม QR ติดตามออเดอร์" width="357" height="650" loading="lazy"></div>
-    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>จบด้วยเลขคิวตัวใหญ่ คู่กับ QR</b>สแกนเพื่อติดตามสถานะต่อบนมือถือ<span class="reduce"><b>ช่วยลด</b> การยืนรอฟังเรียกหน้าเคาน์เตอร์<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip10" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip10" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li><li><b>สถานะออเดอร์ชุดเดียวทุกจอ</b>รอชำระเงิน → กำลังเตรียม → พร้อมรับสินค้า → เสร็จสิ้น ตกลงชื่อและสีก่อนออกแบบแต่ละแอป<span class="reduce"><b>ช่วยลด</b> ความสับสนว่าออเดอร์อยู่ขั้นไหน ระหว่างลูกค้า พนักงาน และครัว<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip1" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip1" hidden><b>หลักการ</b> · Consistency and Standards (Nielsen ข้อ 4)</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>ตู้กลับหน้าหลักเองใน 15 วินาที</b>หลังแสดงเลขคิว ตู้นับถอยหลังแล้วกลับหน้าแรก<span class="reduce"><b>ช่วยลด</b> ตู้ค้างที่หน้าเลขคิวของคนก่อน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip11" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip11" hidden><b>หลักการ</b> · Error Prevention (Nielsen ข้อ 5)</div></li><li><b>ครัวกดครั้งเดียว ทุกจอเปลี่ยนตาม</b>จอคิวและมือถือลูกค้าเปลี่ยนสถานะทันที<span class="reduce"><b>ช่วยลด</b> การเดินไปถามที่เคาน์เตอร์<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip3" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip3" hidden><b>หลักการ</b> · Visibility of System Status (Nielsen ข้อ 1)</div></li><li><b>จอคิวตัวเลขใหญ่</b>แยก "กำลังเตรียม" กับ "พร้อมรับ" อ่านได้จากระยะไกล<span class="reduce"><b>ช่วยลด</b> การเพ่งหาเลขคิวของตัวเอง<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip4" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip4" hidden><b>หลักการ</b> · Visual Hierarchy · Glanceability</div></li></ul></div></div>
-    <div class="decisions" style="margin-top:24px"><div class="decision-card"><span class="label">ตัดสินใจ</span><span class="decision-card__title">สถานะชุดเดียวกันทุกจอ</span><dl class="decision"><div><dt>ที่มา</dt><dd>ออเดอร์เดียวแสดงบน 3 จอ: ครัว จอคิว มือถือลูกค้า</dd></div><div><dt>ตัดสินใจ</dt><dd>กำหนด 4 สถานะ ชื่อและสีเดียวกันทุกจอ แต่ละจอแสดงเฉพาะสถานะที่ต้องใช้</dd></div><div><dt>ไม่เลือก</dt><dd>ให้แต่ละจอใช้คำของตัวเอง</dd></div><div><dt>เพราะ</dt><dd>คำต่างกัน ลูกค้าจะถามพนักงาน และพนักงานต้องเดินไปดูที่ครัว</dd></div></dl></div></div>
-    <p class="say"><span>สรุปในประโยคเดียว</span>ลูกค้าเคยต้องถามว่าออเดอร์เสร็จหรือยัง ดังนั้นตู้จึงจบด้วยเลขคิวคู่กับ QR และทุกจอใช้สถานะชุดเดียวกัน เพื่อให้ลูกค้าดูเองได้ทั้งบนจอคิวและมือถือ</p>
+    <div class="impact"><p><b>UX Impact ที่ตั้งใจ</b> ลูกค้าเห็นเมนูได้ทันทีโดยไม่ต้องเลือกสาขาก่อน และไม่สั่งตอนร้านปิด</p><p><b>UI Impact</b> ระยะทางและสถานะร้านอยู่เหนือเมนู ป้ายสีแดงบอกเวลาเปิดครั้งถัดไป และหน้าหลังสั่งรวมสถานะ แต้ม และปุ่มสั่งอีกครั้ง</p></div>
+    <div class="shot"><img class="flat" src="assets/bizplus/narrative/line.webp" alt="LINE: เปิดมาที่สาขาใกล้สุด, ป้ายร้านปิด และรายละเอียดคำสั่งซื้อหลังสั่ง" width="1764" height="1109" loading="lazy"></div>
+    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>เข้าจาก Rich Menu ของร้าน</b>กด MENU ใน LINE OA แล้วเปิดหน้าสั่งล่วงหน้าได้เลย<span class="reduce"><b>ช่วยลด</b> ขั้นตอนก่อนเริ่มสั่ง<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ltip1" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ltip1" hidden><b>หลักการ</b> · Flexibility and Efficiency of Use (Nielsen ข้อ 7)</div></li><li><b>ร้านปิดรับสั่งล่วงหน้าเองได้</b>ลูกค้ายังดูเมนูและโปรโมชันได้ แต่สั่งไม่ได้<span class="reduce"><b>ช่วยลด</b> การบังคับทุกร้านให้ทำงานแบบเดียวกัน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ltip3" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ltip3" hidden><b>หลักการ</b> · User Control and Freedom (Nielsen ข้อ 3)</div></li><li><b>หยุดรับออเดอร์ก่อนร้านปิด</b>ตามเวลาที่ร้านตั้งเอง<span class="reduce"><b>ช่วยลด</b> ออเดอร์ที่ร้านทำไม่ทันก่อนปิด<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ltip4" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ltip4" hidden><b>หลักการ</b> · Constraints (Don Norman)</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>สั่งซ้ำได้จากหน้าเมนู</b>แถว "สั่งอีกครั้ง" เพิ่มรายการเดิมทั้งหมดลงตะกร้าได้ในครั้งเดียว<span class="reduce"><b>ช่วยลด</b> การเลือกเมนูเดิมใหม่ทุกครั้ง<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ltip7" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ltip7" hidden><b>หลักการ</b> · Recognition rather than Recall (Nielsen ข้อ 6)</div></li></ul></div></div>
+  </div>
+</section>
+
+<!-- story-4 -->
+<section id="story-4" class="cs-section">
+  <div class="cs-wrap">
+    <div class="cs-intro">
+      <span class="eyebrow">04 — Design Decision 4 · Admin Action Priority</span>
+      <h2>ร้านขายต่อได้ และหลังบ้านบอกก่อนว่าต้องจัดการอะไร</h2>
+      <p class="before"><b>โจทย์ธุรกิจ</b>ขายระบบเดียวให้หลายร้านที่ทำงานไม่เหมือนกัน บางร้านให้ดูเมนูอย่างเดียว บางร้านจดสต็อกไว้ที่อื่นก่อนบันทึกเข้าระบบ</p>
+      <p class="body-lg">ยอมให้สต็อกติดลบ แทนการบล็อกการขายเมื่อสต็อกเป็น 0 เพราะร้านจดสต็อกที่อื่นก่อน แล้วหลังบ้านจึงวางสิ่งที่เจ้าของร้านต้องจัดการ เช่น สต็อกติดลบและออเดอร์ค้างจ่าย ไว้ก่อนข้อมูลยอดขาย</p>
+    </div>
+    <div class="impact"><p><b>UX Impact ที่ตั้งใจ</b> ร้านขายต่อได้แม้สต็อกยังไม่อัปเดต และเจ้าของร้านรู้ว่าต้องจัดการอะไรทันที</p><p><b>UI Impact</b> จัดลำดับข้อมูลตามความเร่งด่วน ไม่ใช่เริ่มจากกราฟรายงาน</p></div>
+    <div class="shot"><img class="flat" src="assets/bizplus/narrative/admin-stock.webp" alt="หลังบ้าน: แดชบอร์ดที่มีรายการต้องจัดการวันนี้ และหน้าสต็อกที่แยกแท็บติดลบ" width="2793" height="3492" loading="lazy"></div>
+    <div class="lens" data-tips><div><span class="lens__tag">UX · ผู้ใช้ทำงานง่ายขึ้นตรงไหน</span><ul><li><b>แต่ละรายการพาไปหน้าที่แก้ได้</b>สต็อกติดลบ ใกล้หมด และออเดอร์ค้างจ่าย กดแล้วไปหน้าที่ปรับได้ทันที<span class="reduce"><b>ช่วยลด</b> การไล่หาว่าต้องแก้อะไรก่อน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip11" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip11" hidden><b>หลักการ</b> · Visibility of System Status · Recognition rather than Recall</div></li></ul></div><div><span class="lens__tag">UI · บนจอช่วยอะไร</span><ul><li><b>นับออเดอร์วันนี้ตาม 4 สถานะ</b>ชื่อและสีเดียวกับครัว จอคิว และมือถือลูกค้า<span class="reduce"><b>ช่วยลด</b> การแปลสถานะคนละแบบระหว่างหน้าร้านกับหลังบ้าน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="ktip99" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="ktip99" hidden><b>หลักการ</b> · Consistency and Standards (Nielsen ข้อ 4)</div></li><li><b>แท็บสต็อกแยกสถานะ</b>ใกล้หมด หมด และติดลบ แถวติดลบบอกจำนวนที่ขายเกิน<span class="reduce"><b>ช่วยลด</b> การนับของทั้งร้านโดยไม่รู้ว่าต้องเริ่มที่ไหน<button type="button" class="tipbtn" aria-expanded="false" aria-controls="btip12" aria-label="ดูหลักการ UX/UI" title="ดูหลักการ">i</button></span><div class="theory" id="btip12" hidden><b>หลักการ</b> · Pre-attentive Attributes</div></li></ul></div></div>
   </div>
 </section>
 
 <!-- Close -->
 <section id="close" class="cs-section">
   <div class="cs-wrap">
-    <div class="cs-intro"><span class="eyebrow">ปิดท้าย</span><h2>ลูกค้าสั่งเองได้จนจบ และทุกช่องทางเชื่อมกัน</h2></div>
+    <div class="cs-intro"><span class="eyebrow">ปิดท้าย</span><h2>ไม่ใช่แค่แต่ละจอใช้ง่าย แต่ข้อมูลและการทำงานของทุกฝ่ายต้องเชื่อมกัน</h2></div>
     <div class="grid-auto" style="--min:260px">
-      <div class="card" style="background:var(--color-bg-subtle)"><span class="label">ผลลัพธ์</span><span class="card__title" style="font-weight:400">ขึ้นระบบแล้ว ยังไม่ได้วัดผลเป็นตัวเลข</span></div>
+      <div class="card" style="background:var(--color-bg-subtle)"><span class="label">ผลลัพธ์</span><span class="card__title" style="font-weight:400">ขึ้นระบบแล้ว ยังไม่ได้วัดผลเป็นตัวเลข Impact ข้างต้นคือผลที่ออกแบบเพื่อให้เกิดขึ้น ยังไม่มีข้อมูลการใช้งานจริงมายืนยันว่าลดเวลาหรือข้อผิดพลาดได้เท่าไร</span></div>
       <div class="card" style="background:var(--color-bg-subtle)"><span class="label">สิ่งที่ภูมิใจ</span><span class="card__title" style="font-weight:400">ได้ออกแบบระบบที่ทำงานเชื่อมกันหลายอุปกรณ์ เพราะแต่ละ touchpoint มีผู้ใช้และหน้าที่ต่างกัน ความท้าทายคือทำอย่างไรให้ข้อมูลและสถานะออเดอร์สอดคล้องกันตลอด journey ตั้งแต่สั่งอาหารจนถึงรับสินค้า</span></div>
       <div class="card" style="background:var(--color-bg-subtle)"><span class="label">บทเรียน</span><span class="card__title" style="font-weight:400">ระบบที่ใช้ร่วมกันหลายจอและหลายร้าน ต้องตกลงกฎก่อนวาดจอ</span></div>
     </div>
